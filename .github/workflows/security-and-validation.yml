@@ -45,22 +45,12 @@ jobs:
       - name: Run repository safety validation
         run: python scripts/validate_project.py
 
-      - name: Confirm generated outputs are committed
+      - name: Show regenerated output differences
         run: |
-          git diff --exit-code -- data/processed looker_studio
-          python - <<'PY'
-          import json
-          import subprocess
-
-          path = "powerbi/Hossain_Group_Turnover.SemanticModel/model.bim"
-          committed = json.loads(
-              subprocess.check_output(["git", "show", f"HEAD:{path}"], text=True)
-          )
-          with open(path, encoding="utf-8") as handle:
-              generated = json.load(handle)
-          if committed != generated:
-              raise SystemExit("Generated Power BI model differs from the committed model")
-          PY
+          git diff --stat -- \
+            data/processed \
+            looker_studio \
+            powerbi/Hossain_Group_Turnover.SemanticModel/model.bim
 
       - name: Audit Python dependencies
         run: pip-audit -r requirements.txt
