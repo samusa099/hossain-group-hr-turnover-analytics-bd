@@ -15,20 +15,40 @@ This document records the recommended protection settings for the `main` branch 
 
 The controls are exercised through pull requests before protected changes are merged into `main`.
 
-## Recommended `main` ruleset
+## Importable `main` ruleset
 
-Enable these settings in **Settings → Rules → Rulesets**:
+Use [`Protect_Main_Branch_Ruleset.json`](Protect_Main_Branch_Ruleset.json) to configure the repository protection without entering every rule manually.
+
+### Import steps
+
+1. Open **Settings → Rules → Rulesets**.
+2. Select **New ruleset → Import a ruleset**.
+3. Download and select `docs/Protect_Main_Branch_Ruleset.json`.
+4. Confirm the ruleset name is **Protect main branch**.
+5. Confirm the target is the **default branch** and enforcement is **Active**.
+6. Review the required checks and click **Create**.
+
+The imported ruleset requires these successful pull-request checks:
+
+- `Validate data, code and Power BI sources`
+- `Analyze Python`
+- `Review dependency changes`
+
+## Protection enforced by the ruleset
 
 - require a pull request before merging;
-- require the validation, CodeQL and dependency-review checks when applicable;
-- require conversation resolution;
+- require all review conversations to be resolved;
+- require project validation, CodeQL and dependency review;
+- require the pull-request branch to be up to date;
 - block force pushes;
 - block branch deletion;
-- require linear history;
-- require signed commits when practical;
-- apply the ruleset to administrators, with an owner-only emergency bypass.
+- require linear history.
 
-For a solo-maintainer repository, required approvals may remain `0`; increase to `1` when a trusted reviewer is available.
+For this solo-maintainer repository, required approvals remain `0`. Increase the value to `1` after adding a trusted reviewer.
+
+## Important limitation
+
+Repository rulesets are GitHub administrative settings. Committing the JSON file does not activate protection by itself; an administrator must import the file and click **Create** once in the repository settings.
 
 ## Power BI protection
 
