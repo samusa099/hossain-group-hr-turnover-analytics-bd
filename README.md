@@ -31,7 +31,7 @@
   <a href="#-analytics-workflow">Workflow</a> ·
   <a href="#-repository-structure">Structure</a> ·
   <a href="#-quick-start">Quick Start</a> ·
-  <a href="#-data-ethics">Data Ethics</a>
+  <a href="#-project-governance">Governance</a>
 </p>
 
 ---
@@ -59,11 +59,11 @@ The project converts synthetic employee joining, headcount and separation record
 |---|---|
 | **Bangladesh context** | Synthetic Bangladeshi employee names, locations, departments and HR terminology |
 | **Excel usability** | Interactive date, department, location and employment-type filters |
-| **HR metrics** | Opening, closing and average headcount, hires, exits, turnover and annualized turnover |
-| **Risk monitoring** | Automatic Low, Moderate, High, Very High and Critical risk classification |
+| **HR metrics** | Opening, closing and average headcount, hires, exits and turnover |
+| **Risk monitoring** | Automatic Low, Moderate, High, Very High and Critical classification |
 | **BI readiness** | Power BI Project, processed CSV files and Looker Studio-ready data |
-| **Automation** | Python scripts for recalculation, semantic-model rebuilding and validation |
-| **Portfolio readiness** | GitHub documentation, Kaggle metadata, notebook and structured folders |
+| **Automation** | Python scripts for recalculation, model rebuilding and validation |
+| **Portfolio readiness** | GitHub documentation, Kaggle metadata and reproducible notebook |
 | **Ethical design** | Fully synthetic records with no confidential employee information |
 
 ---
@@ -85,16 +85,16 @@ The project converts synthetic employee joining, headcount and separation record
 
 ### Department turnover summary
 
-| Department | Exits | Period Turnover | Annualized Turnover | Risk |
-|---|---:|---:|---:|---|
-| Information Technology | 12 | 35.82% | 23.88% | Critical |
-| Administration | 22 | 35.03% | 23.35% | Critical |
-| Finance & Accounts | 13 | 34.29% | 22.86% | Critical |
-| Quality Assurance | 19 | 33.35% | 22.23% | Critical |
-| Production | 62 | 31.21% | 20.81% | Critical |
-| Supply Chain | 17 | 28.87% | 19.25% | Very High |
-| Sales & Marketing | 18 | 28.14% | 18.76% | Very High |
-| Human Resources | 7 | 20.74% | 13.83% | High |
+| Department | Exits | Annualized Turnover | Risk |
+|---|---:|---:|---|
+| Information Technology | 12 | 23.88% | Critical |
+| Administration | 22 | 23.35% | Critical |
+| Finance & Accounts | 13 | 22.86% | Critical |
+| Quality Assurance | 19 | 22.23% | Critical |
+| Production | 62 | 20.81% | Critical |
+| Supply Chain | 17 | 19.25% | Very High |
+| Sales & Marketing | 18 | 18.76% | Very High |
+| Human Resources | 7 | 13.83% | High |
 
 ### Leading exit reasons
 
@@ -111,8 +111,6 @@ The project converts synthetic employee joining, headcount and separation record
 ---
 
 ## 🎯 Business questions
-
-The project helps HR answer:
 
 1. What is the employee turnover rate for a selected period?
 2. What is the annualized turnover rate?
@@ -148,64 +146,64 @@ flowchart LR
     J -->|Very High or Critical| M[Immediate HR and Leadership Action]
 ```
 
-### Data layers
-
-| Layer | Purpose | Location |
-|---|---|---|
-| **Raw data** | Employee-level source records | `data/raw/` |
-| **Processed data** | Monthly, department and exit-reason summaries | `data/processed/` |
-| **Metadata** | Field definitions and dataset documentation | `data/metadata/` |
-| **Excel** | Formula-driven calculator and dashboard | `excel/` |
-| **Power BI** | PBIP report and semantic-model source | `powerbi/` |
-| **Automation** | Generation and validation scripts | `scripts/` |
-| **Notebook** | Reproducible Python analysis | `notebooks/` |
-| **Looker Studio** | Direct-upload reporting dataset | `looker_studio/` |
-
 ---
 
 ## 🗂️ Repository structure
 
-<details open>
-<summary><strong>View project structure</strong></summary>
+```mermaid
+flowchart TB
+    ROOT[Hossain Group HR Turnover Analytics BD]
+
+    ROOT --> ASSETS[assets]
+    ASSETS --> COVER[Project cover SVG]
+
+    ROOT --> DATA[data]
+    DATA --> RAW[raw / employee_master.csv]
+    DATA --> PROCESSED[processed / turnover summaries]
+    DATA --> META[metadata / data_dictionary.json]
+
+    ROOT --> EXCEL[excel / turnover calculator]
+    ROOT --> NOTEBOOKS[notebooks / Kaggle analysis]
+    ROOT --> POWERBI[powerbi / PBIP report and semantic model]
+    ROOT --> LOOKER[looker_studio / upload-ready CSV]
+    ROOT --> SCRIPTS[scripts / generation and validation]
+    ROOT --> DOCS[docs / project and platform guides]
+
+    ROOT --> README[README.md]
+    ROOT --> CONTRIB[CONTRIBUTING.md]
+    ROOT --> CONDUCT[CODE_OF_CONDUCT.md]
+    ROOT --> SECURITY[SECURITY.md]
+    ROOT --> CHANGELOG[CHANGELOG.md]
+    ROOT --> SUPPORT[SUPPORT.md]
+    ROOT --> LICENSE[LICENSE]
+```
+
+<details>
+<summary><strong>View detailed file tree</strong></summary>
 
 ```text
 hossain-group-hr-turnover-analytics-bd/
 ├── assets/
 │   └── hossain-group-hr-turnover-analytics-bd-cover.svg
 ├── data/
-│   ├── raw/
-│   │   └── employee_master.csv
+│   ├── raw/employee_master.csv
 │   ├── processed/
-│   │   ├── company_monthly_turnover.csv
-│   │   ├── dashboard_kpis.csv
-│   │   ├── department_monthly_turnover.csv
-│   │   ├── department_turnover_summary.csv
-│   │   └── exit_reason_summary.csv
-│   └── metadata/
-│       └── data_dictionary.json
+│   └── metadata/data_dictionary.json
 ├── docs/
 │   ├── METRIC_DEFINITIONS.md
 │   ├── POWER_BI_SETUP.md
 │   ├── PROJECT_DESCRIPTION.md
 │   └── VALIDATION_REPORT.md
-├── excel/
-│   └── Hossain_Group_Employee_Turnover_Calculator.xlsx
+├── excel/Hossain_Group_Employee_Turnover_Calculator.xlsx
 ├── looker_studio/
-│   ├── hossain_group_looker_studio.csv
-│   └── LOOKER_STUDIO_SETUP.md
-├── notebooks/
-│   └── Hossain_Group_Turnover_Analysis.ipynb
+├── notebooks/Hossain_Group_Turnover_Analysis.ipynb
 ├── powerbi/
-│   ├── Hossain_Group_Turnover.pbip
-│   ├── Hossain_Group_Turnover.Report/
-│   └── Hossain_Group_Turnover.SemanticModel/
 ├── scripts/
-│   ├── generate_powerbi_project.py
-│   ├── run_project.bat
-│   ├── run_project.ps1
-│   └── validate_project.py
-├── .gitignore
-├── dataset-metadata.json
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── SUPPORT.md
 ├── LICENSE
 ├── README.md
 └── requirements.txt
@@ -217,25 +215,10 @@ hossain-group-hr-turnover-analytics-bd/
 
 ## 🧮 Metric definitions
 
-### Average headcount
-
 ```text
-Average Headcount =
-(Opening Headcount + Closing Headcount) / 2
-```
-
-### Period turnover rate
-
-```text
-Period Turnover Rate =
-Employees Exited during Period / Average Headcount
-```
-
-### Annualized turnover rate
-
-```text
-Annualized Turnover Rate =
-Period Turnover Rate × 12 / Number of Months
+Average Headcount = (Opening Headcount + Closing Headcount) / 2
+Period Turnover Rate = Employees Exited / Average Headcount
+Annualized Turnover Rate = Period Turnover Rate × 12 / Number of Months
 ```
 
 ### Risk classification
@@ -259,12 +242,9 @@ Period Turnover Rate × 12 / Number of Months
 ### 🟩 Excel
 
 - Formula-driven turnover calculator
-- Date-range filtering
-- Department, location and employment-type filters
+- Date, department, location and employment-type filters
 - KPI cards and risk classification
-- Monthly turnover chart
-- Department turnover comparison
-- Exit-reason analysis
+- Monthly, department and exit-reason analysis
 
 **Start here:** `excel/Hossain_Group_Employee_Turnover_Calculator.xlsx`
 
@@ -276,9 +256,7 @@ Period Turnover Rate × 12 / Number of Months
 - Source-control-friendly PBIP project
 - Power Query M partitions
 - Semantic model and DAX measures
-- Executive Overview page
-- Monthly Detail page
-- Python-powered local path rebuilding
+- Executive Overview and Monthly Detail pages
 
 **Start here:** `powerbi/Hossain_Group_Turnover.pbip`
 
@@ -290,9 +268,7 @@ Period Turnover Rate × 12 / Number of Months
 ### 🐍 Python and Kaggle
 
 - Reproducible turnover calculation
-- Monthly trend analysis
-- Department comparison
-- Exit-reason exploration
+- Monthly and department analysis
 - Kaggle-ready notebook and metadata
 
 **Start here:** `notebooks/Hossain_Group_Turnover_Analysis.ipynb`
@@ -303,7 +279,6 @@ Period Turnover Rate × 12 / Number of Months
 ### 🟦 Looker Studio
 
 - Flat upload-ready CSV
-- Monthly and department metrics
 - Percentage-ready turnover fields
 - Setup instructions and chart recommendations
 
@@ -317,127 +292,69 @@ Period Turnover Rate × 12 / Number of Months
 
 ## 🚀 Quick start
 
-### Clone the repository
-
 ```bash
 git clone https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd.git
 cd hossain-group-hr-turnover-analytics-bd
-```
-
-### Install Python requirements
-
-```bash
 python -m pip install -r requirements.txt
-```
-
-### Validate the project
-
-```bash
 python scripts/validate_project.py
-```
-
-Expected output:
-
-```text
-PASS: required files, JSON syntax, and CSV structure validated.
-```
-
-### Regenerate processed data
-
-```bash
 python scripts/generate_powerbi_project.py
 ```
 
-### Open the Excel calculator
+### Excel
+
+Open:
 
 ```text
 excel/Hossain_Group_Employee_Turnover_Calculator.xlsx
 ```
 
-### Open the Power BI project on Windows
+### Power BI on Windows
 
 ```bat
 scripts\run_project.bat
 ```
 
-The script recalculates the processed files, updates local Power Query paths and opens:
-
-```text
-powerbi/Hossain_Group_Turnover.pbip
-```
-
-After opening Power BI Desktop:
-
-1. Select **Refresh**.
-2. Review the Executive Overview and Monthly Detail pages.
-3. Use **File → Save As** to create a `.pbix` file.
-
----
-
-## 📘 Excel workbook guide
-
-| Sheet | Purpose |
-|---|---|
-| `README` | Workbook instructions |
-| `Employee_Data` | Employee-level source records |
-| `Lookup_Lists` | Filter lists |
-| `Turnover_Calculator` | Interactive turnover calculation |
-| `Monthly_Summary` | Monthly headcount and turnover |
-| `Department_Summary` | Department-level comparison |
-| `Exit_Reason_Summary` | Exit-reason distribution |
-| `Dashboard` | Management-ready visual summary |
-| `Data_Dictionary` | Field and metric definitions |
-
----
-
-## 📦 Data files
-
-| File | Primary use |
-|---|---|
-| `employee_master.csv` | Employee-level HR analysis |
-| `company_monthly_turnover.csv` | Company monthly trend |
-| `department_monthly_turnover.csv` | Department and month analysis |
-| `department_turnover_summary.csv` | Department risk comparison |
-| `exit_reason_summary.csv` | Exit-reason analysis |
-| `dashboard_kpis.csv` | Power BI KPI cards |
-| `hossain_group_looker_studio.csv` | Looker Studio reporting |
+After Power BI Desktop opens, select **Refresh** and use **File → Save As** to create a `.pbix` file.
 
 ---
 
 ## 🧪 Validation and governance
 
-The project validates:
-
-- required project files;
-- JSON syntax;
-- CSV headers and data rows;
-- Excel workbook presence;
-- Kaggle notebook presence;
-- Power BI report source;
-- Power BI semantic model;
-- processed data availability.
-
-Run:
+The project validates required files, JSON syntax, CSV headers and rows, Excel workbook presence, notebook presence, Power BI source files and processed datasets.
 
 ```bash
 python scripts/validate_project.py
 ```
+
+Expected result:
+
+```text
+PASS: required files, JSON syntax, and CSV structure validated.
+```
+
+---
+
+## 📚 Project governance
+
+| Document | Purpose |
+|---|---|
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution workflow, standards and pull-request checklist |
+| [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Professional and inclusive participation expectations |
+| [`SECURITY.md`](SECURITY.md) | Vulnerability reporting and HR data-privacy requirements |
+| [`CHANGELOG.md`](CHANGELOG.md) | Version history, additions and planned improvements |
+| [`SUPPORT.md`](SUPPORT.md) | Troubleshooting scope and issue-reporting guidance |
+| [`LICENSE`](LICENSE) | Project code licensing terms |
 
 ---
 
 ## 🔬 Portfolio extension ideas
 
 - Voluntary versus involuntary turnover
-- Regrettable turnover
-- New-hire turnover
-- Tenure-band analysis
-- Manager-level turnover
-- Gender and diversity analysis
-- Department risk scoring
+- Regrettable and new-hire turnover
+- Tenure-band and manager-level analysis
 - Recruitment replacement cost
-- Employee-retention cost modeling
+- Employee-retention cost modelling
 - Attrition prediction
-- Absence and turnover correlation
 - Automated monthly HR reporting
 
 ---
