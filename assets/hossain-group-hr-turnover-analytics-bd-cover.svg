@@ -27,7 +27,7 @@
     <path d="M33 0 42 7v73l-9 5Z" fill="#58b84a"/>
     <text x="138" y="43" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800" fill="#0b3157">HOSSAIN</text>
     <text x="138" y="82" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" letter-spacing="8" fill="#58b84a">GROUP</text>
-    <text x="2" y="130" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" fill="#173b60">PEOPLE • PERFORMANCE • PROGRESS</text>
+    <text x="2" y="130" textLength="382" lengthAdjust="spacingAndGlyphs" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="0.4" fill="#173b60">PEOPLE • PERFORMANCE • PROGRESS</text>
   </g>
 
   <g transform="translate(55 290)">
