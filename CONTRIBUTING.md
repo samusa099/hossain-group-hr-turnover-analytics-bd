@@ -10,6 +10,47 @@ Thank you for considering a contribution to this Bangladesh-focused HR analytics
 - Prefer transparent and reproducible calculations over manual outputs.
 - Validate Excel, CSV, JSON, notebook, and Power BI project assets before submission.
 
+## Contribution Workflow
+
+```mermaid
+flowchart LR
+    A[Fork Repository] --> B[Create Focused Branch]
+    B --> C[Implement One Clear Change]
+    C --> D{Source Logic Changed?}
+    D -->|Yes| E[Regenerate Processed Outputs]
+    D -->|No| F[Continue to Validation]
+    E --> F[Run Project Validation]
+    F --> G{Validation Passed?}
+    G -->|No| H[Fix Errors and Retest]
+    H --> F
+    G -->|Yes| I[Update Documentation and Metadata]
+    I --> J[Commit with Clear Message]
+    J --> K[Open Pull Request]
+    K --> L{Maintainer Review}
+    L -->|Changes Requested| C
+    L -->|Approved| M[Merge Contribution]
+```
+
+### Review Responsibilities
+
+```mermaid
+flowchart TB
+    PR[Pull Request] --> PURPOSE[Confirm HR or Analytics Purpose]
+    PR --> PRIVACY[Check Synthetic Data and Privacy]
+    PR --> QUALITY[Review Formulas, Code and File Structure]
+    PR --> DOCS[Review Documentation and Metadata]
+    PR --> OUTPUTS[Verify Excel, Power BI, Kaggle and Looker Outputs]
+
+    PURPOSE --> DECISION{Ready to Merge?}
+    PRIVACY --> DECISION
+    QUALITY --> DECISION
+    DOCS --> DECISION
+    OUTPUTS --> DECISION
+
+    DECISION -->|Yes| MERGE[Approve and Merge]
+    DECISION -->|No| REVISE[Request Focused Revisions]
+```
+
 ## Recommended Workflow
 
 1. Fork the repository.
@@ -72,7 +113,7 @@ When adding or modifying fields:
 
 ## Documentation Standard
 
-Documentation should be concise, professional, and understandable to an HR practitioner with intermediate analytics knowledge. Use tables, examples, diagrams, and commands where they add practical value.
+Documentation should be concise, professional, and understandable to an HR practitioner with intermediate analytics knowledge. Use tables, examples, Mermaid diagrams, and commands where they add practical value.
 
 ## Pull Request Checklist
 
@@ -82,5 +123,6 @@ Documentation should be concise, professional, and understandable to an HR pract
 - [ ] Documentation and metadata are updated.
 - [ ] Generated outputs are refreshed where necessary.
 - [ ] The change does not break Excel, Power BI, Kaggle, or Looker Studio workflows.
+- [ ] Mermaid diagrams render correctly when documentation is changed.
 
 By contributing, you agree to follow the repository's `CODE_OF_CONDUCT.md` and licensing terms.
