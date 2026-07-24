@@ -6,6 +6,22 @@ We are committed to maintaining a respectful, inclusive, professional, and haras
 
 This repository combines human resources, workforce analytics, business intelligence, and synthetic employee data. Contributors are expected to treat both people and data with dignity, care, and professional judgment.
 
+## Community Conduct Model
+
+```mermaid
+flowchart LR
+    A[Participate in the Project] --> B[Communicate Respectfully]
+    B --> C[Discuss Evidence and Business Logic]
+    C --> D[Protect Privacy and Confidentiality]
+    D --> E[Give Constructive Feedback]
+    E --> F{Concern or Disagreement?}
+    F -->|No| G[Continue Professional Collaboration]
+    F -->|Yes| H[Pause and Clarify the Issue]
+    H --> I[Use Specific and Neutral Language]
+    I --> J[Seek a Fair Resolution]
+    J --> G
+```
+
 ## Expected Behaviour
 
 Examples of positive behaviour include:
@@ -33,9 +49,30 @@ The following are not acceptable:
 
 All public examples and contributions must use synthetic, anonymised, or properly authorised data. Contributors must not upload payroll records, medical information, performance records, contact details, national identifiers, or other sensitive employee information.
 
-## Enforcement
+## Reporting and Enforcement Workflow
 
-Instances of unacceptable behaviour may be reported through the repository's private security or support channels. Repository maintainers may edit, remove, or reject comments, commits, issues, pull requests, or other contributions that violate this Code of Conduct.
+```mermaid
+flowchart TB
+    A[Potential Conduct or Data-Privacy Issue] --> B[Document the Relevant Context]
+    B --> C[Use the Private Security or Support Channel]
+    C --> D[Maintainer Reviews the Report]
+    D --> E{Policy Violation Confirmed?}
+    E -->|No| F[Close with Explanation or Guidance]
+    E -->|Yes| G[Protect Affected People and Data]
+    G --> H[Remove or Restrict Harmful Content]
+    H --> I[Request Correction or Apply Repository Action]
+    I --> J[Record the Resolution Privately]
+```
+
+Repository maintainers may edit, remove, or reject comments, commits, issues, pull requests, or other contributions that violate this Code of Conduct.
+
+## Fair Review Principles
+
+- Reports should be assessed consistently and without retaliation.
+- Only relevant information should be collected during review.
+- Sensitive HR or personal information should not be posted publicly.
+- Actions should be proportionate to the seriousness and recurrence of the behaviour.
+- Good-faith mistakes should normally be handled through clarification and correction.
 
 ## Scope
 
