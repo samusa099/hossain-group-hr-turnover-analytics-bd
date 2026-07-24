@@ -13,6 +13,8 @@ This document records the recommended protection settings for the `main` branch 
 | Ownership of sensitive paths | `.github/CODEOWNERS` |
 | Pull-request safety checklist | `.github/pull_request_template.md` |
 
+The controls are exercised through pull requests before protected changes are merged into `main`.
+
 ## Recommended `main` ruleset
 
 Enable these settings in **Settings → Rules → Rulesets**:
