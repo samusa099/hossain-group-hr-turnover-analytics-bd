@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/hossain-group-hr-turnover-analytics-bd-cover.svg" alt="Hossain Group HR Turnover Analytics BD" width="65%">
+  <img src="assets/hossain-group-hr-turnover-analytics-bd-cover.svg" alt="Hossain Group HR Turnover Analytics BD" width="52%">
 </p>
 
 <h1 align="center">Hossain Group HR Turnover Analytics BD</h1>
@@ -10,18 +10,10 @@
 </p>
 
 <p align="center">
-  <img alt="Data Type" src="https://img.shields.io/badge/Data-Synthetic%20%7C%20HR-625BEB">
+  <img alt="Data Type" src="https://img.shields.io/badge/Data-Synthetic%20HR-625BEB">
   <img alt="Country" src="https://img.shields.io/badge/Context-Bangladesh-1E8E5A">
-  <img alt="Coverage" src="https://img.shields.io/badge/Coverage-Jan%202025–Jun%202026-F36B21">
-  <img alt="Records" src="https://img.shields.io/badge/Employee%20Records-762-0A66C2">
-  <img alt="Risk" src="https://img.shields.io/badge/Current%20Risk-Critical-D64545">
-</p>
-
-<p align="center">
-  <img alt="Excel" src="https://img.shields.io/badge/Excel-Calculator%20%7C%20Dashboard-217346?logo=microsoftexcel&logoColor=white">
-  <img alt="Power BI" src="https://img.shields.io/badge/Power%20BI-PBIP%20Ready-F2C811?logo=powerbi&logoColor=black">
-  <img alt="Python" src="https://img.shields.io/badge/Python-Automation-3776AB?logo=python&logoColor=white">
-  <img alt="Looker Studio" src="https://img.shields.io/badge/Looker%20Studio-Ready-4285F4">
+  <img alt="Records" src="https://img.shields.io/badge/Records-762-0A66C2">
+  <img alt="Risk" src="https://img.shields.io/badge/Risk-Critical-D64545">
   <img alt="License" src="https://img.shields.io/badge/Code-MIT-lightgrey">
 </p>
 
@@ -32,7 +24,7 @@
   <a href="#-analytics-workflow">Workflow</a> ·
   <a href="#-repository-structure">Structure</a> ·
   <a href="#-quick-start">Quick Start</a> ·
-  <a href="#-project-governance">Governance</a>
+  <a href="SECURITY.md">Security</a>
 </p>
 
 ---
