@@ -1,6 +1,7 @@
 @echo off
 setlocal
 cd /d "%~dp0"
+set "HOSSAIN_GROUP_DATA_ROOT=%~dp0.."
 where py >nul 2>nul
 if %errorlevel%==0 (
     py generate_powerbi_project.py

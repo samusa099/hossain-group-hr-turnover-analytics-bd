@@ -2,7 +2,7 @@
 
 All notable changes to **Hossain Group HR Turnover Analytics BD** are documented here.
 
-The project follows a simple portfolio-release convention based on meaningful improvements to data, calculations, documentation, automation, or dashboard assets.
+The project follows a simple portfolio-release convention based on meaningful improvements to data, calculations, documentation, automation, dashboard assets or repository security.
 
 ## [Unreleased]
 
@@ -14,6 +14,33 @@ The project follows a simple portfolio-release convention based on meaningful im
 - Replacement-cost estimation
 - Department retention action tracker
 - Extended Power BI dashboard pages
+
+## [1.2.0] - 2026-07-24
+
+### Security
+
+- Removed absolute local filesystem paths from the committed Power BI semantic model
+- Added portable `__PROJECT_ROOT__` Power BI source paths
+- Added deterministic semantic-model lineage identifiers
+- Added secret-pattern, PII-field, notebook-output and unsafe-path validation
+- Added CodeQL, dependency review and automated project validation workflows
+- Added Dependabot, CODEOWNERS and a security-focused pull-request template
+- Expanded `.gitignore` protection for secrets, local environments and binary outputs
+- Resolved and closed security issue #1
+
+### Added
+
+- `RELEASE_NOTES_v1.2.0.md`
+- `VERSION`
+- `docs/REPOSITORY_PROTECTION.md`
+- Safe local-path injection through the Windows Power BI launchers
+- Power BI `.pbip` and `.pbix` distribution guidance
+
+### Changed
+
+- Power BI Project files remain the source-controlled repository format
+- Generated `.pbix` files remain excluded from normal Git commits
+- Project validation now checks schemas, duplicate employee IDs, dates, formula-injection prefixes and release version
 
 ## [1.1.0] - 2026-07-24
 

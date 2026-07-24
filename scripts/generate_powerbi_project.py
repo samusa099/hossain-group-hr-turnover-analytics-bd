@@ -2,13 +2,17 @@
 """Recalculate turnover outputs and rebuild the Power BI PBIP project.
 
 No third-party Python packages are required.
+
+Security note:
+The committed semantic model uses the portable ``__PROJECT_ROOT__`` token.
+The local launcher sets ``HOSSAIN_GROUP_DATA_ROOT`` so Power BI receives a
+machine-specific path only in the local working copy.
 """
 from __future__ import annotations
 
 import csv
 import json
 import os
-import subprocess
 import sys
 import uuid
 from collections import Counter
@@ -21,14 +25,20 @@ PROCESSED = ROOT / "data" / "processed"
 POWERBI = ROOT / "powerbi"
 START = date(2025, 1, 1)
 END = date(2026, 6, 30)
+POWERBI_ROOT_ENV = "HOSSAIN_GROUP_DATA_ROOT"
+PORTABLE_ROOT = "__PROJECT_ROOT__"
+LINEAGE_NAMESPACE = uuid.UUID("279f5fae-7a3b-4f6d-bf35-6f4df5571b99")
+
 
 def parse_date(value: str):
     value = (value or "").strip()
     return datetime.strptime(value, "%Y-%m-%d").date() if value else None
 
+
 def end_of_month(d: date) -> date:
     nxt = date(d.year + (d.month == 12), 1 if d.month == 12 else d.month + 1, 1)
     return nxt - timedelta(days=1)
+
 
 def month_range(start: date, end: date):
     d = date(start.year, start.month, 1)
@@ -36,19 +46,27 @@ def month_range(start: date, end: date):
         yield d
         d = date(d.year + (d.month == 12), 1 if d.month == 12 else d.month + 1, 1)
 
+
 def active_on(e, d):
     return e["Join_Date"] <= d and (e["Exit_Date"] is None or e["Exit_Date"] >= d)
+
 
 def active_end(e, d):
     return e["Join_Date"] <= d and (e["Exit_Date"] is None or e["Exit_Date"] > d)
 
+
 def risk(rate):
     p = rate * 100
-    if p < 5: return "Low Risk"
-    if p < 10: return "Moderate Risk"
-    if p < 15: return "High Risk"
-    if p < 20: return "Very High Risk"
+    if p < 5:
+        return "Low Risk"
+    if p < 10:
+        return "Moderate Risk"
+    if p < 15:
+        return "High Risk"
+    if p < 20:
+        return "Very High Risk"
     return "Critical Risk"
+
 
 def read_employees():
     if not RAW.exists():
@@ -61,6 +79,7 @@ def read_employees():
             rows.append(r)
     return rows
 
+
 def write_csv(path, rows):
     path.parent.mkdir(parents=True, exist_ok=True)
     if not rows:
@@ -69,6 +88,7 @@ def write_csv(path, rows):
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
         w.writeheader()
         w.writerows(rows)
+
 
 def calculate(employees):
     months = list(month_range(START, END))
@@ -146,15 +166,28 @@ def calculate(employees):
     }]
     return company, dept_monthly, dept_summary, reason_summary, kpi
 
+
 def json_write(path, obj):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2), encoding="utf-8")
 
-def lineage():
-    return str(uuid.uuid4())
+
+def lineage(*parts: str):
+    return str(uuid.uuid5(LINEAGE_NAMESPACE, "::".join(parts)))
+
+
+def powerbi_source_path(csv_path: Path) -> str:
+    relative = csv_path.relative_to(ROOT).as_posix()
+    configured_root = os.environ.get(POWERBI_ROOT_ENV, "").strip()
+    if configured_root:
+        source = str((Path(configured_root).expanduser().resolve() / Path(relative)).resolve())
+    else:
+        source = f"{PORTABLE_ROOT}/{relative}"
+    return source.replace("\\", "\\\\")
+
 
 def make_m(csv_path, columns):
-    p = str(csv_path.resolve()).replace("\\", "\\\\")
+    p = powerbi_source_path(csv_path)
     transform = ", ".join(f'{{"{n}", {t}}}' for n, t in columns)
     return [
         "let",
@@ -165,87 +198,146 @@ def make_m(csv_path, columns):
         '    #"Changed Type"'
     ]
 
+
 def table(name, file, cols, measures):
     columns = []
     for cname, dtype, mtype, fmt in cols:
-        c = {"name": cname, "dataType": dtype, "sourceColumn": cname, "lineageTag": lineage(), "summarizeBy": "none"}
-        if fmt: c["formatString"] = fmt
+        c = {
+            "name": cname,
+            "dataType": dtype,
+            "sourceColumn": cname,
+            "lineageTag": lineage("column", name, cname),
+            "summarizeBy": "none",
+        }
+        if fmt:
+            c["formatString"] = fmt
         columns.append(c)
     return {
-        "name": name, "lineageTag": lineage(), "columns": columns,
+        "name": name,
+        "lineageTag": lineage("table", name),
+        "columns": columns,
         "measures": [
-            {**{"name": m[0], "expression": m[1], "lineageTag": lineage()}, **({"formatString": m[2]} if m[2] else {})}
+            {
+                **{
+                    "name": m[0],
+                    "expression": m[1],
+                    "lineageTag": lineage("measure", name, m[0]),
+                },
+                **({"formatString": m[2]} if m[2] else {}),
+            }
             for m in measures
         ],
-        "partitions": [{"name": name, "mode": "import", "source": {
-            "type": "m", "expression": make_m(file, [(c[0], c[2]) for c in cols])
-        }}]
+        "partitions": [{
+            "name": name,
+            "mode": "import",
+            "source": {
+                "type": "m",
+                "expression": make_m(file, [(c[0], c[2]) for c in cols]),
+            },
+        }],
     }
+
 
 def rebuild_model():
     model_dir = POWERBI / "Hossain_Group_Turnover.SemanticModel"
     tables = [
-        table("DashboardKPIs", PROCESSED/"dashboard_kpis.csv", [
-            ("PeriodStart","dateTime","type date","yyyy-mm-dd"),("PeriodEnd","dateTime","type date","yyyy-mm-dd"),
-            ("OpeningHeadcount","int64","Int64.Type","0"),("ClosingHeadcount","int64","Int64.Type","0"),
-            ("AverageHeadcount","double","type number","0.00"),("TotalHires","int64","Int64.Type","0"),
-            ("TotalExits","int64","Int64.Type","0"),("TurnoverRate","double","type number","0.00%"),
-            ("AnnualizedTurnoverRate","double","type number","0.00%"),("ActiveEmployees","int64","Int64.Type","0"),
-            ("RiskLevel","string","type text",None)
+        table("DashboardKPIs", PROCESSED / "dashboard_kpis.csv", [
+            ("PeriodStart", "dateTime", "type date", "yyyy-mm-dd"),
+            ("PeriodEnd", "dateTime", "type date", "yyyy-mm-dd"),
+            ("OpeningHeadcount", "int64", "Int64.Type", "0"),
+            ("ClosingHeadcount", "int64", "Int64.Type", "0"),
+            ("AverageHeadcount", "double", "type number", "0.00"),
+            ("TotalHires", "int64", "Int64.Type", "0"),
+            ("TotalExits", "int64", "Int64.Type", "0"),
+            ("TurnoverRate", "double", "type number", "0.00%"),
+            ("AnnualizedTurnoverRate", "double", "type number", "0.00%"),
+            ("ActiveEmployees", "int64", "Int64.Type", "0"),
+            ("RiskLevel", "string", "type text", None),
         ], [
-            ("Active Employees","MAX('DashboardKPIs'[ActiveEmployees])","0"),
-            ("Total Exits","MAX('DashboardKPIs'[TotalExits])","0"),
-            ("Total Hires","MAX('DashboardKPIs'[TotalHires])","0"),
-            ("Period Turnover Rate","MAX('DashboardKPIs'[TurnoverRate])","0.00%"),
-            ("Annualized Turnover Rate","MAX('DashboardKPIs'[AnnualizedTurnoverRate])","0.00%"),
+            ("Active Employees", "MAX('DashboardKPIs'[ActiveEmployees])", "0"),
+            ("Total Exits", "MAX('DashboardKPIs'[TotalExits])", "0"),
+            ("Total Hires", "MAX('DashboardKPIs'[TotalHires])", "0"),
+            ("Period Turnover Rate", "MAX('DashboardKPIs'[TurnoverRate])", "0.00%"),
+            ("Annualized Turnover Rate", "MAX('DashboardKPIs'[AnnualizedTurnoverRate])", "0.00%"),
         ]),
-        table("CompanyMonthly", PROCESSED/"company_monthly_turnover.csv", [
-            ("MonthStart","dateTime","type date","mmm yyyy"),("MonthLabel","string","type text",None),
-            ("Year","int64","Int64.Type","0"),("OpeningHeadcount","int64","Int64.Type","0"),
-            ("Hires","int64","Int64.Type","0"),("Exits","int64","Int64.Type","0"),
-            ("ClosingHeadcount","int64","Int64.Type","0"),("AverageHeadcount","double","type number","0.00"),
-            ("TurnoverRate","double","type number","0.00%"),("AnnualizedTurnoverRate","double","type number","0.00%"),
-            ("RiskLevel","string","type text",None)
+        table("CompanyMonthly", PROCESSED / "company_monthly_turnover.csv", [
+            ("MonthStart", "dateTime", "type date", "mmm yyyy"),
+            ("MonthLabel", "string", "type text", None),
+            ("Year", "int64", "Int64.Type", "0"),
+            ("OpeningHeadcount", "int64", "Int64.Type", "0"),
+            ("Hires", "int64", "Int64.Type", "0"),
+            ("Exits", "int64", "Int64.Type", "0"),
+            ("ClosingHeadcount", "int64", "Int64.Type", "0"),
+            ("AverageHeadcount", "double", "type number", "0.00"),
+            ("TurnoverRate", "double", "type number", "0.00%"),
+            ("AnnualizedTurnoverRate", "double", "type number", "0.00%"),
+            ("RiskLevel", "string", "type text", None),
         ], [
-            ("Monthly Turnover Rate","MAX('CompanyMonthly'[TurnoverRate])","0.00%"),
-            ("Monthly Exits","SUM('CompanyMonthly'[Exits])","0"),
-            ("Monthly Hires","SUM('CompanyMonthly'[Hires])","0"),
+            ("Monthly Turnover Rate", "MAX('CompanyMonthly'[TurnoverRate])", "0.00%"),
+            ("Monthly Exits", "SUM('CompanyMonthly'[Exits])", "0"),
+            ("Monthly Hires", "SUM('CompanyMonthly'[Hires])", "0"),
         ]),
-        table("DepartmentSummary", PROCESSED/"department_turnover_summary.csv", [
-            ("Department","string","type text",None),("AverageHeadcount","double","type number","0.00"),
-            ("Exits","int64","Int64.Type","0"),("TurnoverRate","double","type number","0.00%"),
-            ("AnnualizedTurnoverRate","double","type number","0.00%"),("RiskLevel","string","type text",None)
+        table("DepartmentSummary", PROCESSED / "department_turnover_summary.csv", [
+            ("Department", "string", "type text", None),
+            ("AverageHeadcount", "double", "type number", "0.00"),
+            ("Exits", "int64", "Int64.Type", "0"),
+            ("TurnoverRate", "double", "type number", "0.00%"),
+            ("AnnualizedTurnoverRate", "double", "type number", "0.00%"),
+            ("RiskLevel", "string", "type text", None),
         ], [
-            ("Department Turnover Rate","MAX('DepartmentSummary'[TurnoverRate])","0.00%"),
-            ("Department Exits","SUM('DepartmentSummary'[Exits])","0"),
+            ("Department Turnover Rate", "MAX('DepartmentSummary'[TurnoverRate])", "0.00%"),
+            ("Department Exits", "SUM('DepartmentSummary'[Exits])", "0"),
         ]),
-        table("ExitReasonSummary", PROCESSED/"exit_reason_summary.csv", [
-            ("ExitReason","string","type text",None),("Exits","int64","Int64.Type","0"),
-            ("SharePct","double","type number","0.00%")
-        ], [("Exit Count","SUM('ExitReasonSummary'[Exits])","0")])
+        table("ExitReasonSummary", PROCESSED / "exit_reason_summary.csv", [
+            ("ExitReason", "string", "type text", None),
+            ("Exits", "int64", "Int64.Type", "0"),
+            ("SharePct", "double", "type number", "0.00%"),
+        ], [
+            ("Exit Count", "SUM('ExitReasonSummary'[Exits])", "0"),
+        ]),
     ]
-    json_write(model_dir/"model.bim", {
-        "name": "Hossain Group Turnover Semantic Model", "compatibilityLevel": 1600,
+    json_write(model_dir / "model.bim", {
+        "name": "Hossain Group Turnover Semantic Model",
+        "compatibilityLevel": 1600,
         "model": {
-            "culture": "en-US", "defaultPowerBIDataSourceVersion": "powerBI_V3",
-            "sourceQueryCulture": "en-US", "tables": tables,
-            "dataAccessOptions": {"legacyRedirects": True, "returnErrorValuesAsNull": True},
-            "annotations": [{"name":"PBI_QueryOrder","value":'["DashboardKPIs","CompanyMonthly","DepartmentSummary","ExitReasonSummary"]'}]
-        }
+            "culture": "en-US",
+            "defaultPowerBIDataSourceVersion": "powerBI_V3",
+            "sourceQueryCulture": "en-US",
+            "tables": tables,
+            "dataAccessOptions": {
+                "legacyRedirects": True,
+                "returnErrorValuesAsNull": True,
+            },
+            "annotations": [{
+                "name": "PBI_QueryOrder",
+                "value": '["DashboardKPIs","CompanyMonthly","DepartmentSummary","ExitReasonSummary"]',
+            }],
+        },
     })
+
 
 def main():
     employees = read_employees()
     company, dept_monthly, dept_summary, reasons, kpi = calculate(employees)
-    write_csv(PROCESSED/"company_monthly_turnover.csv", company)
-    write_csv(PROCESSED/"department_monthly_turnover.csv", dept_monthly)
-    write_csv(PROCESSED/"department_turnover_summary.csv", dept_summary)
-    write_csv(PROCESSED/"exit_reason_summary.csv", reasons)
-    write_csv(PROCESSED/"dashboard_kpis.csv", kpi)
-    write_csv(ROOT/"looker_studio"/"hossain_group_looker_studio.csv", dept_monthly)
+    write_csv(PROCESSED / "company_monthly_turnover.csv", company)
+    write_csv(PROCESSED / "department_monthly_turnover.csv", dept_monthly)
+    write_csv(PROCESSED / "department_turnover_summary.csv", dept_summary)
+    write_csv(PROCESSED / "exit_reason_summary.csv", reasons)
+    write_csv(PROCESSED / "dashboard_kpis.csv", kpi)
+    write_csv(ROOT / "looker_studio" / "hossain_group_looker_studio.csv", dept_monthly)
     rebuild_model()
     print("Success: processed data and Power BI semantic model regenerated.")
-    print("Open:", POWERBI/"Hossain_Group_Turnover.pbip")
+    if os.environ.get(POWERBI_ROOT_ENV):
+        print("Power BI source paths were prepared for this local repository.")
+    else:
+        print(f"Power BI source paths use the safe {PORTABLE_ROOT} placeholder.")
+        print("For local Power BI refresh, use run_project.bat or run_project.ps1.")
+    print("Open:", POWERBI / "Hossain_Group_Turnover.pbip")
+
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        raise

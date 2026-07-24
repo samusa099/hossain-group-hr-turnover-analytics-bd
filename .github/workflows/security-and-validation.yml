@@ -1,0 +1,56 @@
+name: Security and project validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate data, code and Power BI sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install project and audit tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pip-audit
+
+      - name: Compile Python scripts
+        run: python -m compileall -q scripts
+
+      - name: Rebuild deterministic project outputs
+        run: python scripts/generate_powerbi_project.py
+
+      - name: Run repository safety validation
+        run: python scripts/validate_project.py
+
+      - name: Show regenerated output differences
+        run: |
+          git diff --stat -- \
+            data/processed \
+            looker_studio \
+            powerbi/Hossain_Group_Turnover.SemanticModel/model.bim
+
+      - name: Audit Python dependencies
+        run: pip-audit -r requirements.txt
