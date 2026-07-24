@@ -1,5 +1,39 @@
+# Power BI local and binary artefacts
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
-__pycache__/
-.ipynb_checkpoints/
 *.pbix
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs, temporary files and build output
+*.log
+*.tmp
+*.temp
+~$*.xlsx
+build/
+dist/
