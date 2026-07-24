@@ -1,0 +1,43 @@
+{
+  "project": "Hossain Group Employee Turnover Analytics",
+  "company": "Hossain Group",
+  "data_type": "Synthetic / demo data",
+  "analysis_period": {
+    "start": "2025-01-01",
+    "end": "2026-06-30"
+  },
+  "tables": {
+    "employee_master.csv": {
+      "description": "Employee-level HR master data.",
+      "fields": {
+        "Employee_ID": "Unique synthetic employee identifier.",
+        "Employee_Name": "Synthetic employee name.",
+        "Gender": "Employee gender category.",
+        "Department": "Organizational department.",
+        "Designation": "Job title.",
+        "Location": "Work location in Bangladesh.",
+        "Employment_Type": "Permanent, Contract, or Probation.",
+        "Join_Date": "Date of joining.",
+        "Exit_Date": "Date of separation; blank for active staff.",
+        "Exit_Reason": "Primary reason for separation.",
+        "Status": "Active or Exited."
+      }
+    },
+    "company_monthly_turnover.csv": {
+      "description": "Monthly company-level headcount and turnover metrics.",
+      "formula": "Monthly turnover = Exits / Average Headcount"
+    },
+    "department_monthly_turnover.csv": {
+      "description": "Monthly department-level headcount and turnover metrics."
+    },
+    "department_turnover_summary.csv": {
+      "description": "Period summary by department."
+    },
+    "exit_reason_summary.csv": {
+      "description": "Exit counts and share by reason."
+    },
+    "dashboard_kpis.csv": {
+      "description": "Single-row KPI table for Power BI cards."
+    }
+  }
+}

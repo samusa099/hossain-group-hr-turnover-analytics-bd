@@ -1,0 +1,9 @@
+﻿Department,AverageHeadcount,Exits,TurnoverRate,AnnualizedTurnoverRate,RiskLevel
+Information Technology,33.5,12,0.358209,0.238806,Critical Risk
+Administration,62.81,22,0.350287,0.233525,Critical Risk
+Finance & Accounts,37.92,13,0.342857,0.228571,Critical Risk
+Quality Assurance,56.97,19,0.333496,0.222331,Critical Risk
+Production,198.64,62,0.312124,0.208083,Critical Risk
+Supply Chain,58.89,17,0.288679,0.192453,Very High Risk
+Sales & Marketing,63.97,18,0.281372,0.187581,Very High Risk
+Human Resources,33.75,7,0.207407,0.138272,High Risk

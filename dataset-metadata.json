@@ -1,0 +1,11 @@
+{
+  "title": "Hossain Group Employee Turnover Analytics",
+  "id": "samusahr/hossain-group-employee-turnover-analytics",
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "subtitle": "Synthetic Bangladesh HR data, Excel calculator, and BI-ready turnover summaries",
+  "description": "A synthetic employee turnover dataset and portfolio project for Excel, Power BI, Python, Kaggle, GitHub, and Looker Studio."
+}

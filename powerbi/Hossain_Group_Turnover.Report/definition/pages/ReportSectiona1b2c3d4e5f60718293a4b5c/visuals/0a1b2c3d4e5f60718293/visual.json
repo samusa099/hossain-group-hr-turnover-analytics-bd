@@ -1,0 +1,79 @@
+{
+  "position": {
+    "x": 24,
+    "y": 28,
+    "z": 1000,
+    "height": 132,
+    "width": 1232,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DashboardKPIs"
+                    }
+                  },
+                  "Property": "Active Employees"
+                }
+              },
+              "queryRef": "DashboardKPIs.Active Employees",
+              "nativeQueryRef": "Active Employees"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DashboardKPIs"
+                    }
+                  },
+                  "Property": "Total Exits"
+                }
+              },
+              "queryRef": "DashboardKPIs.Total Exits",
+              "nativeQueryRef": "Total Exits"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DashboardKPIs"
+                    }
+                  },
+                  "Property": "Period Turnover Rate"
+                }
+              },
+              "queryRef": "DashboardKPIs.Period Turnover Rate",
+              "nativeQueryRef": "Period Turnover Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DashboardKPIs"
+                    }
+                  },
+                  "Property": "Annualized Turnover Rate"
+                }
+              },
+              "queryRef": "DashboardKPIs.Annualized Turnover Rate",
+              "nativeQueryRef": "Annualized Turnover Rate"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "0a1b2c3d4e5f60718293"
+}

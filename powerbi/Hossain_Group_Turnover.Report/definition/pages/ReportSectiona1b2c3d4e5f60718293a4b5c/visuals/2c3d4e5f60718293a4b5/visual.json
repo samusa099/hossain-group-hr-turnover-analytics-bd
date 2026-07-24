@@ -1,0 +1,95 @@
+{
+  "position": {
+    "x": 646,
+    "y": 178,
+    "z": 3000,
+    "height": 250,
+    "width": 610,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DepartmentSummary"
+                    }
+                  },
+                  "Property": "Department"
+                }
+              },
+              "queryRef": "DepartmentSummary.Department",
+              "nativeQueryRef": "Department"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DepartmentSummary"
+                    }
+                  },
+                  "Property": "Department Turnover Rate"
+                }
+              },
+              "queryRef": "DepartmentSummary.Department Turnover Rate",
+              "nativeQueryRef": "Department Turnover Rate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DepartmentSummary"
+                  }
+                },
+                "Property": "Department Turnover Rate"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Turnover by Department'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "2c3d4e5f60718293a4b5"
+}

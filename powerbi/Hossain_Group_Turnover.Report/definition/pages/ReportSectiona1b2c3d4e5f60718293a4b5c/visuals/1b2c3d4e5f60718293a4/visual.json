@@ -1,0 +1,77 @@
+{
+  "position": {
+    "x": 24,
+    "y": 178,
+    "z": 2000,
+    "height": 250,
+    "width": 610,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "MonthStart"
+                }
+              },
+              "queryRef": "CompanyMonthly.MonthStart",
+              "nativeQueryRef": "MonthStart"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "Monthly Turnover Rate"
+                }
+              },
+              "queryRef": "CompanyMonthly.Monthly Turnover Rate",
+              "nativeQueryRef": "Monthly Turnover Rate"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Monthly Turnover Trend'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "1b2c3d4e5f60718293a4"
+}

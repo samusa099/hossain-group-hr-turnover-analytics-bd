@@ -1,0 +1,145 @@
+﻿MonthStart,MonthLabel,Year,Department,OpeningHeadcount,Hires,Exits,ClosingHeadcount,AverageHeadcount,TurnoverRate,AnnualizedTurnoverRate,RiskLevel
+2025-01-01,Jan 2025,2025,Administration,65,0,2,63,64.0,0.03125,0.375,Low Risk
+2025-01-01,Jan 2025,2025,Finance & Accounts,33,1,0,34,33.5,0.0,0.0,Low Risk
+2025-01-01,Jan 2025,2025,Human Resources,28,1,0,29,28.5,0.0,0.0,Low Risk
+2025-01-01,Jan 2025,2025,Information Technology,36,2,2,36,36.0,0.055556,0.666667,Moderate Risk
+2025-01-01,Jan 2025,2025,Production,195,1,5,191,193.0,0.025907,0.310881,Low Risk
+2025-01-01,Jan 2025,2025,Quality Assurance,54,1,3,52,53.0,0.056604,0.679245,Moderate Risk
+2025-01-01,Jan 2025,2025,Sales & Marketing,58,2,0,60,59.0,0.0,0.0,Low Risk
+2025-01-01,Jan 2025,2025,Supply Chain,51,1,0,52,51.5,0.0,0.0,Low Risk
+2025-02-01,Feb 2025,2025,Administration,63,1,1,63,63.0,0.015873,0.190476,Low Risk
+2025-02-01,Feb 2025,2025,Finance & Accounts,34,0,0,34,34.0,0.0,0.0,Low Risk
+2025-02-01,Feb 2025,2025,Human Resources,29,2,1,30,29.5,0.033898,0.40678,Low Risk
+2025-02-01,Feb 2025,2025,Information Technology,36,0,1,35,35.5,0.028169,0.338028,Low Risk
+2025-02-01,Feb 2025,2025,Production,191,6,5,192,191.5,0.02611,0.313316,Low Risk
+2025-02-01,Feb 2025,2025,Quality Assurance,52,2,4,50,51.0,0.078431,0.941176,Moderate Risk
+2025-02-01,Feb 2025,2025,Sales & Marketing,60,1,1,60,60.0,0.016667,0.2,Low Risk
+2025-02-01,Feb 2025,2025,Supply Chain,52,2,1,53,52.5,0.019048,0.228571,Low Risk
+2025-03-01,Mar 2025,2025,Administration,63,0,1,62,62.5,0.016,0.192,Low Risk
+2025-03-01,Mar 2025,2025,Finance & Accounts,34,2,0,36,35.0,0.0,0.0,Low Risk
+2025-03-01,Mar 2025,2025,Human Resources,30,2,0,32,31.0,0.0,0.0,Low Risk
+2025-03-01,Mar 2025,2025,Information Technology,35,0,2,33,34.0,0.058824,0.705882,Moderate Risk
+2025-03-01,Mar 2025,2025,Production,192,3,2,193,192.5,0.01039,0.124675,Low Risk
+2025-03-01,Mar 2025,2025,Quality Assurance,50,1,1,50,50.0,0.02,0.24,Low Risk
+2025-03-01,Mar 2025,2025,Sales & Marketing,60,2,1,61,60.5,0.016529,0.198347,Low Risk
+2025-03-01,Mar 2025,2025,Supply Chain,53,1,1,53,53.0,0.018868,0.226415,Low Risk
+2025-04-01,Apr 2025,2025,Administration,62,0,0,62,62.0,0.0,0.0,Low Risk
+2025-04-01,Apr 2025,2025,Finance & Accounts,36,1,0,37,36.5,0.0,0.0,Low Risk
+2025-04-01,Apr 2025,2025,Human Resources,32,1,0,33,32.5,0.0,0.0,Low Risk
+2025-04-01,Apr 2025,2025,Information Technology,33,0,1,32,32.5,0.030769,0.369231,Low Risk
+2025-04-01,Apr 2025,2025,Production,193,2,1,194,193.5,0.005168,0.062016,Low Risk
+2025-04-01,Apr 2025,2025,Quality Assurance,50,1,1,50,50.0,0.02,0.24,Low Risk
+2025-04-01,Apr 2025,2025,Sales & Marketing,61,1,2,60,60.5,0.033058,0.396694,Low Risk
+2025-04-01,Apr 2025,2025,Supply Chain,53,3,1,55,54.0,0.018519,0.222222,Low Risk
+2025-05-01,May 2025,2025,Administration,62,1,2,61,61.5,0.03252,0.390244,Low Risk
+2025-05-01,May 2025,2025,Finance & Accounts,37,1,3,35,36.0,0.083333,1.0,Moderate Risk
+2025-05-01,May 2025,2025,Human Resources,33,0,0,33,33.0,0.0,0.0,Low Risk
+2025-05-01,May 2025,2025,Information Technology,32,2,0,34,33.0,0.0,0.0,Low Risk
+2025-05-01,May 2025,2025,Production,194,6,4,196,195.0,0.020513,0.246154,Low Risk
+2025-05-01,May 2025,2025,Quality Assurance,50,1,1,50,50.0,0.02,0.24,Low Risk
+2025-05-01,May 2025,2025,Sales & Marketing,60,0,2,58,59.0,0.033898,0.40678,Low Risk
+2025-05-01,May 2025,2025,Supply Chain,55,4,2,57,56.0,0.035714,0.428571,Low Risk
+2025-06-01,Jun 2025,2025,Administration,62,1,1,61,61.5,0.01626,0.195122,Low Risk
+2025-06-01,Jun 2025,2025,Finance & Accounts,35,1,1,35,35.0,0.028571,0.342857,Low Risk
+2025-06-01,Jun 2025,2025,Human Resources,33,0,0,33,33.0,0.0,0.0,Low Risk
+2025-06-01,Jun 2025,2025,Information Technology,34,0,0,34,34.0,0.0,0.0,Low Risk
+2025-06-01,Jun 2025,2025,Production,196,6,7,195,195.5,0.035806,0.429668,Low Risk
+2025-06-01,Jun 2025,2025,Quality Assurance,50,3,0,53,51.5,0.0,0.0,Low Risk
+2025-06-01,Jun 2025,2025,Sales & Marketing,58,2,0,60,59.0,0.0,0.0,Low Risk
+2025-06-01,Jun 2025,2025,Supply Chain,57,0,2,55,56.0,0.035714,0.428571,Low Risk
+2025-07-01,Jul 2025,2025,Administration,61,1,0,62,61.5,0.0,0.0,Low Risk
+2025-07-01,Jul 2025,2025,Finance & Accounts,35,1,0,36,35.5,0.0,0.0,Low Risk
+2025-07-01,Jul 2025,2025,Human Resources,33,2,1,34,33.5,0.029851,0.358209,Low Risk
+2025-07-01,Jul 2025,2025,Information Technology,34,0,1,33,33.5,0.029851,0.358209,Low Risk
+2025-07-01,Jul 2025,2025,Production,195,3,4,194,194.5,0.020566,0.246787,Low Risk
+2025-07-01,Jul 2025,2025,Quality Assurance,53,1,2,52,52.5,0.038095,0.457143,Low Risk
+2025-07-01,Jul 2025,2025,Sales & Marketing,60,1,0,61,60.5,0.0,0.0,Low Risk
+2025-07-01,Jul 2025,2025,Supply Chain,55,2,0,57,56.0,0.0,0.0,Low Risk
+2025-08-01,Aug 2025,2025,Administration,63,2,1,63,63.0,0.015873,0.190476,Low Risk
+2025-08-01,Aug 2025,2025,Finance & Accounts,36,2,1,37,36.5,0.027397,0.328767,Low Risk
+2025-08-01,Aug 2025,2025,Human Resources,34,1,2,33,33.5,0.059701,0.716418,Moderate Risk
+2025-08-01,Aug 2025,2025,Information Technology,33,1,2,32,32.5,0.061538,0.738462,Moderate Risk
+2025-08-01,Aug 2025,2025,Production,194,6,4,196,195.0,0.020513,0.246154,Low Risk
+2025-08-01,Aug 2025,2025,Quality Assurance,52,3,1,54,53.0,0.018868,0.226415,Low Risk
+2025-08-01,Aug 2025,2025,Sales & Marketing,61,2,1,62,61.5,0.01626,0.195122,Low Risk
+2025-08-01,Aug 2025,2025,Supply Chain,57,3,0,60,58.5,0.0,0.0,Low Risk
+2025-09-01,Sep 2025,2025,Administration,63,1,3,61,62.0,0.048387,0.580645,Low Risk
+2025-09-01,Sep 2025,2025,Finance & Accounts,37,1,0,38,37.5,0.0,0.0,Low Risk
+2025-09-01,Sep 2025,2025,Human Resources,33,1,1,33,33.0,0.030303,0.363636,Low Risk
+2025-09-01,Sep 2025,2025,Information Technology,32,2,0,34,33.0,0.0,0.0,Low Risk
+2025-09-01,Sep 2025,2025,Production,196,5,6,195,195.5,0.030691,0.368286,Low Risk
+2025-09-01,Sep 2025,2025,Quality Assurance,54,5,0,59,56.5,0.0,0.0,Low Risk
+2025-09-01,Sep 2025,2025,Sales & Marketing,62,1,0,63,62.5,0.0,0.0,Low Risk
+2025-09-01,Sep 2025,2025,Supply Chain,60,2,2,60,60.0,0.033333,0.4,Low Risk
+2025-10-01,Oct 2025,2025,Administration,61,1,1,61,61.0,0.016393,0.196721,Low Risk
+2025-10-01,Oct 2025,2025,Finance & Accounts,38,2,0,40,39.0,0.0,0.0,Low Risk
+2025-10-01,Oct 2025,2025,Human Resources,33,0,0,33,33.0,0.0,0.0,Low Risk
+2025-10-01,Oct 2025,2025,Information Technology,34,0,2,32,33.0,0.060606,0.727273,Moderate Risk
+2025-10-01,Oct 2025,2025,Production,195,3,1,197,196.0,0.005102,0.061224,Low Risk
+2025-10-01,Oct 2025,2025,Quality Assurance,59,1,1,59,59.0,0.016949,0.20339,Low Risk
+2025-10-01,Oct 2025,2025,Sales & Marketing,63,1,1,63,63.0,0.015873,0.190476,Low Risk
+2025-10-01,Oct 2025,2025,Supply Chain,61,4,3,61,61.0,0.04918,0.590164,Low Risk
+2025-11-01,Nov 2025,2025,Administration,61,1,1,61,61.0,0.016393,0.196721,Low Risk
+2025-11-01,Nov 2025,2025,Finance & Accounts,40,1,1,40,40.0,0.025,0.3,Low Risk
+2025-11-01,Nov 2025,2025,Human Resources,33,0,0,33,33.0,0.0,0.0,Low Risk
+2025-11-01,Nov 2025,2025,Information Technology,32,2,1,33,32.5,0.030769,0.369231,Low Risk
+2025-11-01,Nov 2025,2025,Production,198,10,6,201,199.5,0.030075,0.360902,Low Risk
+2025-11-01,Nov 2025,2025,Quality Assurance,59,2,1,60,59.5,0.016807,0.201681,Low Risk
+2025-11-01,Nov 2025,2025,Sales & Marketing,63,2,1,64,63.5,0.015748,0.188976,Low Risk
+2025-11-01,Nov 2025,2025,Supply Chain,62,2,2,61,61.5,0.03252,0.390244,Low Risk
+2025-12-01,Dec 2025,2025,Administration,61,2,1,62,61.5,0.01626,0.195122,Low Risk
+2025-12-01,Dec 2025,2025,Finance & Accounts,40,1,1,40,40.0,0.025,0.3,Low Risk
+2025-12-01,Dec 2025,2025,Human Resources,33,3,0,36,34.5,0.0,0.0,Low Risk
+2025-12-01,Dec 2025,2025,Information Technology,33,0,0,33,33.0,0.0,0.0,Low Risk
+2025-12-01,Dec 2025,2025,Production,201,4,3,202,201.5,0.014888,0.17866,Low Risk
+2025-12-01,Dec 2025,2025,Quality Assurance,61,2,0,62,61.5,0.0,0.0,Low Risk
+2025-12-01,Dec 2025,2025,Sales & Marketing,64,5,2,67,65.5,0.030534,0.366412,Low Risk
+2025-12-01,Dec 2025,2025,Supply Chain,61,1,0,62,61.5,0.0,0.0,Low Risk
+2026-01-01,Jan 2026,2026,Administration,62,2,1,63,62.5,0.016,0.192,Low Risk
+2026-01-01,Jan 2026,2026,Finance & Accounts,40,1,2,39,39.5,0.050633,0.607595,Moderate Risk
+2026-01-01,Jan 2026,2026,Human Resources,36,0,1,35,35.5,0.028169,0.338028,Low Risk
+2026-01-01,Jan 2026,2026,Information Technology,33,0,0,33,33.0,0.0,0.0,Low Risk
+2026-01-01,Jan 2026,2026,Production,202,4,1,205,203.5,0.004914,0.058968,Low Risk
+2026-01-01,Jan 2026,2026,Quality Assurance,62,1,1,62,62.0,0.016129,0.193548,Low Risk
+2026-01-01,Jan 2026,2026,Sales & Marketing,67,2,4,65,66.0,0.060606,0.727273,Moderate Risk
+2026-01-01,Jan 2026,2026,Supply Chain,62,0,0,62,62.0,0.0,0.0,Low Risk
+2026-02-01,Feb 2026,2026,Administration,63,0,0,63,63.0,0.0,0.0,Low Risk
+2026-02-01,Feb 2026,2026,Finance & Accounts,39,2,0,41,40.0,0.0,0.0,Low Risk
+2026-02-01,Feb 2026,2026,Human Resources,35,1,1,35,35.0,0.028571,0.342857,Low Risk
+2026-02-01,Feb 2026,2026,Information Technology,33,0,0,33,33.0,0.0,0.0,Low Risk
+2026-02-01,Feb 2026,2026,Production,205,3,2,206,205.5,0.009732,0.116788,Low Risk
+2026-02-01,Feb 2026,2026,Quality Assurance,62,2,0,64,63.0,0.0,0.0,Low Risk
+2026-02-01,Feb 2026,2026,Sales & Marketing,65,5,1,69,67.0,0.014925,0.179104,Low Risk
+2026-02-01,Feb 2026,2026,Supply Chain,62,0,2,60,61.0,0.032787,0.393443,Low Risk
+2026-03-01,Mar 2026,2026,Administration,63,3,1,65,64.0,0.015625,0.1875,Low Risk
+2026-03-01,Mar 2026,2026,Finance & Accounts,41,1,0,42,41.5,0.0,0.0,Low Risk
+2026-03-01,Mar 2026,2026,Human Resources,35,2,0,37,36.0,0.0,0.0,Low Risk
+2026-03-01,Mar 2026,2026,Information Technology,33,0,0,33,33.0,0.0,0.0,Low Risk
+2026-03-01,Mar 2026,2026,Production,206,1,4,203,204.5,0.01956,0.234719,Low Risk
+2026-03-01,Mar 2026,2026,Quality Assurance,64,0,1,63,63.5,0.015748,0.188976,Low Risk
+2026-03-01,Mar 2026,2026,Sales & Marketing,69,1,0,70,69.5,0.0,0.0,Low Risk
+2026-03-01,Mar 2026,2026,Supply Chain,60,4,1,63,61.5,0.01626,0.195122,Low Risk
+2026-04-01,Apr 2026,2026,Administration,65,3,1,67,66.0,0.015152,0.181818,Low Risk
+2026-04-01,Apr 2026,2026,Finance & Accounts,42,0,3,39,40.5,0.074074,0.888889,Moderate Risk
+2026-04-01,Apr 2026,2026,Human Resources,37,0,0,37,37.0,0.0,0.0,Low Risk
+2026-04-01,Apr 2026,2026,Information Technology,33,1,0,34,33.5,0.0,0.0,Low Risk
+2026-04-01,Apr 2026,2026,Production,203,5,1,207,205.0,0.004878,0.058537,Low Risk
+2026-04-01,Apr 2026,2026,Quality Assurance,63,0,1,62,62.5,0.016,0.192,Low Risk
+2026-04-01,Apr 2026,2026,Sales & Marketing,71,2,0,72,71.5,0.0,0.0,Low Risk
+2026-04-01,Apr 2026,2026,Supply Chain,63,2,0,65,64.0,0.0,0.0,Low Risk
+2026-05-01,May 2026,2026,Administration,67,2,4,65,66.0,0.060606,0.727273,Moderate Risk
+2026-05-01,May 2026,2026,Finance & Accounts,39,2,0,41,40.0,0.0,0.0,Low Risk
+2026-05-01,May 2026,2026,Human Resources,37,1,0,38,37.5,0.0,0.0,Low Risk
+2026-05-01,May 2026,2026,Information Technology,34,0,0,34,34.0,0.0,0.0,Low Risk
+2026-05-01,May 2026,2026,Production,208,1,3,205,206.5,0.014528,0.174334,Low Risk
+2026-05-01,May 2026,2026,Quality Assurance,63,2,1,63,63.0,0.015873,0.190476,Low Risk
+2026-05-01,May 2026,2026,Sales & Marketing,72,1,2,71,71.5,0.027972,0.335664,Low Risk
+2026-05-01,May 2026,2026,Supply Chain,65,0,0,65,65.0,0.0,0.0,Low Risk
+2026-06-01,Jun 2026,2026,Administration,65,0,1,64,64.5,0.015504,0.186047,Low Risk
+2026-06-01,Jun 2026,2026,Finance & Accounts,42,3,1,43,42.5,0.023529,0.282353,Low Risk
+2026-06-01,Jun 2026,2026,Human Resources,38,1,0,39,38.5,0.0,0.0,Low Risk
+2026-06-01,Jun 2026,2026,Information Technology,34,0,0,34,34.0,0.0,0.0,Low Risk
+2026-06-01,Jun 2026,2026,Production,205,8,3,210,207.5,0.014458,0.173494,Low Risk
+2026-06-01,Jun 2026,2026,Quality Assurance,63,2,0,65,64.0,0.0,0.0,Low Risk
+2026-06-01,Jun 2026,2026,Sales & Marketing,71,1,0,72,71.5,0.0,0.0,Low Risk
+2026-06-01,Jun 2026,2026,Supply Chain,65,0,0,65,65.0,0.0,0.0,Low Risk

@@ -1,0 +1,429 @@
+{
+  "name": "Hossain Group Turnover Semantic Model",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DashboardKPIs",
+        "lineageTag": "f338dead-bead-4f1f-8d31-2a169c7553cf",
+        "columns": [
+          {
+            "name": "PeriodStart",
+            "dataType": "dateTime",
+            "sourceColumn": "PeriodStart",
+            "lineageTag": "7eda630d-cbdf-47ed-8bcd-79bf373f41bb",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd"
+          },
+          {
+            "name": "PeriodEnd",
+            "dataType": "dateTime",
+            "sourceColumn": "PeriodEnd",
+            "lineageTag": "74cd3757-e755-46ea-a1be-0cf259e3cd03",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd"
+          },
+          {
+            "name": "OpeningHeadcount",
+            "dataType": "int64",
+            "sourceColumn": "OpeningHeadcount",
+            "lineageTag": "0b29a331-8aed-4de6-b0ed-d9f108f66a1c",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "ClosingHeadcount",
+            "dataType": "int64",
+            "sourceColumn": "ClosingHeadcount",
+            "lineageTag": "80a7fca0-3e46-4798-85b9-c6da90d54c04",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "AverageHeadcount",
+            "dataType": "double",
+            "sourceColumn": "AverageHeadcount",
+            "lineageTag": "62416ca1-ad75-49e7-8483-2d5007e56550",
+            "summarizeBy": "none",
+            "formatString": "0.00"
+          },
+          {
+            "name": "TotalHires",
+            "dataType": "int64",
+            "sourceColumn": "TotalHires",
+            "lineageTag": "f07f68b3-5a49-491e-82c0-032f2c3d27c2",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "TotalExits",
+            "dataType": "int64",
+            "sourceColumn": "TotalExits",
+            "lineageTag": "d90a60df-7a5b-444c-a527-bc973a0da0ac",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "TurnoverRate",
+            "dataType": "double",
+            "sourceColumn": "TurnoverRate",
+            "lineageTag": "c8ca7999-956c-4e09-a3d7-394614bb89f6",
+            "summarizeBy": "none",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "AnnualizedTurnoverRate",
+            "dataType": "double",
+            "sourceColumn": "AnnualizedTurnoverRate",
+            "lineageTag": "2d122182-d264-45f1-96b5-fa99c73d3e7c",
+            "summarizeBy": "none",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "ActiveEmployees",
+            "dataType": "int64",
+            "sourceColumn": "ActiveEmployees",
+            "lineageTag": "a92bd040-c31f-4381-9b06-b6bb836c17ae",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "RiskLevel",
+            "dataType": "string",
+            "sourceColumn": "RiskLevel",
+            "lineageTag": "5b7ed8c0-4471-4852-9193-6bc46daad9d2",
+            "summarizeBy": "none"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Active Employees",
+            "expression": "MAX('DashboardKPIs'[ActiveEmployees])",
+            "lineageTag": "52ed88f6-ce47-47aa-8c62-5527d5d24a34",
+            "formatString": "0"
+          },
+          {
+            "name": "Total Exits",
+            "expression": "MAX('DashboardKPIs'[TotalExits])",
+            "lineageTag": "3d3dc8bd-1aec-46b8-9de8-410ec7c50919",
+            "formatString": "0"
+          },
+          {
+            "name": "Total Hires",
+            "expression": "MAX('DashboardKPIs'[TotalHires])",
+            "lineageTag": "ebaaa374-468a-4bb3-a462-dd2954300887",
+            "formatString": "0"
+          },
+          {
+            "name": "Period Turnover Rate",
+            "expression": "MAX('DashboardKPIs'[TurnoverRate])",
+            "lineageTag": "4250c2db-6796-4234-a02a-db16dc683aa0",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "Annualized Turnover Rate",
+            "expression": "MAX('DashboardKPIs'[AnnualizedTurnoverRate])",
+            "lineageTag": "15d74c74-3351-4ef4-b3d6-803050ec79a8",
+            "formatString": "0.00%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DashboardKPIs",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/mnt/data/hossain-group-employee-turnover-analytics/data/processed/dashboard_kpis.csv\"),[Delimiter=\",\", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"PeriodStart\", type date}, {\"PeriodEnd\", type date}, {\"OpeningHeadcount\", Int64.Type}, {\"ClosingHeadcount\", Int64.Type}, {\"AverageHeadcount\", type number}, {\"TotalHires\", Int64.Type}, {\"TotalExits\", Int64.Type}, {\"TurnoverRate\", type number}, {\"AnnualizedTurnoverRate\", type number}, {\"ActiveEmployees\", Int64.Type}, {\"RiskLevel\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "CompanyMonthly",
+        "lineageTag": "78f7df79-3ec0-4b51-88c6-e0cb53ccf99f",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "6fa80e35-22e3-4a9a-a593-e059463ee675",
+            "summarizeBy": "none",
+            "formatString": "mmm yyyy"
+          },
+          {
+            "name": "MonthLabel",
+            "dataType": "string",
+            "sourceColumn": "MonthLabel",
+            "lineageTag": "94f7cb52-23f1-43fa-bb9b-0cf6e9599e04",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "lineageTag": "61645956-47dc-4a2f-81ca-d577957cadf6",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "OpeningHeadcount",
+            "dataType": "int64",
+            "sourceColumn": "OpeningHeadcount",
+            "lineageTag": "d4c7605a-efe4-44ea-9870-11be00edfe0f",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "Hires",
+            "dataType": "int64",
+            "sourceColumn": "Hires",
+            "lineageTag": "fc5ddd68-77f8-4683-8691-66492bafca15",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "Exits",
+            "dataType": "int64",
+            "sourceColumn": "Exits",
+            "lineageTag": "6d87006c-d562-4aad-9f40-c01681cf4d51",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "ClosingHeadcount",
+            "dataType": "int64",
+            "sourceColumn": "ClosingHeadcount",
+            "lineageTag": "047fadbb-5c50-4e0c-bf5f-e8f77097473e",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "AverageHeadcount",
+            "dataType": "double",
+            "sourceColumn": "AverageHeadcount",
+            "lineageTag": "59234a60-f9fe-4346-8407-38dfe088be95",
+            "summarizeBy": "none",
+            "formatString": "0.00"
+          },
+          {
+            "name": "TurnoverRate",
+            "dataType": "double",
+            "sourceColumn": "TurnoverRate",
+            "lineageTag": "70e999b6-e8ed-474a-966b-7d95329d9a7a",
+            "summarizeBy": "none",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "AnnualizedTurnoverRate",
+            "dataType": "double",
+            "sourceColumn": "AnnualizedTurnoverRate",
+            "lineageTag": "52cb8c86-d015-4409-8b17-f776cd3b11af",
+            "summarizeBy": "none",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "RiskLevel",
+            "dataType": "string",
+            "sourceColumn": "RiskLevel",
+            "lineageTag": "10b59ccd-e696-4cd1-8fb3-692619533ef3",
+            "summarizeBy": "none"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Monthly Turnover Rate",
+            "expression": "MAX('CompanyMonthly'[TurnoverRate])",
+            "lineageTag": "b4fcaef9-5644-4afe-9505-f1d54f83e11e",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "Monthly Exits",
+            "expression": "SUM('CompanyMonthly'[Exits])",
+            "lineageTag": "d88f43c8-2fb0-4e0d-b919-2d7630869b6c",
+            "formatString": "0"
+          },
+          {
+            "name": "Monthly Hires",
+            "expression": "SUM('CompanyMonthly'[Hires])",
+            "lineageTag": "8adc9352-3756-42f8-8b5e-70f6e8fc2194",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CompanyMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/mnt/data/hossain-group-employee-turnover-analytics/data/processed/company_monthly_turnover.csv\"),[Delimiter=\",\", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"MonthStart\", type date}, {\"MonthLabel\", type text}, {\"Year\", Int64.Type}, {\"OpeningHeadcount\", Int64.Type}, {\"Hires\", Int64.Type}, {\"Exits\", Int64.Type}, {\"ClosingHeadcount\", Int64.Type}, {\"AverageHeadcount\", type number}, {\"TurnoverRate\", type number}, {\"AnnualizedTurnoverRate\", type number}, {\"RiskLevel\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DepartmentSummary",
+        "lineageTag": "5ddb96fe-d743-4fe8-a004-fc0c5d216164",
+        "columns": [
+          {
+            "name": "Department",
+            "dataType": "string",
+            "sourceColumn": "Department",
+            "lineageTag": "86fb51aa-79fd-4aa7-ab65-a2f4c590ac49",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AverageHeadcount",
+            "dataType": "double",
+            "sourceColumn": "AverageHeadcount",
+            "lineageTag": "335cc14f-3fc8-4b18-8360-eb9ddbed5acf",
+            "summarizeBy": "none",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Exits",
+            "dataType": "int64",
+            "sourceColumn": "Exits",
+            "lineageTag": "f84889dc-aed7-47de-bc66-c93ab01bde50",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "TurnoverRate",
+            "dataType": "double",
+            "sourceColumn": "TurnoverRate",
+            "lineageTag": "e1e39616-1fe1-4637-be9f-8ffcc18b6da0",
+            "summarizeBy": "none",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "AnnualizedTurnoverRate",
+            "dataType": "double",
+            "sourceColumn": "AnnualizedTurnoverRate",
+            "lineageTag": "143ef11e-01f5-4ac4-bd87-2a437e82157a",
+            "summarizeBy": "none",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "RiskLevel",
+            "dataType": "string",
+            "sourceColumn": "RiskLevel",
+            "lineageTag": "19fbb54c-4659-465e-83bc-8be157e35718",
+            "summarizeBy": "none"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Department Turnover Rate",
+            "expression": "MAX('DepartmentSummary'[TurnoverRate])",
+            "lineageTag": "0e473b44-d3ae-4b53-b195-0514e7bd95b1",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "Department Exits",
+            "expression": "SUM('DepartmentSummary'[Exits])",
+            "lineageTag": "86e2a404-522f-47cf-b527-eb3cb8dcfb05",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DepartmentSummary",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/mnt/data/hossain-group-employee-turnover-analytics/data/processed/department_turnover_summary.csv\"),[Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Department\", type text}, {\"AverageHeadcount\", type number}, {\"Exits\", Int64.Type}, {\"TurnoverRate\", type number}, {\"AnnualizedTurnoverRate\", type number}, {\"RiskLevel\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ExitReasonSummary",
+        "lineageTag": "37d60a73-77a7-47c1-8521-12f93aba5971",
+        "columns": [
+          {
+            "name": "ExitReason",
+            "dataType": "string",
+            "sourceColumn": "ExitReason",
+            "lineageTag": "b332e0a9-530f-4e50-b431-275392c8c0b2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Exits",
+            "dataType": "int64",
+            "sourceColumn": "Exits",
+            "lineageTag": "1b44f28a-12cf-4220-923a-2889113dce63",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "SharePct",
+            "dataType": "double",
+            "sourceColumn": "SharePct",
+            "lineageTag": "e3e23763-13a8-44b2-a422-275ad1b749e4",
+            "summarizeBy": "none",
+            "formatString": "0.00%"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Exit Count",
+            "expression": "SUM('ExitReasonSummary'[Exits])",
+            "lineageTag": "30494d7d-4ba7-494d-a50c-f27c22467a88",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ExitReasonSummary",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/mnt/data/hossain-group-employee-turnover-analytics/data/processed/exit_reason_summary.csv\"),[Delimiter=\",\", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ExitReason\", type text}, {\"Exits\", Int64.Type}, {\"SharePct\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DashboardKPIs\",\"CompanyMonthly\",\"DepartmentSummary\",\"ExitReasonSummary\"]"
+      }
+    ]
+  }
+}

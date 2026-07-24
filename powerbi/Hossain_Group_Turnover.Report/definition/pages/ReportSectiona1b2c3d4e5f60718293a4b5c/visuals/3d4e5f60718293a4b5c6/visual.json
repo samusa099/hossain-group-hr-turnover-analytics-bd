@@ -1,0 +1,109 @@
+{
+  "position": {
+    "x": 24,
+    "y": 446,
+    "z": 4000,
+    "height": 250,
+    "width": 610,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ExitReasonSummary"
+                    }
+                  },
+                  "Property": "ExitReason"
+                }
+              },
+              "queryRef": "ExitReasonSummary.ExitReason",
+              "nativeQueryRef": "ExitReason"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ExitReasonSummary"
+                    }
+                  },
+                  "Property": "Exits"
+                }
+              },
+              "queryRef": "ExitReasonSummary.Exits",
+              "nativeQueryRef": "Exits"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ExitReasonSummary"
+                    }
+                  },
+                  "Property": "SharePct"
+                }
+              },
+              "queryRef": "ExitReasonSummary.SharePct",
+              "nativeQueryRef": "SharePct"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Exit Reasons'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "3d4e5f60718293a4b5c6"
+}

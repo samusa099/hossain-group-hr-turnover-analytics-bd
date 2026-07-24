@@ -1,0 +1,137 @@
+{
+  "position": {
+    "x": 646,
+    "y": 446,
+    "z": 5000,
+    "height": 250,
+    "width": 610,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DepartmentSummary"
+                    }
+                  },
+                  "Property": "Department"
+                }
+              },
+              "queryRef": "DepartmentSummary.Department",
+              "nativeQueryRef": "Department"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DepartmentSummary"
+                    }
+                  },
+                  "Property": "AverageHeadcount"
+                }
+              },
+              "queryRef": "DepartmentSummary.AverageHeadcount",
+              "nativeQueryRef": "AverageHeadcount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DepartmentSummary"
+                    }
+                  },
+                  "Property": "Exits"
+                }
+              },
+              "queryRef": "DepartmentSummary.Exits",
+              "nativeQueryRef": "Exits"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DepartmentSummary"
+                    }
+                  },
+                  "Property": "TurnoverRate"
+                }
+              },
+              "queryRef": "DepartmentSummary.TurnoverRate",
+              "nativeQueryRef": "TurnoverRate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DepartmentSummary"
+                    }
+                  },
+                  "Property": "RiskLevel"
+                }
+              },
+              "queryRef": "DepartmentSummary.RiskLevel",
+              "nativeQueryRef": "RiskLevel"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Department Risk Summary'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "4e5f60718293a4b5c6d7"
+}

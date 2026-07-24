@@ -1,0 +1,763 @@
+﻿Employee_ID,Employee_Name,Gender,Department,Designation,Location,Employment_Type,Join_Date,Exit_Date,Exit_Reason,Status
+HG-01001,Nazmul Khan,Male,Production,Line Supervisor,Dhaka Head Office,Contract,2021-06-15,2025-07-12,End of Contract,Exited
+HG-01002,Shakil Begum,Male,Production,Production Operator,Gazipur Plant,Probation,2021-09-11,,,Active
+HG-01003,Mizan Ahmed,Male,Information Technology,Software Executive,Gazipur Plant,Permanent,2018-10-21,2025-02-26,Career Growth,Exited
+HG-01004,Shakil Hossain,Male,Administration,Admin Assistant,Dhaka Head Office,Permanent,2022-07-03,,,Active
+HG-01005,Fahim Alam,Male,Human Resources,HR Business Executive,Dhaka Head Office,Permanent,2021-10-14,,,Active
+HG-01006,Foysal Alam,Male,Supply Chain,Logistics Executive,Gazipur Plant,Permanent,2020-07-02,,,Active
+HG-01007,Rashed Hossain,Male,Production,Senior Operator,Gazipur Plant,Permanent,2023-02-22,,,Active
+HG-01008,Farzana Karim,Female,Production,Senior Operator,Gazipur Plant,Permanent,2024-09-28,,,Active
+HG-01009,Mizan Akter,Male,Finance & Accounts,Finance Officer,Dhaka Head Office,Permanent,2020-09-08,,,Active
+HG-01010,Rafi Hossain,Male,Production,Production Operator,Gazipur Plant,Permanent,2019-10-09,,,Active
+HG-01011,Nazmul Alam,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2022-06-25,,,Active
+HG-01012,Foysal Kabir,Male,Administration,Assistant Manager - Admin,Dhaka Head Office,Contract,2020-11-18,,,Active
+HG-01013,Imran Ahmed,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2024-05-09,,,Active
+HG-01014,Hasan Ahmed,Male,Finance & Accounts,Senior Accounts Executive,Dhaka Head Office,Permanent,2019-10-12,,,Active
+HG-01015,Rashed Kabir,Male,Production,Production Officer,Narayanganj Plant,Contract,2024-05-25,,,Active
+HG-01016,Foysal Begum,Male,Production,Line Supervisor,Chattogram Office,Contract,2018-05-25,,,Active
+HG-01017,Sajid Kabir,Male,Supply Chain,Senior Supply Chain Executive,Narayanganj Plant,Permanent,2022-01-09,,,Active
+HG-01018,Asif Kabir,Male,Administration,Admin Assistant,Dhaka Head Office,Contract,2019-08-27,,,Active
+HG-01019,Maliha Islam,Female,Production,Assistant Manager - Production,Chattogram Office,Permanent,2023-05-28,,,Active
+HG-01020,Sumaiya Sarker,Female,Information Technology,IT Support Executive,Dhaka Head Office,Permanent,2020-10-31,,,Active
+HG-01021,Rumana Miah,Female,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2021-08-26,,,Active
+HG-01022,Rashed Hossain,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2020-07-09,,,Active
+HG-01023,Rumana Miah,Female,Human Resources,HR Business Executive,Dhaka Head Office,Contract,2017-03-07,,,Active
+HG-01024,Nazmul Khan,Male,Production,Production Operator,Gazipur Plant,Permanent,2020-03-28,,,Active
+HG-01025,Sajid Islam,Male,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2022-10-16,,,Active
+HG-01026,Nusrat Miah,Female,Information Technology,Assistant Manager - IT,Dhaka Head Office,Permanent,2020-08-27,,,Active
+HG-01027,Jannat Uddin,Female,Production,Assistant Manager - Production,Gazipur Plant,Contract,2019-03-06,,,Active
+HG-01028,Rashed Hasan,Male,Administration,Admin Assistant,Dhaka Head Office,Permanent,2017-09-17,,,Active
+HG-01029,Hasan Begum,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Permanent,2022-07-17,,,Active
+HG-01030,Sharmin Chowdhury,Female,Production,Line Supervisor,Gazipur Plant,Permanent,2022-01-14,2025-09-02,Compensation & Benefits,Exited
+HG-01031,Fahim Begum,Male,Information Technology,Software Executive,Dhaka Head Office,Permanent,2021-11-24,,,Active
+HG-01032,Nabila Chowdhury,Female,Production,Production Operator,Narayanganj Plant,Permanent,2023-05-16,,,Active
+HG-01033,Nayeem Islam,Male,Administration,Admin Assistant,Dhaka Head Office,Permanent,2023-10-03,,,Active
+HG-01034,Imran Karim,Male,Human Resources,HR Assistant,Dhaka Head Office,Probation,2022-03-11,,,Active
+HG-01035,Farzana Akter,Female,Administration,Admin Executive,Dhaka Head Office,Permanent,2024-04-21,,,Active
+HG-01036,Arif Miah,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2017-04-10,,,Active
+HG-01037,Mehedi Ahmed,Male,Administration,Admin Assistant,Dhaka Head Office,Permanent,2023-03-25,,,Active
+HG-01038,Sabbir Akter,Male,Quality Assurance,QA Officer,Gazipur Plant,Permanent,2021-01-07,,,Active
+HG-01039,Mizan Akter,Male,Administration,Facility Officer,Dhaka Head Office,Contract,2018-02-01,,,Active
+HG-01040,Fahim Rahman,Male,Production,Production Operator,Narayanganj Plant,Permanent,2021-11-25,,,Active
+HG-01041,Arif Akter,Male,Quality Assurance,Senior QA Executive,Gazipur Plant,Probation,2019-11-10,2026-01-09,Career Growth,Exited
+HG-01042,Ayesha Islam,Female,Sales & Marketing,Key Account Executive,Narayanganj Plant,Permanent,2024-08-22,,,Active
+HG-01043,Foysal Alam,Male,Human Resources,Assistant Manager - HR,Gazipur Plant,Permanent,2021-06-23,2026-01-12,End of Contract,Exited
+HG-01044,Mizan Hossain,Male,Information Technology,Data Analyst,Gazipur Plant,Permanent,2019-10-07,,,Active
+HG-01045,Jubayer Ahmed,Male,Quality Assurance,QA Officer,Gazipur Plant,Permanent,2024-06-03,,,Active
+HG-01046,Sharmin Uddin,Female,Production,Production Operator,Gazipur Plant,Permanent,2019-04-21,2025-02-08,Career Growth,Exited
+HG-01047,Rakib Akter,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2020-10-11,2025-06-15,Performance,Exited
+HG-01048,Mizan Begum,Male,Finance & Accounts,Accounts Executive,Chattogram Office,Permanent,2017-06-04,2026-01-30,Relocation,Exited
+HG-01049,Sajid Hossain,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2019-07-14,,,Active
+HG-01050,Shakil Akter,Male,Quality Assurance,Quality Inspector,Narayanganj Plant,Permanent,2023-02-12,,,Active
+HG-01051,Hasan Kabir,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2018-05-28,,,Active
+HG-01052,Tanjila Begum,Female,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2019-01-30,,,Active
+HG-01053,Rumana Ahmed,Female,Sales & Marketing,Key Account Executive,Dhaka Head Office,Permanent,2017-09-16,,,Active
+HG-01054,Rafi Khan,Male,Human Resources,HR Assistant,Dhaka Head Office,Permanent,2020-10-06,,,Active
+HG-01055,Shakil Hasan,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2020-03-15,2025-02-28,Better Opportunity,Exited
+HG-01056,Nayeem Islam,Male,Human Resources,HR Executive,Dhaka Head Office,Permanent,2020-04-07,,,Active
+HG-01057,Mahmud Kabir,Male,Information Technology,Data Analyst,Dhaka Head Office,Contract,2019-06-02,2025-08-30,Better Opportunity,Exited
+HG-01058,Imran Ahmed,Male,Production,Production Operator,Chattogram Office,Permanent,2018-07-04,2025-08-14,Career Growth,Exited
+HG-01059,Mahmud Begum,Male,Production,Senior Operator,Narayanganj Plant,Permanent,2017-07-17,,,Active
+HG-01060,Mizan Uddin,Male,Production,Production Operator,Gazipur Plant,Permanent,2022-10-12,,,Active
+HG-01061,Tanvir Alam,Male,Supply Chain,Assistant Manager - Supply Chain,Narayanganj Plant,Contract,2017-08-02,,,Active
+HG-01062,Hasan Hossain,Male,Production,Production Officer,Narayanganj Plant,Contract,2020-07-16,,,Active
+HG-01063,Sabbir Kabir,Male,Production,Assistant Manager - Production,Gazipur Plant,Contract,2018-04-25,,,Active
+HG-01064,Nabila Rahman,Female,Production,Production Officer,Narayanganj Plant,Permanent,2018-01-02,,,Active
+HG-01065,Shakil Akter,Male,Supply Chain,Procurement Executive,Narayanganj Plant,Contract,2023-06-11,,,Active
+HG-01066,Sharmin Miah,Female,Quality Assurance,Quality Inspector,Narayanganj Plant,Permanent,2022-07-22,,,Active
+HG-01067,Mim Miah,Female,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Probation,2018-11-14,,,Active
+HG-01068,Farhan Akter,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2024-12-08,,,Active
+HG-01069,Rashed Alam,Male,Administration,Facility Officer,Chattogram Office,Permanent,2024-12-31,2026-05-23,Career Growth,Exited
+HG-01070,Rakib Begum,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Contract,2024-12-07,,,Active
+HG-01071,Tanvir Miah,Male,Sales & Marketing,Marketing Officer,Chattogram Office,Contract,2019-03-15,,,Active
+HG-01072,Mehedi Sarker,Male,Administration,Admin Executive,Dhaka Head Office,Probation,2017-06-02,,,Active
+HG-01073,Asif Uddin,Male,Production,Production Officer,Narayanganj Plant,Contract,2024-02-06,,,Active
+HG-01074,Sadika Islam,Female,Production,Line Supervisor,Gazipur Plant,Contract,2018-01-12,2025-06-17,Work-Life Balance,Exited
+HG-01075,Sumaiya Rahman,Female,Production,Senior Operator,Narayanganj Plant,Permanent,2018-02-18,,,Active
+HG-01076,Rakib Chowdhury,Male,Production,Production Operator,Gazipur Plant,Permanent,2022-11-21,2025-11-06,Relocation,Exited
+HG-01077,Arif Ahmed,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2019-03-14,,,Active
+HG-01078,Nayeem Sarker,Male,Quality Assurance,Compliance Executive,Narayanganj Plant,Permanent,2017-08-14,,,Active
+HG-01079,Nayeem Alam,Male,Production,Production Officer,Gazipur Plant,Permanent,2021-10-04,,,Active
+HG-01080,Sabbir Rahman,Male,Finance & Accounts,Senior Accounts Executive,Narayanganj Plant,Permanent,2024-06-23,,,Active
+HG-01081,Tanvir Hasan,Male,Production,Senior Operator,Gazipur Plant,Permanent,2022-05-12,,,Active
+HG-01082,Jannat Karim,Female,Production,Production Operator,Dhaka Head Office,Permanent,2017-08-26,,,Active
+HG-01083,Farhan Sarker,Male,Production,Production Operator,Gazipur Plant,Permanent,2019-02-26,2026-03-01,Work-Life Balance,Exited
+HG-01084,Rashed Miah,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2018-12-23,,,Active
+HG-01085,Mehedi Hasan,Male,Quality Assurance,Quality Inspector,Gazipur Plant,Permanent,2019-05-19,,,Active
+HG-01086,Rumana Rahman,Female,Administration,Admin Assistant,Gazipur Plant,Permanent,2017-09-19,,,Active
+HG-01087,Mizan Miah,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Contract,2018-02-22,,,Active
+HG-01088,Nabila Ahmed,Female,Administration,Senior Admin Executive,Narayanganj Plant,Permanent,2017-11-02,2025-12-19,Supervisor / Management,Exited
+HG-01089,Tanvir Miah,Male,Quality Assurance,Quality Inspector,Narayanganj Plant,Permanent,2021-09-08,,,Active
+HG-01090,Nayeem Chowdhury,Male,Quality Assurance,Senior QA Executive,Dhaka Head Office,Permanent,2020-01-28,,,Active
+HG-01091,Imran Miah,Male,Human Resources,HR Executive,Dhaka Head Office,Contract,2022-04-10,,,Active
+HG-01092,Fahim Sarker,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2017-05-01,2025-10-04,Career Growth,Exited
+HG-01093,Nayeem Kabir,Male,Supply Chain,Procurement Executive,Chattogram Office,Contract,2020-03-23,2026-03-06,Relocation,Exited
+HG-01094,Shakil Khan,Male,Administration,Senior Admin Executive,Gazipur Plant,Permanent,2023-01-12,2025-11-11,Personal / Family,Exited
+HG-01095,Jubayer Uddin,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2022-01-17,,,Active
+HG-01096,Imran Kabir,Male,Finance & Accounts,Accounts Executive,Dhaka Head Office,Contract,2024-06-30,,,Active
+HG-01097,Shakil Khan,Male,Production,Line Supervisor,Gazipur Plant,Probation,2017-12-20,,,Active
+HG-01098,Nazmul Islam,Male,Supply Chain,Inventory Officer,Gazipur Plant,Contract,2020-05-28,,,Active
+HG-01099,Arif Akter,Male,Administration,Admin Assistant,Dhaka Head Office,Permanent,2023-04-18,,,Active
+HG-01100,Maliha Sarker,Female,Production,Senior Operator,Narayanganj Plant,Permanent,2024-05-14,,,Active
+HG-01101,Sharmin Khan,Female,Sales & Marketing,Marketing Officer,Narayanganj Plant,Probation,2017-07-19,2025-04-04,Supervisor / Management,Exited
+HG-01102,Farhan Akter,Male,Quality Assurance,Compliance Executive,Dhaka Head Office,Permanent,2023-10-03,,,Active
+HG-01103,Rashed Khan,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2024-09-03,,,Active
+HG-01104,Ayesha Hasan,Female,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2017-07-10,,,Active
+HG-01105,Tanvir Chowdhury,Male,Supply Chain,Logistics Executive,Gazipur Plant,Permanent,2017-05-03,2025-05-09,Better Opportunity,Exited
+HG-01106,Sajid Khan,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2024-11-14,,,Active
+HG-01107,Rakib Miah,Male,Information Technology,Data Analyst,Dhaka Head Office,Contract,2020-09-17,2025-10-19,Better Opportunity,Exited
+HG-01108,Sadika Akter,Female,Supply Chain,Procurement Executive,Narayanganj Plant,Permanent,2024-03-25,2026-02-04,End of Contract,Exited
+HG-01109,Maliha Miah,Female,Production,Line Supervisor,Narayanganj Plant,Permanent,2018-11-22,,,Active
+HG-01110,Jubayer Alam,Male,Production,Senior Operator,Gazipur Plant,Permanent,2019-09-29,,,Active
+HG-01111,Arif Ahmed,Male,Production,Production Operator,Gazipur Plant,Permanent,2018-10-07,,,Active
+HG-01112,Farhan Sarker,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2020-05-08,,,Active
+HG-01113,Mehedi Begum,Male,Supply Chain,Assistant Manager - Supply Chain,Gazipur Plant,Permanent,2022-07-06,,,Active
+HG-01114,Ayesha Ahmed,Female,Sales & Marketing,Marketing Officer,Dhaka Head Office,Probation,2022-08-22,,,Active
+HG-01115,Hasan Ahmed,Male,Production,Line Supervisor,Dhaka Head Office,Permanent,2020-10-24,,,Active
+HG-01116,Farhan Alam,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Contract,2021-08-30,2025-08-21,Career Growth,Exited
+HG-01117,Sabbir Chowdhury,Male,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2024-12-23,,,Active
+HG-01118,Rakib Begum,Male,Production,Senior Operator,Narayanganj Plant,Permanent,2019-05-25,,,Active
+HG-01119,Tanvir Uddin,Male,Quality Assurance,Compliance Executive,Narayanganj Plant,Permanent,2021-03-29,,,Active
+HG-01120,Foysal Khan,Male,Sales & Marketing,Key Account Executive,Gazipur Plant,Contract,2022-08-28,2026-01-12,Supervisor / Management,Exited
+HG-01121,Foysal Khan,Male,Human Resources,Assistant Manager - HR,Dhaka Head Office,Permanent,2021-07-29,2026-02-14,Career Growth,Exited
+HG-01122,Rakib Miah,Male,Sales & Marketing,Sales Executive,Narayanganj Plant,Probation,2023-05-04,,,Active
+HG-01123,Sabbir Karim,Male,Administration,Facility Officer,Narayanganj Plant,Permanent,2023-10-26,,,Active
+HG-01124,Shakil Akter,Male,Production,Production Officer,Narayanganj Plant,Permanent,2021-08-30,,,Active
+HG-01125,Asif Akter,Male,Quality Assurance,Senior QA Executive,Chattogram Office,Permanent,2021-03-23,2025-07-03,Better Opportunity,Exited
+HG-01126,Rumana Chowdhury,Female,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2021-07-13,,,Active
+HG-01127,Nusrat Hasan,Female,Production,Production Officer,Narayanganj Plant,Permanent,2023-05-23,,,Active
+HG-01128,Farhan Khan,Male,Production,Assistant Manager - Production,Dhaka Head Office,Permanent,2020-12-30,,,Active
+HG-01129,Maliha Kabir,Female,Administration,Admin Executive,Dhaka Head Office,Permanent,2018-06-08,,,Active
+HG-01130,Arif Sarker,Male,Production,Senior Operator,Gazipur Plant,Permanent,2023-08-25,,,Active
+HG-01131,Nayeem Rahman,Male,Production,Production Officer,Gazipur Plant,Permanent,2019-08-20,,,Active
+HG-01132,Mahmud Alam,Male,Production,Production Operator,Narayanganj Plant,Permanent,2023-08-27,,,Active
+HG-01133,Hasan Miah,Male,Production,Production Operator,Gazipur Plant,Permanent,2019-10-17,,,Active
+HG-01134,Arif Ahmed,Male,Production,Production Operator,Dhaka Head Office,Permanent,2023-06-26,,,Active
+HG-01135,Asif Khan,Male,Human Resources,HR Executive,Dhaka Head Office,Permanent,2024-01-22,2025-02-08,Performance,Exited
+HG-01136,Mehedi Miah,Male,Production,Production Officer,Gazipur Plant,Contract,2020-02-13,2025-01-27,Work-Life Balance,Exited
+HG-01137,Rumana Begum,Female,Quality Assurance,Quality Inspector,Gazipur Plant,Permanent,2020-08-02,2025-01-05,Supervisor / Management,Exited
+HG-01138,Nazmul Khan,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2021-03-19,,,Active
+HG-01139,Mehedi Alam,Male,Sales & Marketing,Sales Executive,Chattogram Office,Permanent,2024-07-31,,,Active
+HG-01140,Foysal Sarker,Male,Administration,Senior Admin Executive,Chattogram Office,Permanent,2023-01-30,2025-06-29,End of Contract,Exited
+HG-01141,Jubayer Kabir,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2024-05-02,,,Active
+HG-01142,Tanvir Hossain,Male,Production,Production Officer,Gazipur Plant,Permanent,2022-06-21,,,Active
+HG-01143,Foysal Sarker,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2023-11-13,,,Active
+HG-01144,Mehedi Islam,Male,Production,Line Supervisor,Narayanganj Plant,Probation,2018-03-08,2025-01-11,Compensation & Benefits,Exited
+HG-01145,Mehedi Kabir,Male,Administration,Assistant Manager - Admin,Gazipur Plant,Permanent,2019-10-01,,,Active
+HG-01146,Hasan Chowdhury,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2024-11-28,,,Active
+HG-01147,Nabila Rahman,Female,Finance & Accounts,Finance Officer,Dhaka Head Office,Permanent,2021-11-22,2025-06-26,Better Opportunity,Exited
+HG-01148,Asif Islam,Male,Information Technology,Assistant Manager - IT,Gazipur Plant,Permanent,2017-07-31,,,Active
+HG-01149,Nazmul Rahman,Male,Production,Senior Operator,Gazipur Plant,Permanent,2019-09-05,,,Active
+HG-01150,Farhan Hossain,Male,Supply Chain,Procurement Executive,Gazipur Plant,Permanent,2017-07-06,2025-03-12,Personal / Family,Exited
+HG-01151,Asif Islam,Male,Quality Assurance,Senior QA Executive,Dhaka Head Office,Contract,2022-09-04,,,Active
+HG-01152,Mim Alam,Female,Production,Assistant Manager - Production,Dhaka Head Office,Permanent,2023-07-16,,,Active
+HG-01153,Fahim Ahmed,Male,Human Resources,Assistant Manager - HR,Dhaka Head Office,Permanent,2022-09-25,,,Active
+HG-01154,Mahmud Rahman,Male,Administration,Facility Officer,Dhaka Head Office,Permanent,2020-10-01,,,Active
+HG-01155,Mehedi Kabir,Male,Information Technology,Assistant Manager - IT,Dhaka Head Office,Permanent,2022-09-28,,,Active
+HG-01156,Mim Sarker,Female,Production,Senior Operator,Chattogram Office,Permanent,2024-01-02,,,Active
+HG-01157,Mehedi Miah,Male,Finance & Accounts,Senior Accounts Executive,Narayanganj Plant,Contract,2018-06-10,,,Active
+HG-01158,Tanvir Hasan,Male,Production,Production Officer,Gazipur Plant,Permanent,2023-04-20,,,Active
+HG-01159,Arif Sarker,Male,Information Technology,Software Executive,Gazipur Plant,Contract,2020-01-20,,,Active
+HG-01160,Imran Akter,Male,Production,Production Officer,Narayanganj Plant,Permanent,2020-09-27,,,Active
+HG-01161,Mehedi Miah,Male,Production,Production Officer,Narayanganj Plant,Permanent,2018-02-20,,,Active
+HG-01162,Rakib Akter,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Permanent,2024-07-18,2025-05-31,Better Opportunity,Exited
+HG-01163,Tanvir Alam,Male,Production,Assistant Manager - Production,Gazipur Plant,Probation,2017-09-22,2025-07-07,Performance,Exited
+HG-01164,Farhan Kabir,Male,Human Resources,Senior HR Executive,Dhaka Head Office,Permanent,2017-12-31,,,Active
+HG-01165,Nayeem Miah,Male,Administration,Admin Assistant,Gazipur Plant,Permanent,2019-09-02,,,Active
+HG-01166,Mehedi Rahman,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2022-02-13,2025-09-14,Work-Life Balance,Exited
+HG-01167,Nusrat Begum,Female,Finance & Accounts,Assistant Manager - Finance,Dhaka Head Office,Permanent,2018-12-01,2026-06-19,Personal / Family,Exited
+HG-01168,Imran Karim,Male,Administration,Facility Officer,Dhaka Head Office,Permanent,2018-04-14,2026-05-17,Career Growth,Exited
+HG-01169,Arif Khan,Male,Supply Chain,Procurement Executive,Gazipur Plant,Contract,2019-04-06,,,Active
+HG-01170,Sajid Karim,Male,Production,Production Operator,Gazipur Plant,Permanent,2022-07-16,2025-02-01,Career Growth,Exited
+HG-01171,Imran Sarker,Male,Production,Production Officer,Chattogram Office,Permanent,2023-09-23,2025-05-10,Compensation & Benefits,Exited
+HG-01172,Jubayer Khan,Male,Information Technology,System Administrator,Dhaka Head Office,Permanent,2023-03-19,2025-11-19,End of Contract,Exited
+HG-01173,Shakil Chowdhury,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2019-12-22,,,Active
+HG-01174,Tasnim Khan,Female,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2023-12-01,,,Active
+HG-01175,Nusrat Uddin,Female,Production,Line Supervisor,Gazipur Plant,Permanent,2022-01-04,,,Active
+HG-01176,Rakib Khan,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2024-08-26,,,Active
+HG-01177,Ayesha Islam,Female,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2017-10-12,,,Active
+HG-01178,Farhan Sarker,Male,Information Technology,System Administrator,Dhaka Head Office,Permanent,2024-11-27,2025-07-05,Compensation & Benefits,Exited
+HG-01179,Tanjila Hossain,Female,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2017-09-15,2026-01-18,Supervisor / Management,Exited
+HG-01180,Foysal Hossain,Male,Production,Assistant Manager - Production,Dhaka Head Office,Probation,2018-04-24,,,Active
+HG-01181,Jubayer Begum,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2020-04-12,2025-09-07,Performance,Exited
+HG-01182,Tanvir Ahmed,Male,Information Technology,Software Executive,Dhaka Head Office,Permanent,2022-11-13,,,Active
+HG-01183,Arif Rahman,Male,Human Resources,HR Assistant,Dhaka Head Office,Permanent,2020-02-06,,,Active
+HG-01184,Nusrat Khan,Female,Information Technology,System Administrator,Dhaka Head Office,Contract,2024-11-23,,,Active
+HG-01185,Fahim Khan,Male,Quality Assurance,Assistant Manager - QA,Dhaka Head Office,Permanent,2018-07-27,,,Active
+HG-01186,Tanvir Karim,Male,Production,Production Operator,Gazipur Plant,Permanent,2017-10-02,2025-02-01,End of Contract,Exited
+HG-01187,Rashed Uddin,Male,Production,Production Officer,Narayanganj Plant,Permanent,2019-09-28,,,Active
+HG-01188,Mahmud Begum,Male,Information Technology,IT Support Executive,Dhaka Head Office,Permanent,2019-07-31,2025-04-06,Supervisor / Management,Exited
+HG-01189,Raisa Alam,Female,Quality Assurance,Senior QA Executive,Gazipur Plant,Permanent,2018-05-06,,,Active
+HG-01190,Mahmud Akter,Male,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2022-10-05,,,Active
+HG-01191,Nusrat Alam,Female,Finance & Accounts,Finance Officer,Dhaka Head Office,Permanent,2019-04-08,,,Active
+HG-01192,Farzana Sarker,Female,Supply Chain,Logistics Executive,Narayanganj Plant,Permanent,2020-03-11,2025-11-28,Personal / Family,Exited
+HG-01193,Nazmul Chowdhury,Male,Administration,Admin Assistant,Narayanganj Plant,Permanent,2023-02-10,,,Active
+HG-01194,Fahim Hasan,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Contract,2020-05-06,,,Active
+HG-01195,Rashed Begum,Male,Human Resources,HR Assistant,Dhaka Head Office,Permanent,2018-12-08,2025-08-10,Career Growth,Exited
+HG-01196,Asif Hossain,Male,Production,Production Operator,Narayanganj Plant,Contract,2019-01-15,,,Active
+HG-01197,Sharmin Miah,Female,Production,Production Operator,Gazipur Plant,Probation,2017-04-22,,,Active
+HG-01198,Arif Rahman,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2020-12-05,,,Active
+HG-01199,Farhan Miah,Male,Quality Assurance,Quality Inspector,Narayanganj Plant,Contract,2022-09-05,,,Active
+HG-01200,Foysal Kabir,Male,Quality Assurance,Senior QA Executive,Narayanganj Plant,Permanent,2017-03-23,,,Active
+HG-01201,Jubayer Hasan,Male,Information Technology,System Administrator,Gazipur Plant,Permanent,2023-12-11,,,Active
+HG-01202,Imran Begum,Male,Production,Senior Operator,Dhaka Head Office,Contract,2023-01-26,,,Active
+HG-01203,Asif Islam,Male,Production,Senior Operator,Dhaka Head Office,Permanent,2022-03-03,,,Active
+HG-01204,Sadika Hasan,Female,Quality Assurance,Quality Inspector,Dhaka Head Office,Permanent,2020-04-18,2025-05-19,Better Opportunity,Exited
+HG-01205,Sharmin Ahmed,Female,Sales & Marketing,Key Account Executive,Dhaka Head Office,Contract,2017-10-02,,,Active
+HG-01206,Foysal Ahmed,Male,Production,Production Operator,Chattogram Office,Permanent,2023-08-26,2025-12-31,Supervisor / Management,Exited
+HG-01207,Nazmul Miah,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2020-12-14,,,Active
+HG-01208,Fahim Hasan,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2022-07-01,,,Active
+HG-01209,Tasnim Hasan,Female,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2021-03-31,,,Active
+HG-01210,Sajid Akter,Male,Quality Assurance,Quality Inspector,Gazipur Plant,Permanent,2022-01-27,,,Active
+HG-01211,Rakib Ahmed,Male,Supply Chain,Procurement Executive,Narayanganj Plant,Probation,2017-09-10,,,Active
+HG-01212,Sharmin Begum,Female,Production,Production Operator,Gazipur Plant,Permanent,2024-10-03,2026-06-06,Career Growth,Exited
+HG-01213,Rafi Khan,Male,Quality Assurance,Quality Inspector,Gazipur Plant,Permanent,2024-12-22,2025-07-25,Compensation & Benefits,Exited
+HG-01214,Sadika Chowdhury,Female,Sales & Marketing,Marketing Officer,Dhaka Head Office,Permanent,2018-11-12,,,Active
+HG-01215,Asif Ahmed,Male,Finance & Accounts,Finance Officer,Dhaka Head Office,Contract,2021-08-29,,,Active
+HG-01216,Shakil Rahman,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Contract,2024-08-27,,,Active
+HG-01217,Mizan Hasan,Male,Production,Production Operator,Gazipur Plant,Permanent,2024-07-31,2025-09-02,Performance,Exited
+HG-01218,Imran Alam,Male,Finance & Accounts,Accounts Executive,Dhaka Head Office,Permanent,2019-06-27,,,Active
+HG-01219,Sumaiya Begum,Female,Quality Assurance,QA Officer,Narayanganj Plant,Permanent,2021-10-21,,,Active
+HG-01220,Sadia Alam,Female,Administration,Assistant Manager - Admin,Narayanganj Plant,Contract,2020-11-18,,,Active
+HG-01221,Rashed Chowdhury,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Permanent,2022-12-19,,,Active
+HG-01222,Sumaiya Hossain,Female,Production,Line Supervisor,Chattogram Office,Contract,2023-05-05,,,Active
+HG-01223,Mizan Rahman,Male,Information Technology,System Administrator,Chattogram Office,Permanent,2024-07-19,,,Active
+HG-01224,Asif Akter,Male,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Contract,2019-03-07,,,Active
+HG-01225,Sharmin Chowdhury,Female,Finance & Accounts,Accounts Executive,Dhaka Head Office,Permanent,2018-06-27,2025-05-27,Work-Life Balance,Exited
+HG-01226,Rashed Islam,Male,Production,Production Officer,Gazipur Plant,Permanent,2023-07-01,,,Active
+HG-01227,Mehedi Kabir,Male,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2024-10-29,,,Active
+HG-01228,Nayeem Hossain,Male,Quality Assurance,QA Officer,Narayanganj Plant,Permanent,2017-04-14,,,Active
+HG-01229,Shakil Sarker,Male,Supply Chain,Senior Supply Chain Executive,Narayanganj Plant,Permanent,2018-12-12,2025-09-06,Supervisor / Management,Exited
+HG-01230,Tasnim Karim,Female,Production,Production Officer,Gazipur Plant,Permanent,2019-09-10,,,Active
+HG-01231,Sabbir Begum,Male,Quality Assurance,QA Officer,Gazipur Plant,Contract,2023-05-26,,,Active
+HG-01232,Arif Kabir,Male,Production,Line Supervisor,Chattogram Office,Permanent,2021-07-08,2025-01-17,Personal / Family,Exited
+HG-01233,Rafi Hasan,Male,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Contract,2020-03-26,,,Active
+HG-01234,Tasnim Miah,Female,Quality Assurance,QA Officer,Gazipur Plant,Permanent,2019-01-02,,,Active
+HG-01235,Mizan Hossain,Male,Administration,Admin Assistant,Dhaka Head Office,Permanent,2018-12-17,2026-03-15,End of Contract,Exited
+HG-01236,Foysal Khan,Male,Finance & Accounts,Finance Officer,Narayanganj Plant,Probation,2017-03-12,2025-05-17,Supervisor / Management,Exited
+HG-01237,Nayeem Ahmed,Male,Finance & Accounts,Assistant Manager - Finance,Dhaka Head Office,Permanent,2023-06-28,,,Active
+HG-01238,Fahim Begum,Male,Supply Chain,Logistics Executive,Narayanganj Plant,Permanent,2020-10-12,,,Active
+HG-01239,Sajid Kabir,Male,Information Technology,IT Support Executive,Dhaka Head Office,Permanent,2020-05-25,,,Active
+HG-01240,Hasan Ahmed,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2017-02-28,2026-01-05,Performance,Exited
+HG-01241,Mim Begum,Female,Human Resources,HR Assistant,Dhaka Head Office,Permanent,2019-08-25,,,Active
+HG-01242,Sadika Khan,Female,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Contract,2023-03-06,,,Active
+HG-01243,Farhan Hossain,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2021-04-30,2026-03-19,Performance,Exited
+HG-01244,Mehedi Rahman,Male,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Permanent,2019-07-09,2025-02-03,Career Growth,Exited
+HG-01245,Hasan Chowdhury,Male,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2017-06-28,2026-05-03,Retirement,Exited
+HG-01246,Mahmud Kabir,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2020-04-20,2025-03-15,Retirement,Exited
+HG-01247,Tanvir Uddin,Male,Production,Senior Operator,Gazipur Plant,Permanent,2019-10-26,2025-09-14,Better Opportunity,Exited
+HG-01248,Arif Khan,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2023-05-24,2026-01-24,Compensation & Benefits,Exited
+HG-01249,Hasan Ahmed,Male,Production,Production Operator,Gazipur Plant,Permanent,2024-03-31,,,Active
+HG-01250,Nayeem Rahman,Male,Production,Production Operator,Gazipur Plant,Permanent,2019-08-27,,,Active
+HG-01251,Nabila Khan,Female,Finance & Accounts,Finance Officer,Chattogram Office,Permanent,2024-06-26,,,Active
+HG-01252,Mahmud Kabir,Male,Administration,Senior Admin Executive,Dhaka Head Office,Permanent,2023-11-14,,,Active
+HG-01253,Mehedi Begum,Male,Quality Assurance,Quality Inspector,Gazipur Plant,Permanent,2018-10-31,2026-03-06,Work-Life Balance,Exited
+HG-01254,Nayeem Sarker,Male,Production,Production Operator,Narayanganj Plant,Permanent,2020-03-13,2026-02-26,Supervisor / Management,Exited
+HG-01255,Tanvir Begum,Male,Information Technology,System Administrator,Dhaka Head Office,Contract,2023-04-28,,,Active
+HG-01256,Foysal Islam,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2018-06-10,2025-06-30,Career Growth,Exited
+HG-01257,Mahmud Hasan,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2017-07-02,,,Active
+HG-01258,Mehedi Sarker,Male,Information Technology,Software Executive,Dhaka Head Office,Permanent,2017-10-23,,,Active
+HG-01259,Sajid Sarker,Male,Quality Assurance,Assistant Manager - QA,Dhaka Head Office,Permanent,2024-02-01,,,Active
+HG-01260,Mahmud Akter,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2017-06-07,,,Active
+HG-01261,Mahmud Hossain,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2017-10-18,,,Active
+HG-01262,Sabbir Islam,Male,Supply Chain,Senior Supply Chain Executive,Chattogram Office,Permanent,2023-08-09,2025-06-02,Supervisor / Management,Exited
+HG-01263,Mahmud Alam,Male,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2024-10-05,,,Active
+HG-01264,Rashed Sarker,Male,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2019-11-19,,,Active
+HG-01265,Mizan Sarker,Male,Production,Production Operator,Gazipur Plant,Probation,2018-09-26,,,Active
+HG-01266,Jubayer Islam,Male,Production,Senior Operator,Narayanganj Plant,Permanent,2018-04-04,2025-02-11,Performance,Exited
+HG-01267,Tanvir Kabir,Male,Production,Production Operator,Gazipur Plant,Permanent,2023-03-14,,,Active
+HG-01268,Hasan Karim,Male,Production,Senior Operator,Gazipur Plant,Permanent,2017-07-08,,,Active
+HG-01269,Jubayer Akter,Male,Production,Senior Operator,Narayanganj Plant,Contract,2021-02-02,2026-06-28,End of Contract,Exited
+HG-01270,Farhan Begum,Male,Administration,Senior Admin Executive,Dhaka Head Office,Permanent,2018-11-16,2025-02-19,Personal / Family,Exited
+HG-01271,Asif Rahman,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2024-11-30,,,Active
+HG-01272,Imran Rahman,Male,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Contract,2023-07-09,,,Active
+HG-01273,Raisa Akter,Female,Supply Chain,Procurement Executive,Gazipur Plant,Permanent,2021-05-09,,,Active
+HG-01274,Jubayer Islam,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2023-10-06,2025-10-10,Career Growth,Exited
+HG-01275,Nayeem Chowdhury,Male,Finance & Accounts,Senior Accounts Executive,Dhaka Head Office,Permanent,2020-05-12,2026-04-15,Better Opportunity,Exited
+HG-01276,Mizan Ahmed,Male,Information Technology,Assistant Manager - IT,Dhaka Head Office,Permanent,2022-12-12,,,Active
+HG-01277,Fahim Rahman,Male,Administration,Assistant Manager - Admin,Narayanganj Plant,Permanent,2021-11-07,,,Active
+HG-01278,Sumaiya Miah,Female,Finance & Accounts,Accounts Executive,Dhaka Head Office,Permanent,2022-11-06,,,Active
+HG-01279,Fahim Islam,Male,Finance & Accounts,Accounts Executive,Chattogram Office,Permanent,2020-09-12,,,Active
+HG-01280,Rafi Hasan,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2024-01-09,2025-08-17,Career Growth,Exited
+HG-01281,Foysal Hasan,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2020-12-27,,,Active
+HG-01282,Hasan Karim,Male,Information Technology,IT Support Executive,Dhaka Head Office,Permanent,2022-09-13,2025-03-18,Personal / Family,Exited
+HG-01283,Nazmul Islam,Male,Supply Chain,Assistant Manager - Supply Chain,Narayanganj Plant,Permanent,2024-04-07,2025-10-31,Relocation,Exited
+HG-01284,Ayesha Rahman,Female,Finance & Accounts,Senior Accounts Executive,Dhaka Head Office,Permanent,2022-06-04,2026-01-12,Relocation,Exited
+HG-01285,Sadia Miah,Female,Production,Production Operator,Chattogram Office,Permanent,2023-04-20,,,Active
+HG-01286,Rashed Chowdhury,Male,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2024-12-06,,,Active
+HG-01287,Rafi Islam,Male,Administration,Admin Assistant,Dhaka Head Office,Permanent,2017-04-21,,,Active
+HG-01288,Shakil Begum,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Contract,2021-02-09,2026-02-11,Personal / Family,Exited
+HG-01289,Asif Begum,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2023-03-10,2025-05-04,Compensation & Benefits,Exited
+HG-01290,Arif Hossain,Male,Administration,Senior Admin Executive,Dhaka Head Office,Permanent,2022-09-28,2025-08-31,Personal / Family,Exited
+HG-01291,Rafi Khan,Male,Production,Production Operator,Dhaka Head Office,Permanent,2022-07-09,2025-06-20,Better Opportunity,Exited
+HG-01292,Sumaiya Uddin,Female,Information Technology,IT Support Executive,Dhaka Head Office,Permanent,2021-05-29,,,Active
+HG-01293,Shakil Alam,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2018-04-28,,,Active
+HG-01294,Imran Kabir,Male,Supply Chain,Senior Supply Chain Executive,Gazipur Plant,Contract,2020-12-06,,,Active
+HG-01295,Mehedi Hasan,Male,Human Resources,Senior HR Executive,Dhaka Head Office,Contract,2018-06-10,,,Active
+HG-01296,Foysal Ahmed,Male,Production,Production Operator,Gazipur Plant,Permanent,2021-02-03,,,Active
+HG-01297,Rakib Sarker,Male,Finance & Accounts,Senior Accounts Executive,Gazipur Plant,Contract,2019-01-21,2025-05-06,Compensation & Benefits,Exited
+HG-01298,Mehedi Alam,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Permanent,2023-06-19,,,Active
+HG-01299,Mehedi Rahman,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2020-06-28,,,Active
+HG-01300,Sadika Islam,Female,Sales & Marketing,Territory Officer,Dhaka Head Office,Probation,2017-09-27,2025-11-26,Career Growth,Exited
+HG-01301,Mizan Hasan,Male,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2023-03-08,,,Active
+HG-01302,Arif Uddin,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2024-09-11,,,Active
+HG-01303,Sharmin Hossain,Female,Production,Production Operator,Narayanganj Plant,Permanent,2017-08-22,2025-06-07,Supervisor / Management,Exited
+HG-01304,Imran Islam,Male,Production,Senior Operator,Dhaka Head Office,Permanent,2024-12-01,,,Active
+HG-01305,Sabbir Hasan,Male,Administration,Senior Admin Executive,Gazipur Plant,Permanent,2023-06-04,2026-01-25,Better Opportunity,Exited
+HG-01306,Sajid Alam,Male,Production,Senior Operator,Narayanganj Plant,Probation,2021-03-18,,,Active
+HG-01307,Sadia Rahman,Female,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2021-04-06,2026-05-14,End of Contract,Exited
+HG-01308,Nazmul Chowdhury,Male,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2019-08-22,,,Active
+HG-01309,Fahim Ahmed,Male,Supply Chain,Procurement Executive,Narayanganj Plant,Contract,2020-06-07,2025-09-01,Relocation,Exited
+HG-01310,Hasan Islam,Male,Quality Assurance,Senior QA Executive,Narayanganj Plant,Permanent,2018-01-04,,,Active
+HG-01311,Mehedi Ahmed,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Probation,2021-03-22,,,Active
+HG-01312,Farhan Hossain,Male,Production,Line Supervisor,Gazipur Plant,Contract,2022-05-22,,,Active
+HG-01313,Mehedi Chowdhury,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2017-02-15,,,Active
+HG-01314,Arif Hossain,Male,Supply Chain,Logistics Executive,Narayanganj Plant,Permanent,2019-02-20,,,Active
+HG-01315,Imran Rahman,Male,Production,Production Officer,Gazipur Plant,Contract,2021-07-19,2026-05-02,Work-Life Balance,Exited
+HG-01316,Mizan Begum,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2024-04-01,2025-08-04,Relocation,Exited
+HG-01317,Rashed Khan,Male,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2019-06-22,,,Active
+HG-01318,Rakib Begum,Male,Human Resources,HR Business Executive,Dhaka Head Office,Permanent,2024-07-29,,,Active
+HG-01319,Sajid Rahman,Male,Human Resources,Assistant Manager - HR,Dhaka Head Office,Permanent,2017-03-20,,,Active
+HG-01320,Farhan Hasan,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Permanent,2022-11-16,,,Active
+HG-01321,Fahim Khan,Male,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Contract,2018-04-10,,,Active
+HG-01322,Farhan Karim,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2022-12-24,2025-04-26,Better Opportunity,Exited
+HG-01323,Imran Rahman,Male,Information Technology,IT Support Executive,Narayanganj Plant,Contract,2023-01-14,2025-03-29,End of Contract,Exited
+HG-01324,Tanvir Kabir,Male,Sales & Marketing,Sales Executive,Chattogram Office,Permanent,2018-09-18,,,Active
+HG-01325,Jannat Islam,Female,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2024-11-10,2026-01-08,Better Opportunity,Exited
+HG-01326,Imran Hasan,Male,Production,Production Operator,Gazipur Plant,Permanent,2022-08-23,,,Active
+HG-01327,Fahim Ahmed,Male,Production,Senior Operator,Narayanganj Plant,Contract,2019-05-15,2025-09-24,End of Contract,Exited
+HG-01328,Rafi Karim,Male,Production,Senior Operator,Gazipur Plant,Permanent,2024-07-04,,,Active
+HG-01329,Sadia Akter,Female,Human Resources,HR Executive,Narayanganj Plant,Permanent,2020-09-28,,,Active
+HG-01330,Rakib Miah,Male,Supply Chain,Senior Supply Chain Executive,Narayanganj Plant,Permanent,2023-03-31,,,Active
+HG-01331,Fahim Miah,Male,Finance & Accounts,Assistant Manager - Finance,Dhaka Head Office,Permanent,2021-01-30,2025-08-11,Better Opportunity,Exited
+HG-01332,Nazmul Begum,Male,Information Technology,Data Analyst,Dhaka Head Office,Probation,2022-03-15,,,Active
+HG-01333,Tanvir Alam,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2019-06-28,,,Active
+HG-01334,Rakib Karim,Male,Information Technology,Software Executive,Dhaka Head Office,Permanent,2019-01-17,,,Active
+HG-01335,Rakib Khan,Male,Sales & Marketing,Marketing Officer,Dhaka Head Office,Permanent,2021-05-05,,,Active
+HG-01336,Sabbir Kabir,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Permanent,2022-01-14,,,Active
+HG-01337,Farhan Ahmed,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Probation,2021-11-30,,,Active
+HG-01338,Rashed Khan,Male,Administration,Admin Executive,Gazipur Plant,Permanent,2019-03-27,,,Active
+HG-01339,Tanvir Karim,Male,Production,Production Operator,Chattogram Office,Permanent,2018-01-11,,,Active
+HG-01340,Tasnim Chowdhury,Female,Production,Production Officer,Gazipur Plant,Permanent,2018-12-07,,,Active
+HG-01341,Jannat Sarker,Female,Production,Production Officer,Narayanganj Plant,Permanent,2017-04-21,2025-05-02,Better Opportunity,Exited
+HG-01342,Arif Islam,Male,Information Technology,IT Support Executive,Chattogram Office,Permanent,2022-03-20,,,Active
+HG-01343,Foysal Karim,Male,Information Technology,Software Executive,Chattogram Office,Permanent,2021-05-22,,,Active
+HG-01344,Sajid Hossain,Male,Sales & Marketing,Sales Executive,Gazipur Plant,Permanent,2020-09-23,,,Active
+HG-01345,Jubayer Hasan,Male,Quality Assurance,QA Officer,Dhaka Head Office,Permanent,2022-10-30,2025-02-25,Career Growth,Exited
+HG-01346,Sumaiya Alam,Female,Supply Chain,Logistics Executive,Gazipur Plant,Permanent,2018-09-04,,,Active
+HG-01347,Tanvir Ahmed,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2022-01-16,,,Active
+HG-01348,Asif Islam,Male,Production,Senior Operator,Gazipur Plant,Permanent,2020-03-02,,,Active
+HG-01349,Foysal Begum,Male,Production,Senior Operator,Gazipur Plant,Contract,2022-01-27,,,Active
+HG-01350,Sabbir Sarker,Male,Production,Senior Operator,Gazipur Plant,Permanent,2020-05-07,2025-07-07,Better Opportunity,Exited
+HG-01351,Rumana Rahman,Female,Quality Assurance,Compliance Executive,Narayanganj Plant,Permanent,2023-12-22,2025-02-16,Work-Life Balance,Exited
+HG-01352,Mizan Kabir,Male,Production,Production Officer,Dhaka Head Office,Contract,2022-05-22,,,Active
+HG-01353,Farhan Karim,Male,Quality Assurance,Quality Inspector,Chattogram Office,Permanent,2020-03-27,2025-04-11,Career Growth,Exited
+HG-01354,Rafi Hossain,Male,Quality Assurance,Quality Inspector,Narayanganj Plant,Permanent,2022-11-27,,,Active
+HG-01355,Nayeem Islam,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2017-11-09,,,Active
+HG-01356,Imran Karim,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Permanent,2021-10-30,,,Active
+HG-01357,Sabbir Alam,Male,Administration,Assistant Manager - Admin,Narayanganj Plant,Permanent,2017-11-08,,,Active
+HG-01358,Sumaiya Sarker,Female,Production,Production Operator,Narayanganj Plant,Contract,2019-01-04,,,Active
+HG-01359,Nazmul Khan,Male,Administration,Assistant Manager - Admin,Chattogram Office,Permanent,2023-01-22,,,Active
+HG-01360,Farzana Khan,Female,Administration,Facility Officer,Dhaka Head Office,Contract,2021-11-15,,,Active
+HG-01361,Rafi Chowdhury,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2020-11-08,,,Active
+HG-01362,Rumana Uddin,Female,Administration,Facility Officer,Chattogram Office,Permanent,2021-04-09,,,Active
+HG-01363,Mehedi Rahman,Male,Quality Assurance,QA Officer,Gazipur Plant,Permanent,2024-07-26,,,Active
+HG-01364,Foysal Rahman,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Permanent,2018-10-01,,,Active
+HG-01365,Imran Rahman,Male,Production,Senior Operator,Gazipur Plant,Contract,2023-03-12,,,Active
+HG-01366,Sabbir Uddin,Male,Quality Assurance,Senior QA Executive,Gazipur Plant,Contract,2024-07-25,2026-05-19,End of Contract,Exited
+HG-01367,Jubayer Akter,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2019-02-09,,,Active
+HG-01368,Hasan Hossain,Male,Information Technology,Data Analyst,Dhaka Head Office,Probation,2021-06-17,,,Active
+HG-01369,Jubayer Karim,Male,Production,Senior Operator,Narayanganj Plant,Contract,2024-07-29,,,Active
+HG-01370,Nazmul Alam,Male,Quality Assurance,Compliance Executive,Narayanganj Plant,Permanent,2024-11-30,2025-03-31,Better Opportunity,Exited
+HG-01371,Nayeem Uddin,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2020-01-23,,,Active
+HG-01372,Farhan Ahmed,Male,Human Resources,Assistant Manager - HR,Narayanganj Plant,Probation,2022-01-09,2025-09-12,Compensation & Benefits,Exited
+HG-01373,Asif Hossain,Male,Supply Chain,Assistant Manager - Supply Chain,Gazipur Plant,Permanent,2021-06-09,2025-06-04,End of Contract,Exited
+HG-01374,Sabbir Karim,Male,Production,Senior Operator,Gazipur Plant,Contract,2021-10-02,,,Active
+HG-01375,Mahmud Rahman,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2021-04-18,2025-05-05,Career Growth,Exited
+HG-01376,Mehedi Sarker,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2024-06-22,,,Active
+HG-01377,Foysal Kabir,Male,Production,Production Officer,Narayanganj Plant,Permanent,2020-04-16,2026-05-17,Performance,Exited
+HG-01378,Farzana Karim,Female,Human Resources,Assistant Manager - HR,Chattogram Office,Contract,2019-10-03,,,Active
+HG-01379,Mehedi Sarker,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2018-11-12,,,Active
+HG-01380,Arif Hasan,Male,Production,Senior Operator,Narayanganj Plant,Permanent,2018-06-27,2026-03-14,Relocation,Exited
+HG-01381,Rakib Alam,Male,Supply Chain,Logistics Executive,Gazipur Plant,Permanent,2017-11-26,,,Active
+HG-01382,Shakil Begum,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2023-11-01,,,Active
+HG-01383,Sharmin Khan,Female,Sales & Marketing,Marketing Officer,Dhaka Head Office,Permanent,2017-11-13,,,Active
+HG-01384,Rakib Kabir,Male,Supply Chain,Assistant Manager - Supply Chain,Narayanganj Plant,Permanent,2020-12-23,2025-10-09,Performance,Exited
+HG-01385,Arif Khan,Male,Information Technology,IT Support Executive,Gazipur Plant,Permanent,2022-02-03,,,Active
+HG-01386,Tanvir Ahmed,Male,Finance & Accounts,Senior Accounts Executive,Chattogram Office,Permanent,2022-11-19,,,Active
+HG-01387,Hasan Hossain,Male,Production,Assistant Manager - Production,Chattogram Office,Permanent,2022-05-11,,,Active
+HG-01388,Rakib Hossain,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2018-08-18,,,Active
+HG-01389,Ayesha Rahman,Female,Human Resources,HR Business Executive,Narayanganj Plant,Probation,2017-03-08,,,Active
+HG-01390,Fahim Chowdhury,Male,Administration,Facility Officer,Dhaka Head Office,Permanent,2018-12-02,,,Active
+HG-01391,Foysal Begum,Male,Production,Senior Operator,Narayanganj Plant,Permanent,2017-09-11,2025-11-04,Supervisor / Management,Exited
+HG-01392,Foysal Begum,Male,Sales & Marketing,Key Account Executive,Chattogram Office,Permanent,2020-11-26,,,Active
+HG-01393,Foysal Akter,Male,Quality Assurance,QA Officer,Gazipur Plant,Permanent,2017-01-26,2025-01-04,Work-Life Balance,Exited
+HG-01394,Rakib Sarker,Male,Human Resources,HR Assistant,Dhaka Head Office,Permanent,2020-01-17,,,Active
+HG-01395,Nayeem Uddin,Male,Finance & Accounts,Finance Officer,Dhaka Head Office,Permanent,2024-01-10,,,Active
+HG-01396,Mizan Sarker,Male,Production,Senior Operator,Gazipur Plant,Permanent,2018-06-25,,,Active
+HG-01397,Jubayer Islam,Male,Quality Assurance,Quality Inspector,Gazipur Plant,Permanent,2017-02-12,,,Active
+HG-01398,Tanvir Hasan,Male,Production,Assistant Manager - Production,Chattogram Office,Permanent,2017-06-16,2026-05-31,Work-Life Balance,Exited
+HG-01399,Rumana Rahman,Female,Supply Chain,Senior Supply Chain Executive,Gazipur Plant,Permanent,2019-11-29,,,Active
+HG-01400,Rumana Chowdhury,Female,Production,Line Supervisor,Gazipur Plant,Permanent,2022-03-26,,,Active
+HG-01401,Nayeem Hossain,Male,Administration,Facility Officer,Dhaka Head Office,Permanent,2018-05-13,,,Active
+HG-01402,Rafi Miah,Male,Human Resources,HR Assistant,Dhaka Head Office,Contract,2022-01-07,,,Active
+HG-01403,Sumaiya Sarker,Female,Quality Assurance,Senior QA Executive,Gazipur Plant,Permanent,2017-10-09,2025-02-24,End of Contract,Exited
+HG-01404,Shakil Chowdhury,Male,Production,Senior Operator,Chattogram Office,Permanent,2021-07-27,,,Active
+HG-01405,Mizan Kabir,Male,Information Technology,Assistant Manager - IT,Dhaka Head Office,Permanent,2019-06-23,2025-01-30,End of Contract,Exited
+HG-01406,Sajid Akter,Male,Sales & Marketing,Key Account Executive,Chattogram Office,Permanent,2018-08-26,,,Active
+HG-01407,Foysal Karim,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Permanent,2023-02-03,2025-03-10,Work-Life Balance,Exited
+HG-01408,Mahmud Chowdhury,Male,Sales & Marketing,Marketing Officer,Chattogram Office,Permanent,2022-10-20,,,Active
+HG-01409,Fahim Chowdhury,Male,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Permanent,2024-05-19,2025-01-25,Supervisor / Management,Exited
+HG-01410,Jubayer Khan,Male,Information Technology,Assistant Manager - IT,Dhaka Head Office,Permanent,2021-05-30,,,Active
+HG-01411,Rakib Hasan,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Probation,2018-12-06,,,Active
+HG-01412,Mim Chowdhury,Female,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2020-12-24,,,Active
+HG-01413,Nayeem Akter,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Contract,2024-05-05,,,Active
+HG-01414,Tanvir Khan,Male,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Probation,2018-11-05,,,Active
+HG-01415,Tasnim Islam,Female,Finance & Accounts,Senior Accounts Executive,Dhaka Head Office,Contract,2019-11-12,,,Active
+HG-01416,Tasnim Rahman,Female,Administration,Admin Executive,Dhaka Head Office,Permanent,2018-02-14,,,Active
+HG-01417,Sajid Alam,Male,Human Resources,Senior HR Executive,Dhaka Head Office,Permanent,2023-01-09,,,Active
+HG-01418,Nazmul Hasan,Male,Supply Chain,Senior Supply Chain Executive,Gazipur Plant,Permanent,2019-06-25,,,Active
+HG-01419,Mahmud Khan,Male,Supply Chain,Inventory Officer,Narayanganj Plant,Permanent,2019-11-21,,,Active
+HG-01420,Arif Chowdhury,Male,Production,Senior Operator,Gazipur Plant,Permanent,2024-07-03,,,Active
+HG-01421,Farhan Alam,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2022-02-07,,,Active
+HG-01422,Sharmin Alam,Female,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2017-10-17,,,Active
+HG-01423,Imran Karim,Male,Production,Production Officer,Narayanganj Plant,Permanent,2021-01-13,,,Active
+HG-01424,Sajid Alam,Male,Quality Assurance,Assistant Manager - QA,Dhaka Head Office,Contract,2018-06-04,,,Active
+HG-01425,Tanvir Uddin,Male,Administration,Admin Executive,Chattogram Office,Permanent,2022-08-26,2025-09-11,Better Opportunity,Exited
+HG-01426,Nabila Karim,Female,Supply Chain,Senior Supply Chain Executive,Chattogram Office,Probation,2023-07-30,,,Active
+HG-01427,Imran Hossain,Male,Production,Senior Operator,Gazipur Plant,Permanent,2017-07-27,,,Active
+HG-01428,Rafi Begum,Male,Production,Production Officer,Gazipur Plant,Permanent,2022-05-21,,,Active
+HG-01429,Sharmin Ahmed,Female,Production,Production Operator,Gazipur Plant,Permanent,2020-06-14,,,Active
+HG-01430,Nusrat Khan,Female,Production,Production Operator,Gazipur Plant,Permanent,2021-09-04,,,Active
+HG-01431,Mizan Khan,Male,Human Resources,HR Business Executive,Dhaka Head Office,Permanent,2019-05-16,,,Active
+HG-01432,Tanjila Hossain,Female,Production,Production Officer,Gazipur Plant,Permanent,2023-04-13,,,Active
+HG-01433,Mehedi Hasan,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2019-11-22,,,Active
+HG-01434,Sadika Ahmed,Female,Production,Senior Operator,Chattogram Office,Permanent,2024-08-01,,,Active
+HG-01435,Mim Kabir,Female,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2021-11-22,,,Active
+HG-01436,Sabbir Ahmed,Male,Quality Assurance,Compliance Executive,Chattogram Office,Permanent,2019-02-16,,,Active
+HG-01437,Nayeem Chowdhury,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2019-03-11,2025-04-23,Performance,Exited
+HG-01438,Mim Hasan,Female,Quality Assurance,QA Officer,Gazipur Plant,Permanent,2020-10-16,,,Active
+HG-01439,Mehedi Islam,Male,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2021-11-12,,,Active
+HG-01440,Arif Uddin,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2018-12-15,2025-01-19,Better Opportunity,Exited
+HG-01441,Jubayer Begum,Male,Information Technology,Software Executive,Dhaka Head Office,Permanent,2023-07-24,,,Active
+HG-01442,Fahim Miah,Male,Supply Chain,Assistant Manager - Supply Chain,Gazipur Plant,Permanent,2021-06-03,,,Active
+HG-01443,Tanvir Islam,Male,Quality Assurance,Quality Inspector,Gazipur Plant,Permanent,2017-10-28,2025-08-24,Work-Life Balance,Exited
+HG-01444,Mim Alam,Female,Sales & Marketing,Sales Executive,Gazipur Plant,Permanent,2024-01-12,,,Active
+HG-01445,Nusrat Hasan,Female,Administration,Assistant Manager - Admin,Dhaka Head Office,Probation,2021-01-31,2025-05-01,Compensation & Benefits,Exited
+HG-01446,Farhan Khan,Male,Information Technology,Software Executive,Dhaka Head Office,Permanent,2018-01-25,,,Active
+HG-01447,Hasan Karim,Male,Production,Production Operator,Gazipur Plant,Permanent,2018-06-23,,,Active
+HG-01448,Sajid Chowdhury,Male,Supply Chain,Logistics Executive,Gazipur Plant,Permanent,2017-02-24,,,Active
+HG-01449,Arif Karim,Male,Supply Chain,Inventory Officer,Gazipur Plant,Contract,2024-09-23,2025-04-17,Better Opportunity,Exited
+HG-01450,Tanvir Khan,Male,Production,Assistant Manager - Production,Gazipur Plant,Contract,2024-07-14,,,Active
+HG-01451,Foysal Karim,Male,Information Technology,IT Support Executive,Dhaka Head Office,Permanent,2024-05-03,,,Active
+HG-01452,Farhan Sarker,Male,Supply Chain,Senior Supply Chain Executive,Narayanganj Plant,Permanent,2024-09-05,,,Active
+HG-01453,Nabila Chowdhury,Female,Production,Production Officer,Gazipur Plant,Permanent,2024-01-08,,,Active
+HG-01454,Nazmul Khan,Male,Supply Chain,Inventory Officer,Chattogram Office,Permanent,2019-06-25,,,Active
+HG-01455,Farhan Rahman,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2017-01-16,,,Active
+HG-01456,Rafi Hossain,Male,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2021-10-28,,,Active
+HG-01457,Rakib Islam,Male,Production,Production Officer,Narayanganj Plant,Permanent,2021-01-20,,,Active
+HG-01458,Mahmud Chowdhury,Male,Production,Senior Operator,Gazipur Plant,Permanent,2019-07-23,2025-05-11,Better Opportunity,Exited
+HG-01459,Imran Alam,Male,Production,Senior Operator,Gazipur Plant,Permanent,2021-11-07,2025-09-14,Performance,Exited
+HG-01460,Foysal Begum,Male,Supply Chain,Procurement Executive,Gazipur Plant,Permanent,2024-11-25,,,Active
+HG-01461,Mizan Karim,Male,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2023-12-26,2025-02-23,Better Opportunity,Exited
+HG-01462,Foysal Alam,Male,Production,Senior Operator,Gazipur Plant,Permanent,2018-05-07,,,Active
+HG-01463,Asif Kabir,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2022-02-23,2025-03-06,End of Contract,Exited
+HG-01464,Mim Khan,Female,Supply Chain,Assistant Manager - Supply Chain,Dhaka Head Office,Permanent,2021-07-14,2025-05-02,Better Opportunity,Exited
+HG-01465,Jubayer Akter,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2018-04-06,,,Active
+HG-01466,Mizan Alam,Male,Supply Chain,Inventory Officer,Gazipur Plant,Contract,2018-02-08,,,Active
+HG-01467,Arif Akter,Male,Production,Production Officer,Dhaka Head Office,Permanent,2017-03-18,,,Active
+HG-01468,Ayesha Hossain,Female,Production,Assistant Manager - Production,Chattogram Office,Permanent,2024-10-04,2025-12-30,Better Opportunity,Exited
+HG-01469,Mizan Kabir,Male,Production,Senior Operator,Gazipur Plant,Permanent,2019-03-21,,,Active
+HG-01470,Sadia Uddin,Female,Sales & Marketing,Key Account Executive,Gazipur Plant,Contract,2021-02-02,2026-05-08,Retirement,Exited
+HG-01471,Sadika Begum,Female,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2024-01-24,,,Active
+HG-01472,Rumana Islam,Female,Administration,Admin Executive,Dhaka Head Office,Permanent,2021-03-05,,,Active
+HG-01473,Foysal Hasan,Male,Production,Production Operator,Gazipur Plant,Permanent,2019-07-30,2025-03-17,Compensation & Benefits,Exited
+HG-01474,Fahim Akter,Male,Production,Line Supervisor,Dhaka Head Office,Permanent,2022-01-26,,,Active
+HG-01475,Farhan Miah,Male,Production,Production Officer,Narayanganj Plant,Probation,2023-10-22,,,Active
+HG-01476,Tanvir Karim,Male,Production,Production Operator,Gazipur Plant,Permanent,2023-11-30,2025-01-28,Work-Life Balance,Exited
+HG-01477,Hasan Begum,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2018-09-14,,,Active
+HG-01478,Imran Akter,Male,Sales & Marketing,Marketing Officer,Dhaka Head Office,Permanent,2017-02-06,2025-02-07,Supervisor / Management,Exited
+HG-01479,Imran Kabir,Male,Supply Chain,Senior Supply Chain Executive,Chattogram Office,Permanent,2018-08-24,,,Active
+HG-01480,Sabbir Rahman,Male,Production,Senior Operator,Gazipur Plant,Permanent,2021-10-08,,,Active
+HG-01481,Tanjila Sarker,Female,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2022-11-23,,,Active
+HG-01482,Rafi Karim,Male,Human Resources,HR Executive,Dhaka Head Office,Contract,2017-07-07,,,Active
+HG-01483,Hasan Ahmed,Male,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2023-09-05,2025-01-25,Better Opportunity,Exited
+HG-01484,Sabbir Rahman,Male,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Permanent,2021-10-16,,,Active
+HG-01485,Foysal Khan,Male,Production,Production Officer,Narayanganj Plant,Permanent,2024-03-24,,,Active
+HG-01486,Tanvir Islam,Male,Production,Assistant Manager - Production,Chattogram Office,Permanent,2017-07-16,2026-02-14,Performance,Exited
+HG-01487,Fahim Karim,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2018-11-03,,,Active
+HG-01488,Mim Akter,Female,Administration,Admin Assistant,Dhaka Head Office,Permanent,2023-07-31,,,Active
+HG-01489,Rashed Hossain,Male,Administration,Assistant Manager - Admin,Dhaka Head Office,Permanent,2024-10-22,,,Active
+HG-01490,Rumana Alam,Female,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2019-11-15,,,Active
+HG-01491,Rakib Islam,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2018-07-18,,,Active
+HG-01492,Mahmud Miah,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2018-05-10,,,Active
+HG-01493,Fahim Chowdhury,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2024-06-14,,,Active
+HG-01494,Rumana Hasan,Female,Production,Line Supervisor,Narayanganj Plant,Permanent,2017-10-04,,,Active
+HG-01495,Tanvir Hossain,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2019-07-24,2025-06-18,Performance,Exited
+HG-01496,Mizan Alam,Male,Production,Production Operator,Chattogram Office,Probation,2018-06-13,,,Active
+HG-01497,Sajid Hasan,Male,Supply Chain,Assistant Manager - Supply Chain,Gazipur Plant,Permanent,2020-09-15,2026-02-06,Work-Life Balance,Exited
+HG-01498,Nabila Islam,Female,Production,Assistant Manager - Production,Chattogram Office,Permanent,2024-11-30,,,Active
+HG-01499,Mahmud Begum,Male,Production,Production Officer,Dhaka Head Office,Permanent,2018-12-27,,,Active
+HG-01500,Sharmin Akter,Female,Finance & Accounts,Payroll Executive,Dhaka Head Office,Permanent,2024-03-19,2025-11-02,End of Contract,Exited
+HG-01501,Tanjila Miah,Female,Production,Production Operator,Narayanganj Plant,Permanent,2022-01-31,2025-11-06,Better Opportunity,Exited
+HG-01502,Asif Sarker,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Contract,2024-06-15,,,Active
+HG-01503,Imran Sarker,Male,Human Resources,HR Executive,Dhaka Head Office,Permanent,2023-09-01,,,Active
+HG-01504,Nusrat Uddin,Female,Information Technology,System Administrator,Chattogram Office,Permanent,2024-04-14,2025-01-26,Compensation & Benefits,Exited
+HG-01505,Mizan Ahmed,Male,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Contract,2020-09-22,2025-11-25,End of Contract,Exited
+HG-01506,Foysal Sarker,Male,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Permanent,2023-12-20,,,Active
+HG-01507,Nazmul Khan,Male,Production,Production Operator,Narayanganj Plant,Permanent,2022-07-14,2025-11-27,Performance,Exited
+HG-01508,Tanvir Hasan,Male,Production,Production Operator,Gazipur Plant,Permanent,2018-10-22,,,Active
+HG-01509,Tasnim Alam,Female,Administration,Assistant Manager - Admin,Narayanganj Plant,Permanent,2021-06-12,2025-01-31,Performance,Exited
+HG-01510,Mim Alam,Female,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2019-01-13,,,Active
+HG-01511,Asif Sarker,Male,Production,Production Operator,Narayanganj Plant,Permanent,2018-02-01,,,Active
+HG-01512,Tasnim Karim,Female,Production,Line Supervisor,Narayanganj Plant,Permanent,2020-05-01,2025-06-28,Career Growth,Exited
+HG-01513,Sajid Akter,Male,Administration,Senior Admin Executive,Dhaka Head Office,Permanent,2024-05-13,,,Active
+HG-01514,Ayesha Uddin,Female,Production,Production Officer,Dhaka Head Office,Permanent,2022-09-20,2025-08-29,Performance,Exited
+HG-01515,Rashed Begum,Male,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Permanent,2019-06-17,,,Active
+HG-01516,Maliha Chowdhury,Female,Production,Line Supervisor,Gazipur Plant,Contract,2019-04-26,2025-11-03,End of Contract,Exited
+HG-01517,Nabila Islam,Female,Sales & Marketing,Sales Executive,Gazipur Plant,Contract,2018-02-09,,,Active
+HG-01518,Nusrat Khan,Female,Finance & Accounts,Accounts Executive,Dhaka Head Office,Permanent,2022-02-09,2026-04-03,Performance,Exited
+HG-01519,Nusrat Karim,Female,Human Resources,HR Assistant,Dhaka Head Office,Permanent,2024-03-06,,,Active
+HG-01520,Mehedi Miah,Male,Quality Assurance,QA Officer,Chattogram Office,Permanent,2023-01-17,,,Active
+HG-01521,Raisa Uddin,Female,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2025-01-21,,,Active
+HG-01522,Nabila Karim,Female,Information Technology,System Administrator,Dhaka Head Office,Permanent,2025-01-25,,,Active
+HG-01523,Rafi Sarker,Male,Finance & Accounts,Finance Officer,Dhaka Head Office,Contract,2025-01-26,,,Active
+HG-01524,Sabbir Kabir,Male,Human Resources,HR Business Executive,Narayanganj Plant,Permanent,2025-01-05,2025-08-07,End of Contract,Exited
+HG-01525,Farhan Sarker,Male,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2025-01-13,2025-11-11,Relocation,Exited
+HG-01526,Tanvir Khan,Male,Information Technology,Software Executive,Dhaka Head Office,Permanent,2025-01-13,,,Active
+HG-01527,Farzana Kabir,Female,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Probation,2025-01-12,,,Active
+HG-01528,Ayesha Akter,Female,Production,Production Officer,Dhaka Head Office,Permanent,2025-01-11,,,Active
+HG-01529,Hasan Chowdhury,Male,Sales & Marketing,Assistant Manager - Sales,Narayanganj Plant,Permanent,2025-01-10,,,Active
+HG-01530,Nayeem Uddin,Male,Production,Production Officer,Narayanganj Plant,Permanent,2025-02-03,,,Active
+HG-01531,Sabbir Kabir,Male,Production,Production Operator,Narayanganj Plant,Permanent,2025-02-13,,,Active
+HG-01532,Fahim Ahmed,Male,Quality Assurance,Quality Inspector,Narayanganj Plant,Permanent,2025-02-25,,,Active
+HG-01533,Mizan Miah,Male,Administration,Facility Officer,Dhaka Head Office,Permanent,2025-02-13,,,Active
+HG-01534,Sabbir Akter,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2025-02-02,,,Active
+HG-01535,Mahmud Karim,Male,Production,Production Operator,Narayanganj Plant,Permanent,2025-02-27,2025-05-27,Work-Life Balance,Exited
+HG-01536,Mehedi Karim,Male,Quality Assurance,Quality Inspector,Narayanganj Plant,Probation,2025-02-24,,,Active
+HG-01537,Arif Khan,Male,Sales & Marketing,Marketing Officer,Narayanganj Plant,Permanent,2025-02-08,,,Active
+HG-01538,Sabbir Karim,Male,Supply Chain,Procurement Executive,Gazipur Plant,Permanent,2025-02-04,,,Active
+HG-01539,Arif Miah,Male,Human Resources,HR Business Executive,Gazipur Plant,Probation,2025-02-08,2025-07-21,Better Opportunity,Exited
+HG-01540,Mizan Miah,Male,Production,Assistant Manager - Production,Gazipur Plant,Contract,2025-02-19,,,Active
+HG-01541,Fahim Kabir,Male,Supply Chain,Assistant Manager - Supply Chain,Narayanganj Plant,Contract,2025-02-18,,,Active
+HG-01542,Tasnim Kabir,Female,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2025-02-06,,,Active
+HG-01543,Raisa Khan,Female,Human Resources,Senior HR Executive,Dhaka Head Office,Probation,2025-02-21,,,Active
+HG-01544,Rakib Rahman,Male,Human Resources,HR Business Executive,Gazipur Plant,Permanent,2025-03-26,,,Active
+HG-01545,Sajid Ahmed,Male,Supply Chain,Logistics Executive,Gazipur Plant,Permanent,2025-03-04,,,Active
+HG-01546,Maliha Sarker,Female,Production,Production Officer,Gazipur Plant,Permanent,2025-03-25,,,Active
+HG-01547,Sajid Islam,Male,Human Resources,Senior HR Executive,Dhaka Head Office,Permanent,2025-03-23,,,Active
+HG-01548,Asif Hasan,Male,Finance & Accounts,Assistant Manager - Finance,Gazipur Plant,Permanent,2025-03-06,,,Active
+HG-01549,Nazmul Chowdhury,Male,Finance & Accounts,Payroll Executive,Narayanganj Plant,Permanent,2025-03-11,,,Active
+HG-01550,Tasnim Rahman,Female,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Probation,2025-03-11,,,Active
+HG-01551,Mizan Alam,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2025-03-24,2025-10-29,Better Opportunity,Exited
+HG-01552,Nazmul Miah,Male,Quality Assurance,Compliance Executive,Gazipur Plant,Permanent,2025-03-22,,,Active
+HG-01553,Sumaiya Sarker,Female,Production,Senior Operator,Narayanganj Plant,Contract,2025-03-07,,,Active
+HG-01554,Sadika Karim,Female,Production,Production Officer,Gazipur Plant,Permanent,2025-03-03,,,Active
+HG-01555,Sabbir Hossain,Male,Human Resources,HR Business Executive,Dhaka Head Office,Permanent,2025-04-17,,,Active
+HG-01556,Nazmul Alam,Male,Supply Chain,Assistant Manager - Supply Chain,Gazipur Plant,Contract,2025-04-30,,,Active
+HG-01557,Arif Rahman,Male,Supply Chain,Assistant Manager - Supply Chain,Gazipur Plant,Probation,2025-04-12,,,Active
+HG-01558,Fahim Ahmed,Male,Production,Production Operator,Gazipur Plant,Permanent,2025-04-25,,,Active
+HG-01559,Jannat Hossain,Female,Finance & Accounts,Senior Accounts Executive,Dhaka Head Office,Probation,2025-04-12,,,Active
+HG-01560,Nayeem Uddin,Male,Production,Senior Operator,Gazipur Plant,Probation,2025-04-23,2025-07-20,Better Opportunity,Exited
+HG-01561,Hasan Akter,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Probation,2025-04-22,2026-05-08,Performance,Exited
+HG-01562,Sajid Sarker,Male,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Contract,2025-04-10,,,Active
+HG-01563,Nabila Miah,Female,Supply Chain,Procurement Executive,Gazipur Plant,Permanent,2025-04-04,,,Active
+HG-01564,Raisa Kabir,Female,Supply Chain,Logistics Executive,Narayanganj Plant,Contract,2025-05-16,,,Active
+HG-01565,Imran Islam,Male,Supply Chain,Inventory Officer,Gazipur Plant,Probation,2025-05-29,,,Active
+HG-01566,Arif Hasan,Male,Production,Production Officer,Gazipur Plant,Permanent,2025-05-07,2026-04-07,Performance,Exited
+HG-01567,Hasan Miah,Male,Information Technology,Data Analyst,Gazipur Plant,Permanent,2025-05-20,2025-10-25,End of Contract,Exited
+HG-01568,Imran Islam,Male,Production,Assistant Manager - Production,Chattogram Office,Probation,2025-05-15,,,Active
+HG-01569,Farhan Chowdhury,Male,Production,Senior Operator,Narayanganj Plant,Probation,2025-05-17,,,Active
+HG-01570,Jannat Karim,Female,Production,Senior Operator,Gazipur Plant,Permanent,2025-05-24,,,Active
+HG-01571,Jubayer Karim,Male,Information Technology,Assistant Manager - IT,Narayanganj Plant,Permanent,2025-05-26,2025-08-14,Better Opportunity,Exited
+HG-01572,Rumana Hasan,Female,Production,Production Operator,Gazipur Plant,Permanent,2025-05-29,,,Active
+HG-01573,Jannat Chowdhury,Female,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2025-05-10,2025-10-12,Work-Life Balance,Exited
+HG-01574,Asif Ahmed,Male,Supply Chain,Assistant Manager - Supply Chain,Gazipur Plant,Contract,2025-05-27,,,Active
+HG-01575,Jubayer Hasan,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Contract,2025-05-11,2025-12-15,End of Contract,Exited
+HG-01576,Nazmul Begum,Male,Production,Production Operator,Narayanganj Plant,Probation,2025-05-06,,,Active
+HG-01577,Maliha Ahmed,Female,Administration,Admin Executive,Dhaka Head Office,Permanent,2025-05-31,,,Active
+HG-01578,Sajid Uddin,Male,Quality Assurance,QA Officer,Narayanganj Plant,Permanent,2025-05-15,,,Active
+HG-01579,Raisa Ahmed,Female,Production,Production Operator,Narayanganj Plant,Permanent,2025-06-08,,,Active
+HG-01580,Tanjila Ahmed,Female,Quality Assurance,QA Officer,Narayanganj Plant,Contract,2025-06-18,,,Active
+HG-01581,Rafi Kabir,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2025-06-07,,,Active
+HG-01582,Mahmud Islam,Male,Quality Assurance,Compliance Executive,Narayanganj Plant,Contract,2025-06-18,,,Active
+HG-01583,Hasan Karim,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2025-06-16,,,Active
+HG-01584,Sabbir Alam,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2025-06-03,,,Active
+HG-01585,Nayeem Khan,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Permanent,2025-06-06,,,Active
+HG-01586,Asif Begum,Male,Quality Assurance,Senior QA Executive,Narayanganj Plant,Permanent,2025-06-20,,,Active
+HG-01587,Jubayer Akter,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2025-06-17,,,Active
+HG-01588,Mim Alam,Female,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2025-06-29,,,Active
+HG-01589,Rafi Kabir,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2025-06-02,,,Active
+HG-01590,Mahmud Karim,Male,Administration,Admin Executive,Chattogram Office,Contract,2025-06-01,,,Active
+HG-01591,Arif Hasan,Male,Production,Production Operator,Narayanganj Plant,Permanent,2025-06-08,,,Active
+HG-01592,Sabbir Miah,Male,Supply Chain,Senior Supply Chain Executive,Narayanganj Plant,Probation,2025-07-05,,,Active
+HG-01593,Nayeem Hossain,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2025-07-02,,,Active
+HG-01594,Tanvir Alam,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2025-07-18,2025-11-15,Better Opportunity,Exited
+HG-01595,Sadika Begum,Female,Administration,Senior Admin Executive,Dhaka Head Office,Permanent,2025-07-09,,,Active
+HG-01596,Hasan Hasan,Male,Supply Chain,Procurement Executive,Dhaka Head Office,Permanent,2025-07-29,,,Active
+HG-01597,Nayeem Miah,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Probation,2025-07-04,,,Active
+HG-01598,Nusrat Sarker,Female,Production,Line Supervisor,Gazipur Plant,Permanent,2025-07-08,,,Active
+HG-01599,Rakib Sarker,Male,Human Resources,Senior HR Executive,Chattogram Office,Permanent,2025-07-13,,,Active
+HG-01600,Mizan Ahmed,Male,Quality Assurance,Senior QA Executive,Narayanganj Plant,Probation,2025-07-09,,,Active
+HG-01601,Farzana Uddin,Female,Finance & Accounts,Finance Officer,Dhaka Head Office,Permanent,2025-07-28,,,Active
+HG-01602,Tanjila Chowdhury,Female,Human Resources,HR Business Executive,Dhaka Head Office,Probation,2025-07-20,,,Active
+HG-01603,Rashed Hasan,Male,Quality Assurance,Compliance Executive,Narayanganj Plant,Permanent,2025-08-03,,,Active
+HG-01604,Tanvir Chowdhury,Male,Production,Production Operator,Narayanganj Plant,Permanent,2025-08-28,,,Active
+HG-01605,Mehedi Sarker,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2025-08-28,,,Active
+HG-01606,Nayeem Islam,Male,Information Technology,Software Executive,Dhaka Head Office,Permanent,2025-08-03,,,Active
+HG-01607,Imran Akter,Male,Sales & Marketing,Marketing Officer,Dhaka Head Office,Contract,2025-08-18,2025-12-17,Compensation & Benefits,Exited
+HG-01608,Mehedi Khan,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2025-08-15,,,Active
+HG-01609,Tanvir Miah,Male,Production,Senior Operator,Narayanganj Plant,Permanent,2025-08-16,,,Active
+HG-01610,Mizan Rahman,Male,Quality Assurance,QA Officer,Gazipur Plant,Probation,2025-08-09,,,Active
+HG-01611,Mahmud Ahmed,Male,Finance & Accounts,Finance Officer,Chattogram Office,Contract,2025-08-23,,,Active
+HG-01612,Tanvir Miah,Male,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2025-08-12,,,Active
+HG-01613,Rumana Khan,Female,Finance & Accounts,Payroll Executive,Dhaka Head Office,Permanent,2025-08-28,,,Active
+HG-01614,Sajid Kabir,Male,Supply Chain,Procurement Executive,Gazipur Plant,Probation,2025-08-07,,,Active
+HG-01615,Farhan Rahman,Male,Supply Chain,Logistics Executive,Gazipur Plant,Probation,2025-08-24,,,Active
+HG-01616,Sabbir Karim,Male,Supply Chain,Procurement Executive,Gazipur Plant,Permanent,2025-08-20,,,Active
+HG-01617,Hasan Akter,Male,Human Resources,Assistant Manager - HR,Dhaka Head Office,Permanent,2025-08-14,,,Active
+HG-01618,Rashed Khan,Male,Production,Production Officer,Gazipur Plant,Permanent,2025-08-23,,,Active
+HG-01619,Tanvir Hossain,Male,Production,Production Officer,Narayanganj Plant,Permanent,2025-08-12,,,Active
+HG-01620,Fahim Begum,Male,Administration,Admin Executive,Dhaka Head Office,Contract,2025-08-05,,,Active
+HG-01621,Tanvir Miah,Male,Quality Assurance,Senior QA Executive,Narayanganj Plant,Contract,2025-08-30,,,Active
+HG-01622,Foysal Rahman,Male,Administration,Assistant Manager - Admin,Narayanganj Plant,Probation,2025-08-01,2025-09-26,Supervisor / Management,Exited
+HG-01623,Nayeem Karim,Male,Production,Senior Operator,Gazipur Plant,Permanent,2025-09-24,2026-06-26,Performance,Exited
+HG-01624,Tasnim Hasan,Female,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Permanent,2025-09-22,,,Active
+HG-01625,Shakil Uddin,Male,Administration,Admin Assistant,Dhaka Head Office,Permanent,2025-09-30,,,Active
+HG-01626,Raisa Hossain,Female,Supply Chain,Assistant Manager - Supply Chain,Narayanganj Plant,Permanent,2025-09-03,,,Active
+HG-01627,Maliha Karim,Female,Information Technology,Software Executive,Dhaka Head Office,Permanent,2025-09-17,,,Active
+HG-01628,Mehedi Hasan,Male,Finance & Accounts,Payroll Executive,Narayanganj Plant,Permanent,2025-09-30,,,Active
+HG-01629,Arif Uddin,Male,Production,Production Operator,Gazipur Plant,Permanent,2025-09-12,,,Active
+HG-01630,Shakil Khan,Male,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Probation,2025-09-12,,,Active
+HG-01631,Nazmul Miah,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2025-09-10,,,Active
+HG-01632,Jubayer Kabir,Male,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Permanent,2025-09-04,,,Active
+HG-01633,Jubayer Islam,Male,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Permanent,2025-09-13,,,Active
+HG-01634,Tanvir Uddin,Male,Information Technology,Data Analyst,Dhaka Head Office,Permanent,2025-09-20,,,Active
+HG-01635,Raisa Miah,Female,Quality Assurance,QA Officer,Chattogram Office,Contract,2025-09-09,2025-10-18,Compensation & Benefits,Exited
+HG-01636,Jubayer Sarker,Male,Supply Chain,Logistics Executive,Narayanganj Plant,Permanent,2025-09-20,,,Active
+HG-01637,Sharmin Hossain,Female,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2025-09-21,,,Active
+HG-01638,Foysal Rahman,Male,Human Resources,Senior HR Executive,Narayanganj Plant,Contract,2025-09-15,,,Active
+HG-01639,Jannat Sarker,Female,Production,Production Operator,Dhaka Head Office,Permanent,2025-09-18,,,Active
+HG-01640,Mahmud Islam,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2025-09-08,,,Active
+HG-01641,Mim Begum,Female,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Permanent,2025-10-18,,,Active
+HG-01642,Nusrat Miah,Female,Supply Chain,Assistant Manager - Supply Chain,Gazipur Plant,Permanent,2025-10-01,,,Active
+HG-01643,Nabila Begum,Female,Production,Production Operator,Narayanganj Plant,Permanent,2025-10-25,,,Active
+HG-01644,Sumaiya Karim,Female,Administration,Facility Officer,Dhaka Head Office,Permanent,2025-10-29,,,Active
+HG-01645,Nayeem Sarker,Male,Supply Chain,Logistics Executive,Gazipur Plant,Permanent,2025-10-04,,,Active
+HG-01646,Shakil Hasan,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Contract,2025-10-13,2025-12-10,Performance,Exited
+HG-01647,Rafi Miah,Male,Finance & Accounts,Finance Officer,Dhaka Head Office,Permanent,2025-10-13,,,Active
+HG-01648,Jannat Begum,Female,Production,Assistant Manager - Production,Dhaka Head Office,Contract,2025-10-07,,,Active
+HG-01649,Rashed Akter,Male,Supply Chain,Senior Supply Chain Executive,Narayanganj Plant,Permanent,2025-10-27,,,Active
+HG-01650,Nayeem Akter,Male,Finance & Accounts,Senior Accounts Executive,Dhaka Head Office,Probation,2025-10-03,,,Active
+HG-01651,Ayesha Uddin,Female,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2025-10-28,2025-12-07,Compensation & Benefits,Exited
+HG-01652,Rakib Khan,Male,Supply Chain,Assistant Manager - Supply Chain,Narayanganj Plant,Permanent,2025-10-15,,,Active
+HG-01653,Asif Miah,Male,Information Technology,IT Support Executive,Chattogram Office,Probation,2025-11-06,,,Active
+HG-01654,Shakil Hossain,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2025-11-25,,,Active
+HG-01655,Rakib Kabir,Male,Administration,Facility Officer,Dhaka Head Office,Permanent,2025-11-13,2026-04-06,Personal / Family,Exited
+HG-01656,Rafi Islam,Male,Information Technology,Assistant Manager - IT,Dhaka Head Office,Contract,2025-11-03,,,Active
+HG-01657,Nabila Sarker,Female,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Permanent,2025-11-02,,,Active
+HG-01658,Sharmin Hasan,Female,Production,Assistant Manager - Production,Narayanganj Plant,Permanent,2025-11-29,,,Active
+HG-01659,Tanvir Hossain,Male,Quality Assurance,Quality Inspector,Gazipur Plant,Permanent,2025-11-06,,,Active
+HG-01660,Sabbir Miah,Male,Production,Production Operator,Narayanganj Plant,Contract,2025-11-22,,,Active
+HG-01661,Nabila Alam,Female,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Contract,2025-11-28,,,Active
+HG-01662,Nabila Alam,Female,Supply Chain,Logistics Executive,Narayanganj Plant,Permanent,2025-11-08,,,Active
+HG-01663,Sabbir Kabir,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2025-11-07,,,Active
+HG-01664,Mizan Hasan,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Permanent,2025-11-16,,,Active
+HG-01665,Rafi Rahman,Male,Production,Senior Operator,Gazipur Plant,Permanent,2025-11-29,,,Active
+HG-01666,Ayesha Islam,Female,Production,Production Officer,Gazipur Plant,Permanent,2025-11-25,,,Active
+HG-01667,Nabila Islam,Female,Finance & Accounts,Senior Accounts Executive,Dhaka Head Office,Permanent,2025-11-27,,,Active
+HG-01668,Raisa Ahmed,Female,Supply Chain,Senior Supply Chain Executive,Gazipur Plant,Probation,2025-11-01,,,Active
+HG-01669,Nazmul Miah,Male,Production,Production Operator,Gazipur Plant,Contract,2025-11-01,,,Active
+HG-01670,Foysal Hossain,Male,Production,Senior Operator,Gazipur Plant,Contract,2025-11-03,,,Active
+HG-01671,Mahmud Begum,Male,Production,Production Operator,Gazipur Plant,Permanent,2025-11-03,,,Active
+HG-01672,Ayesha Ahmed,Female,Production,Senior Operator,Narayanganj Plant,Permanent,2025-11-21,,,Active
+HG-01673,Nusrat Uddin,Female,Supply Chain,Assistant Manager - Supply Chain,Dhaka Head Office,Permanent,2025-12-07,,,Active
+HG-01674,Mim Rahman,Female,Administration,Senior Admin Executive,Dhaka Head Office,Permanent,2025-12-23,,,Active
+HG-01675,Rafi Hossain,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2025-12-05,,,Active
+HG-01676,Imran Sarker,Male,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2025-12-06,,,Active
+HG-01677,Sumaiya Hasan,Female,Sales & Marketing,Key Account Executive,Dhaka Head Office,Permanent,2025-12-15,,,Active
+HG-01678,Sadika Uddin,Female,Sales & Marketing,Assistant Manager - Sales,Dhaka Head Office,Permanent,2025-12-28,,,Active
+HG-01679,Foysal Miah,Male,Production,Production Officer,Narayanganj Plant,Permanent,2025-12-30,,,Active
+HG-01680,Tasnim Chowdhury,Female,Production,Senior Operator,Chattogram Office,Permanent,2025-12-07,2026-03-15,Work-Life Balance,Exited
+HG-01681,Shakil Hossain,Male,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Permanent,2025-12-01,,,Active
+HG-01682,Fahim Akter,Male,Production,Production Officer,Chattogram Office,Permanent,2025-12-19,,,Active
+HG-01683,Hasan Chowdhury,Male,Human Resources,Senior HR Executive,Dhaka Head Office,Permanent,2025-12-20,,,Active
+HG-01684,Tasnim Miah,Female,Finance & Accounts,Finance Officer,Dhaka Head Office,Permanent,2025-12-27,2026-04-15,Career Growth,Exited
+HG-01685,Foysal Kabir,Male,Sales & Marketing,Sales Executive,Gazipur Plant,Permanent,2025-12-08,,,Active
+HG-01686,Rashed Rahman,Male,Quality Assurance,Compliance Executive,Gazipur Plant,Probation,2025-12-07,,,Active
+HG-01687,Sabbir Begum,Male,Human Resources,Assistant Manager - HR,Dhaka Head Office,Contract,2025-12-25,,,Active
+HG-01688,Hasan Uddin,Male,Administration,Assistant Manager - Admin,Narayanganj Plant,Permanent,2025-12-14,,,Active
+HG-01689,Fahim Rahman,Male,Human Resources,Senior HR Executive,Dhaka Head Office,Contract,2025-12-04,,,Active
+HG-01690,Mizan Akter,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2025-12-25,,,Active
+HG-01691,Mahmud Akter,Male,Sales & Marketing,Key Account Executive,Dhaka Head Office,Probation,2026-01-03,,,Active
+HG-01692,Fahim Akter,Male,Administration,Senior Admin Executive,Dhaka Head Office,Permanent,2026-01-26,,,Active
+HG-01693,Mehedi Begum,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2026-01-29,,,Active
+HG-01694,Tanvir Ahmed,Male,Production,Production Officer,Narayanganj Plant,Permanent,2026-01-11,,,Active
+HG-01695,Fahim Hasan,Male,Production,Line Supervisor,Chattogram Office,Permanent,2026-01-28,,,Active
+HG-01696,Jubayer Kabir,Male,Finance & Accounts,Assistant Manager - Finance,Dhaka Head Office,Permanent,2026-01-02,,,Active
+HG-01697,Hasan Akter,Male,Production,Production Officer,Gazipur Plant,Permanent,2026-01-08,,,Active
+HG-01698,Sadia Khan,Female,Production,Line Supervisor,Gazipur Plant,Permanent,2026-01-29,,,Active
+HG-01699,Mehedi Islam,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2026-01-09,,,Active
+HG-01700,Hasan Sarker,Male,Quality Assurance,Compliance Executive,Gazipur Plant,Permanent,2026-01-05,,,Active
+HG-01701,Jubayer Miah,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Probation,2026-02-23,,,Active
+HG-01702,Arif Akter,Male,Sales & Marketing,Territory Officer,Gazipur Plant,Permanent,2026-02-17,,,Active
+HG-01703,Fahim Hasan,Male,Sales & Marketing,Territory Officer,Dhaka Head Office,Permanent,2026-02-26,,,Active
+HG-01704,Tasnim Sarker,Female,Quality Assurance,Assistant Manager - QA,Gazipur Plant,Permanent,2026-02-12,2026-04-28,Personal / Family,Exited
+HG-01705,Tanvir Kabir,Male,Sales & Marketing,Assistant Manager - Sales,Narayanganj Plant,Permanent,2026-02-18,,,Active
+HG-01706,Asif Begum,Male,Finance & Accounts,Senior Accounts Executive,Dhaka Head Office,Permanent,2026-02-26,,,Active
+HG-01707,Rakib Hasan,Male,Quality Assurance,Senior QA Executive,Chattogram Office,Probation,2026-02-24,,,Active
+HG-01708,Raisa Karim,Female,Sales & Marketing,Sales Executive,Dhaka Head Office,Permanent,2026-02-26,,,Active
+HG-01709,Rakib Hasan,Male,Production,Line Supervisor,Gazipur Plant,Contract,2026-02-19,,,Active
+HG-01710,Nabila Khan,Female,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2026-02-08,,,Active
+HG-01711,Asif Chowdhury,Male,Human Resources,HR Assistant,Chattogram Office,Permanent,2026-02-09,,,Active
+HG-01712,Nayeem Chowdhury,Male,Sales & Marketing,Marketing Officer,Gazipur Plant,Contract,2026-02-17,,,Active
+HG-01713,Asif Uddin,Male,Production,Senior Operator,Gazipur Plant,Probation,2026-02-02,,,Active
+HG-01714,Jannat Khan,Female,Administration,Admin Assistant,Narayanganj Plant,Permanent,2026-03-27,,,Active
+HG-01715,Sharmin Kabir,Female,Supply Chain,Assistant Manager - Supply Chain,Gazipur Plant,Permanent,2026-03-26,,,Active
+HG-01716,Shakil Hasan,Male,Human Resources,Assistant Manager - HR,Dhaka Head Office,Contract,2026-03-19,,,Active
+HG-01717,Nayeem Miah,Male,Human Resources,HR Business Executive,Dhaka Head Office,Probation,2026-03-13,,,Active
+HG-01718,Arif Alam,Male,Supply Chain,Procurement Executive,Gazipur Plant,Permanent,2026-03-09,,,Active
+HG-01719,Rashed Chowdhury,Male,Supply Chain,Senior Supply Chain Executive,Dhaka Head Office,Permanent,2026-03-19,,,Active
+HG-01720,Fahim Hasan,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2026-03-06,,,Active
+HG-01721,Hasan Akter,Male,Administration,Senior Admin Executive,Dhaka Head Office,Permanent,2026-03-29,,,Active
+HG-01722,Mehedi Uddin,Male,Finance & Accounts,Finance Officer,Narayanganj Plant,Permanent,2026-03-06,,,Active
+HG-01723,Rafi Karim,Male,Sales & Marketing,Assistant Manager - Sales,Chattogram Office,Contract,2026-03-13,,,Active
+HG-01724,Rakib Alam,Male,Production,Line Supervisor,Gazipur Plant,Permanent,2026-03-12,,,Active
+HG-01725,Foysal Alam,Male,Supply Chain,Logistics Executive,Chattogram Office,Contract,2026-03-06,,,Active
+HG-01726,Asif Karim,Male,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2026-04-19,,,Active
+HG-01727,Ayesha Rahman,Female,Administration,Admin Assistant,Narayanganj Plant,Permanent,2026-04-16,,,Active
+HG-01728,Mahmud Begum,Male,Administration,Admin Assistant,Dhaka Head Office,Permanent,2026-04-19,,,Active
+HG-01729,Nazmul Kabir,Male,Sales & Marketing,Sales Executive,Narayanganj Plant,Contract,2026-04-05,,,Active
+HG-01730,Imran Rahman,Male,Administration,Admin Executive,Dhaka Head Office,Permanent,2026-04-16,,,Active
+HG-01731,Hasan Begum,Male,Production,Senior Operator,Gazipur Plant,Permanent,2026-04-24,,,Active
+HG-01732,Rakib Begum,Male,Production,Production Operator,Gazipur Plant,Permanent,2026-04-24,,,Active
+HG-01733,Sajid Karim,Male,Production,Line Supervisor,Gazipur Plant,Probation,2026-04-26,,,Active
+HG-01734,Ayesha Alam,Female,Information Technology,Assistant Manager - IT,Narayanganj Plant,Permanent,2026-04-15,,,Active
+HG-01735,Sumaiya Khan,Female,Supply Chain,Inventory Officer,Gazipur Plant,Permanent,2026-04-13,,,Active
+HG-01736,Tanvir Karim,Male,Supply Chain,Procurement Executive,Gazipur Plant,Contract,2026-04-20,,,Active
+HG-01737,Nusrat Kabir,Female,Sales & Marketing,Marketing Officer,Dhaka Head Office,Probation,2026-04-01,,,Active
+HG-01738,Sajid Hasan,Male,Production,Production Operator,Dhaka Head Office,Permanent,2026-04-28,,,Active
+HG-01739,Mehedi Rahman,Male,Finance & Accounts,Accounts Executive,Dhaka Head Office,Permanent,2026-05-30,,,Active
+HG-01740,Jubayer Hossain,Male,Human Resources,HR Assistant,Dhaka Head Office,Permanent,2026-05-03,,,Active
+HG-01741,Tanvir Khan,Male,Administration,Senior Admin Executive,Dhaka Head Office,Permanent,2026-05-03,2026-06-30,Compensation & Benefits,Exited
+HG-01742,Sajid Kabir,Male,Administration,Facility Officer,Dhaka Head Office,Contract,2026-05-26,,,Active
+HG-01743,Nazmul Hasan,Male,Finance & Accounts,Payroll Executive,Dhaka Head Office,Permanent,2026-05-03,,,Active
+HG-01744,Sharmin Chowdhury,Female,Sales & Marketing,Key Account Executive,Dhaka Head Office,Probation,2026-05-20,,,Active
+HG-01745,Sabbir Islam,Male,Quality Assurance,Quality Inspector,Gazipur Plant,Permanent,2026-05-01,,,Active
+HG-01746,Farzana Miah,Female,Quality Assurance,Quality Inspector,Narayanganj Plant,Contract,2026-05-23,,,Active
+HG-01747,Sadia Miah,Female,Production,Line Supervisor,Narayanganj Plant,Permanent,2026-05-01,,,Active
+HG-01748,Nusrat Hasan,Female,Production,Production Operator,Narayanganj Plant,Permanent,2026-06-04,,,Active
+HG-01749,Tanjila Begum,Female,Human Resources,HR Assistant,Narayanganj Plant,Permanent,2026-06-07,,,Active
+HG-01750,Nayeem Karim,Male,Finance & Accounts,Senior Accounts Executive,Narayanganj Plant,Permanent,2026-06-01,,,Active
+HG-01751,Rafi Akter,Male,Production,Production Officer,Dhaka Head Office,Permanent,2026-06-24,,,Active
+HG-01752,Jannat Karim,Female,Production,Assistant Manager - Production,Gazipur Plant,Permanent,2026-06-27,,,Active
+HG-01753,Jubayer Rahman,Male,Production,Senior Operator,Gazipur Plant,Contract,2026-06-05,,,Active
+HG-01754,Nazmul Sarker,Male,Quality Assurance,Quality Inspector,Narayanganj Plant,Permanent,2026-06-26,,,Active
+HG-01755,Farhan Begum,Male,Finance & Accounts,Payroll Executive,Chattogram Office,Contract,2026-06-28,,,Active
+HG-01756,Sajid Miah,Male,Sales & Marketing,Sales Executive,Dhaka Head Office,Contract,2026-06-29,,,Active
+HG-01757,Tasnim Miah,Female,Production,Senior Operator,Narayanganj Plant,Permanent,2026-06-29,,,Active
+HG-01758,Arif Begum,Male,Production,Line Supervisor,Narayanganj Plant,Permanent,2026-06-24,,,Active
+HG-01759,Mizan Karim,Male,Quality Assurance,Assistant Manager - QA,Narayanganj Plant,Probation,2026-06-30,,,Active
+HG-01760,Mahmud Ahmed,Male,Finance & Accounts,Senior Accounts Executive,Dhaka Head Office,Permanent,2026-06-11,,,Active
+HG-01761,Jubayer Sarker,Male,Production,Assistant Manager - Production,Gazipur Plant,Contract,2026-06-30,,,Active
+HG-01762,Nazmul Kabir,Male,Production,Line Supervisor,Gazipur Plant,Contract,2026-06-25,,,Active

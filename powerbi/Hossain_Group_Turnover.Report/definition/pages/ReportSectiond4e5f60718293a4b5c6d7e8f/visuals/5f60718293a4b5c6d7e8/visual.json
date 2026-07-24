@@ -1,0 +1,179 @@
+{
+  "position": {
+    "x": 24,
+    "y": 24,
+    "z": 1000,
+    "height": 672,
+    "width": 1232,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "MonthStart"
+                }
+              },
+              "queryRef": "CompanyMonthly.MonthStart",
+              "nativeQueryRef": "MonthStart"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "OpeningHeadcount"
+                }
+              },
+              "queryRef": "CompanyMonthly.OpeningHeadcount",
+              "nativeQueryRef": "OpeningHeadcount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "Hires"
+                }
+              },
+              "queryRef": "CompanyMonthly.Hires",
+              "nativeQueryRef": "Hires"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "Exits"
+                }
+              },
+              "queryRef": "CompanyMonthly.Exits",
+              "nativeQueryRef": "Exits"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "ClosingHeadcount"
+                }
+              },
+              "queryRef": "CompanyMonthly.ClosingHeadcount",
+              "nativeQueryRef": "ClosingHeadcount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "AverageHeadcount"
+                }
+              },
+              "queryRef": "CompanyMonthly.AverageHeadcount",
+              "nativeQueryRef": "AverageHeadcount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "TurnoverRate"
+                }
+              },
+              "queryRef": "CompanyMonthly.TurnoverRate",
+              "nativeQueryRef": "TurnoverRate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompanyMonthly"
+                    }
+                  },
+                  "Property": "RiskLevel"
+                }
+              },
+              "queryRef": "CompanyMonthly.RiskLevel",
+              "nativeQueryRef": "RiskLevel"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Monthly Headcount and Turnover Detail'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "5f60718293a4b5c6d7e8"
+}

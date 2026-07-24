@@ -1,0 +1,2 @@
+﻿PeriodStart,PeriodEnd,OpeningHeadcount,ClosingHeadcount,AverageHeadcount,TotalHires,TotalExits,TurnoverRate,AnnualizedTurnoverRate,ActiveEmployees,RiskLevel
+2025-01-01,2026-06-30,520,592,546.44,242,170,0.311102,0.207401,592,Critical Risk
