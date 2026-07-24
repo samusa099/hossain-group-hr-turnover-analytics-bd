@@ -26,8 +26,9 @@
 </p>
 
 <p align="center">
-  <a href="#-executive-overview">Executive Overview</a> ·
-  <a href="#-project-snapshot">Project Snapshot</a> ·
+  <a href="#-executive-overview">Overview</a> ·
+  <a href="#-project-snapshot">Snapshot</a> ·
+  <a href="#-dataset-usage">Dataset Usage</a> ·
   <a href="#-analytics-workflow">Workflow</a> ·
   <a href="#-repository-structure">Structure</a> ·
   <a href="#-quick-start">Quick Start</a> ·
@@ -40,9 +41,9 @@
 
 **Hossain Group HR Turnover Analytics BD** is an end-to-end HR analytics portfolio project designed for an **HR Business Executive** working in a Bangladesh-based organisation.
 
-The project converts synthetic employee joining, headcount and separation records into structured turnover insights through a formula-driven Excel calculator, a management dashboard, Power BI project files, Python automation, a Kaggle notebook and a Looker Studio-ready dataset.
+The project transforms synthetic employee joining, headcount and separation records into actionable turnover insights through an Excel calculator, management dashboard, Power BI project, Python automation, Kaggle notebook and Looker Studio-ready dataset.
 
-> **Analytics workflow:** employee records → validation → turnover calculation → risk classification → dashboard reporting → HR action.
+> **Workflow:** employee records → validation → turnover calculation → risk classification → dashboard reporting → HR action.
 
 <table>
 <tr>
@@ -55,16 +56,16 @@ The project converts synthetic employee joining, headcount and separation record
 
 ### What makes this project useful
 
-| Capability | What is included |
+| Capability | Included |
 |---|---|
 | **Bangladesh context** | Synthetic Bangladeshi employee names, locations, departments and HR terminology |
-| **Excel usability** | Interactive date, department, location and employment-type filters |
+| **Excel usability** | Date, department, location and employment-type filters |
 | **HR metrics** | Opening, closing and average headcount, hires, exits and turnover |
-| **Risk monitoring** | Automatic Low, Moderate, High, Very High and Critical classification |
-| **BI readiness** | Power BI Project, processed CSV files and Looker Studio-ready data |
-| **Automation** | Python scripts for recalculation, model rebuilding and validation |
-| **Portfolio readiness** | GitHub documentation, Kaggle metadata and reproducible notebook |
-| **Ethical design** | Fully synthetic records with no confidential employee information |
+| **Risk monitoring** | Low, Moderate, High, Very High and Critical classification |
+| **BI readiness** | Power BI Project and Looker Studio-ready data |
+| **Automation** | Python recalculation, model rebuilding and validation |
+| **Portfolio readiness** | GitHub documentation, Kaggle metadata and notebook |
+| **Ethical design** | No real employee or confidential organisational data |
 
 ---
 
@@ -104,28 +105,36 @@ The project converts synthetic employee joining, headcount and separation record
 | Sales & Marketing | 18 | 18.76% | Very High |
 | Human Resources | 7 | 13.83% | High |
 
-### Leading exit reasons
+---
 
-| Exit reason | Exits | Share |
-|---|---:|---:|
-| Better Opportunity | 32 | 18.82% |
-| End of Contract | 22 | 12.94% |
-| Career Growth | 22 | 12.94% |
-| Performance | 22 | 12.94% |
-| Work-Life Balance | 17 | 10.00% |
-| Compensation & Benefits | 16 | 9.41% |
-| Supervisor / Management | 16 | 9.41% |
+## 🧭 Dataset usage
+
+Use this dataset to calculate turnover, compare departments, analyse exit reasons, build dashboards and practise HR reporting with Excel, Power BI, Python, SQL, Kaggle or Looker Studio.
+
+| Start with | Best use |
+|---|---|
+| `data/raw/employee_master.csv` | Employee-level calculations |
+| `excel/Hossain_Group_Employee_Turnover_Calculator.xlsx` | Formula-driven analysis and dashboard |
+| `powerbi/Hossain_Group_Turnover.pbip` | Interactive BI reporting |
+| `notebooks/Hossain_Group_Turnover_Analysis.ipynb` | Python and Kaggle analysis |
+| `looker_studio/hossain_group_looker_studio.csv` | Browser-based dashboarding |
+
+<p align="center">
+  <a href="DATASET_USAGE_GUIDE.md"><strong>📘 Open the Complete Dataset Usage Guide</strong></a>
+</p>
+
+The detailed guide covers **why, how and where** the dataset can be used, turnover formulas, calculation examples, platform workflows, HR use cases, SQL practice, project ideas, limitations and responsible data handling.
 
 ---
 
 ## 🎯 Business questions
 
 1. What is the employee turnover rate for a selected period?
-2. What is the annualized turnover rate?
-3. Which departments have the highest turnover exposure?
-4. What are the leading employee exit reasons?
-5. How does turnover change month by month?
-6. Which workforce segments require immediate retention action?
+2. Which departments have the highest turnover exposure?
+3. What are the leading employee exit reasons?
+4. How does turnover change month by month?
+5. Are hires keeping pace with exits?
+6. Which workforce segments require retention action?
 7. What should HR communicate to management?
 
 ---
@@ -166,18 +175,19 @@ flowchart TB
     ASSETS --> COVER[Project cover SVG]
 
     ROOT --> DATA[data]
-    DATA --> RAW[raw / employee_master.csv]
+    DATA --> RAW[raw / employee master]
     DATA --> PROCESSED[processed / turnover summaries]
-    DATA --> META[metadata / data_dictionary.json]
+    DATA --> META[metadata / data dictionary]
 
-    ROOT --> EXCEL[excel / turnover calculator]
+    ROOT --> EXCEL[excel / calculator]
     ROOT --> NOTEBOOKS[notebooks / Kaggle analysis]
-    ROOT --> POWERBI[powerbi / PBIP report and semantic model]
-    ROOT --> LOOKER[looker_studio / upload-ready CSV]
+    ROOT --> POWERBI[powerbi / report and semantic model]
+    ROOT --> LOOKER[looker_studio / reporting CSV]
     ROOT --> SCRIPTS[scripts / generation and validation]
-    ROOT --> DOCS[docs / project and platform guides]
+    ROOT --> DOCS[docs / project guides]
 
     ROOT --> README[README.md]
+    ROOT --> USAGE[DATASET_USAGE_GUIDE.md]
     ROOT --> CONTRIB[CONTRIBUTING.md]
     ROOT --> CONDUCT[CODE_OF_CONDUCT.md]
     ROOT --> SECURITY[SECURITY.md]
@@ -187,34 +197,29 @@ flowchart TB
 ```
 
 <details>
-<summary><strong>View detailed file tree</strong></summary>
+<summary><strong>View core file tree</strong></summary>
 
 ```text
 hossain-group-hr-turnover-analytics-bd/
 ├── assets/
-│   └── hossain-group-hr-turnover-analytics-bd-cover.svg
 ├── data/
 │   ├── raw/employee_master.csv
 │   ├── processed/
 │   └── metadata/data_dictionary.json
 ├── docs/
-│   ├── METRIC_DEFINITIONS.md
-│   ├── POWER_BI_SETUP.md
-│   ├── PROJECT_DESCRIPTION.md
-│   └── VALIDATION_REPORT.md
 ├── excel/Hossain_Group_Employee_Turnover_Calculator.xlsx
 ├── looker_studio/
 ├── notebooks/Hossain_Group_Turnover_Analysis.ipynb
 ├── powerbi/
 ├── scripts/
+├── DATASET_USAGE_GUIDE.md
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── SECURITY.md
 ├── SUPPORT.md
 ├── LICENSE
-├── README.md
-└── requirements.txt
+└── README.md
 ```
 
 </details>
@@ -229,11 +234,9 @@ Period Turnover Rate = Employees Exited / Average Headcount
 Annualized Turnover Rate = Period Turnover Rate × 12 / Number of Months
 ```
 
-### Risk classification
-
-| Annualized Turnover | Risk Level | HR response |
+| Annualized Turnover | Risk Level | Recommended HR response |
 |---:|---|---|
-| Below 5% | Low | Maintain engagement and retention practices |
+| Below 5% | Low | Maintain current retention practices |
 | 5% to below 10% | Moderate | Monitor trends and conduct stay interviews |
 | 10% to below 15% | High | Investigate manager, pay and career factors |
 | 15% to below 20% | Very High | Begin an immediate retention action plan |
@@ -245,52 +248,44 @@ Annualized Turnover Rate = Period Turnover Rate × 12 / Number of Months
 
 <table>
 <tr>
-<td width="50%">
+<td width="50%" valign="top">
 
 ### 🟩 Excel
 
-- Formula-driven turnover calculator
-- Date, department, location and employment-type filters
-- KPI cards and risk classification
-- Monthly, department and exit-reason analysis
-
-**Start here:** `excel/Hossain_Group_Employee_Turnover_Calculator.xlsx`
+- Formula-driven calculator
+- Workforce filters
+- KPI cards and charts
+- Department and exit-reason analysis
 
 </td>
-<td width="50%">
+<td width="50%" valign="top">
 
 ### 🟨 Power BI
 
-- Source-control-friendly PBIP project
+- PBIP project structure
 - Power Query M partitions
 - Semantic model and DAX measures
-- Executive Overview and Monthly Detail pages
-
-**Start here:** `powerbi/Hossain_Group_Turnover.pbip`
+- Executive and monthly report pages
 
 </td>
 </tr>
 <tr>
-<td width="50%">
+<td width="50%" valign="top">
 
 ### 🐍 Python and Kaggle
 
-- Reproducible turnover calculation
-- Monthly and department analysis
+- Reproducible turnover calculations
+- Trend and department analysis
 - Kaggle-ready notebook and metadata
 
-**Start here:** `notebooks/Hossain_Group_Turnover_Analysis.ipynb`
-
 </td>
-<td width="50%">
+<td width="50%" valign="top">
 
 ### 🟦 Looker Studio
 
-- Flat upload-ready CSV
-- Percentage-ready turnover fields
-- Setup instructions and chart recommendations
-
-**Start here:** `looker_studio/`
+- Upload-ready CSV
+- Percentage-ready fields
+- Browser-based dashboard support
 
 </td>
 </tr>
@@ -310,8 +305,6 @@ python scripts/generate_powerbi_project.py
 
 ### Excel
 
-Open:
-
 ```text
 excel/Hossain_Group_Employee_Turnover_Calculator.xlsx
 ```
@@ -326,9 +319,7 @@ After Power BI Desktop opens, select **Refresh** and use **File → Save As** to
 
 ---
 
-## 🧪 Validation and governance
-
-The project validates required files, JSON syntax, CSV headers and rows, Excel workbook presence, notebook presence, Power BI source files and processed datasets.
+## 🧪 Validation
 
 ```bash
 python scripts/validate_project.py
@@ -346,11 +337,12 @@ PASS: required files, JSON syntax, and CSV structure validated.
 
 | Document | Purpose |
 |---|---|
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution workflow, standards and pull-request checklist |
-| [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Professional and inclusive participation expectations |
-| [`SECURITY.md`](SECURITY.md) | Vulnerability reporting and HR data-privacy requirements |
-| [`CHANGELOG.md`](CHANGELOG.md) | Version history, additions and planned improvements |
-| [`SUPPORT.md`](SUPPORT.md) | Troubleshooting scope and issue-reporting guidance |
+| [`DATASET_USAGE_GUIDE.md`](DATASET_USAGE_GUIDE.md) | Complete calculation, platform and HR use-case guide |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution workflow and pull-request checklist |
+| [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Professional participation expectations |
+| [`SECURITY.md`](SECURITY.md) | Vulnerability and HR data-privacy guidance |
+| [`CHANGELOG.md`](CHANGELOG.md) | Version history and improvements |
+| [`SUPPORT.md`](SUPPORT.md) | Troubleshooting and issue guidance |
 | [`LICENSE`](LICENSE) | Project code licensing terms |
 
 ---
@@ -369,7 +361,7 @@ PASS: required files, JSON syntax, and CSV structure validated.
 
 ## 👤 Author
 
-**Siam Ahmad Musa**  
+**Musa**  
 Human Resources Professional and HR Analytics Practitioner from Bangladesh
 
 ---
