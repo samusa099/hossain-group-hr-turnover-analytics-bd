@@ -70,18 +70,26 @@ The project converts synthetic employee joining, headcount and separation record
 
 ## 📊 Project snapshot
 
-| Metric | Result |
-|---|---:|
-| Analysis period | 01 Jan 2025 – 30 Jun 2026 |
-| Synthetic employee records | 762 |
-| Opening headcount | 520 |
-| Closing headcount | 592 |
-| Average headcount | 546.44 |
-| Total hires | 242 |
-| Total exits | 170 |
-| Period turnover rate | 31.11% |
-| Annualized turnover rate | 20.74% |
-| Current risk level | Critical Risk |
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left" width="65%">Metric</th>
+      <th align="right" width="35%">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="left">Analysis period</td><td align="right"><strong>01 Jan 2025 – 30 Jun 2026</strong></td></tr>
+    <tr><td align="left">Synthetic employee records</td><td align="right"><strong>762</strong></td></tr>
+    <tr><td align="left">Opening headcount</td><td align="right"><strong>520</strong></td></tr>
+    <tr><td align="left">Closing headcount</td><td align="right"><strong>592</strong></td></tr>
+    <tr><td align="left">Average headcount</td><td align="right"><strong>546.44</strong></td></tr>
+    <tr><td align="left">Total hires</td><td align="right"><strong>242</strong></td></tr>
+    <tr><td align="left">Total exits</td><td align="right"><strong>170</strong></td></tr>
+    <tr><td align="left">Period turnover rate</td><td align="right"><strong>31.11%</strong></td></tr>
+    <tr><td align="left">Annualized turnover rate</td><td align="right"><strong>20.74%</strong></td></tr>
+    <tr><td align="left">Current risk level</td><td align="right"><strong>Critical Risk</strong></td></tr>
+  </tbody>
+</table>
 
 ### Department turnover summary
 
