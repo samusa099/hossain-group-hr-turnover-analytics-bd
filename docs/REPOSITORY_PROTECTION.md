@@ -7,9 +7,11 @@ This document records the recommended protection settings for the `main` branch 
 | Control | Repository file |
 |---|---|
 | Project, schema, secret-pattern and path validation | `.github/workflows/security-and-validation.yml` |
+| Pinned-dependency vulnerability audit | `.github/workflows/security-and-validation.yml` |
+| Python 3.11 and 3.12 notebook execution | `.github/workflows/security-and-validation.yml` |
 | Python static security analysis | `.github/workflows/codeql.yml` |
 | Pull-request dependency review | `.github/workflows/dependency-review.yml` |
-| Dependency update automation | `.github/dependabot.yml` |
+| Grouped dependency update automation | `.github/dependabot.yml` |
 | Ownership of sensitive paths | `.github/CODEOWNERS` |
 | Pull-request safety checklist | `.github/pull_request_template.md` |
 
@@ -31,6 +33,9 @@ Use [`Protect_Main_Branch_Ruleset.json`](Protect_Main_Branch_Ruleset.json) to co
 The imported ruleset requires these successful pull-request checks:
 
 - `Validate data, code and Power BI sources`
+- `Audit Python dependencies`
+- `Execute analytics notebook (3.11)`
+- `Execute analytics notebook (3.12)`
 - `Analyze Python`
 - `Review dependency changes`
 
@@ -38,8 +43,8 @@ The imported ruleset requires these successful pull-request checks:
 
 - require a pull request before merging;
 - require all review conversations to be resolved;
-- require project validation, CodeQL and dependency review;
-- require the pull-request branch to be up to date;
+- require the branch to be up to date before merging;
+- require repository validation, dependency audit, notebook execution, CodeQL and dependency review;
 - block force pushes;
 - block branch deletion;
 - require linear history.
