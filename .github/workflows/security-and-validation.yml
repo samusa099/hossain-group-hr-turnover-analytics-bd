@@ -42,9 +42,9 @@ jobs:
       - name: Run repository safety validation
         run: python scripts/validate_project.py
 
-      - name: Capture generated output differences
+      - name: Capture generated content differences
         run: |
-          git diff -- \
+          git diff --ignore-cr-at-eol -- \
             data/processed \
             looker_studio \
             powerbi/Hossain_Group_Turnover.SemanticModel/model.bim \
@@ -59,7 +59,7 @@ jobs:
           if-no-files-found: error
           retention-days: 3
 
-      - name: Require deterministic generated outputs
+      - name: Require deterministic generated content
         run: test ! -s generated-output.diff
 
   dependency-audit:
