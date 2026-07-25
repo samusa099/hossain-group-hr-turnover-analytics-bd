@@ -6,6 +6,28 @@ The project follows a simple portfolio-release convention based on meaningful im
 
 ## [Unreleased]
 
+### Security
+
+- Pinned GitHub Actions to immutable commit SHAs
+- Disabled persisted checkout credentials in every workflow
+- Upgraded checkout, setup-python, CodeQL and dependency-review actions
+- Added strict Python dependency auditing
+- Expanded the importable `main` ruleset with dependency and notebook checks
+
+### Changed
+
+- Consolidated Dependabot updates into grouped GitHub Actions and analytics-stack pull requests
+- Replaced loose Python lower bounds with tested direct-version pins
+- Removed unused `openpyxl` from the runtime dependency set
+- Split repository validation, dependency audit and notebook execution into independent CI jobs
+- Required deterministic generated Power BI and processed-data outputs
+
+### Added
+
+- Bounded source requirements in `requirements.in`
+- Headless notebook execution on Python 3.11 and 3.12
+- `scripts/execute_notebook_smoke.py`
+
 ### Planned
 
 - Voluntary versus involuntary turnover analysis

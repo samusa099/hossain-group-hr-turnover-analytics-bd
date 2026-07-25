@@ -11,33 +11,33 @@ permissions:
   contents: read
 
 concurrency:
-  group: validation-${{ github.ref }}
+  group: validation-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  validate:
+  repository-validation:
     name: Validate data, code and Power BI sources
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          clean: true
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.11"
-          cache: pip
-
-      - name: Install project and audit tools
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
-          python -m pip install pip-audit
 
       - name: Compile Python scripts
         run: python -m compileall -q scripts
+
+      - name: Preserve committed semantic model
+        run: cp powerbi/Hossain_Group_Turnover.SemanticModel/model.bim /tmp/model.before.bim
 
       - name: Rebuild deterministic project outputs
         run: python scripts/generate_powerbi_project.py
@@ -45,12 +45,108 @@ jobs:
       - name: Run repository safety validation
         run: python scripts/validate_project.py
 
-      - name: Show regenerated output differences
+      - name: Compare generated outputs
         run: |
-          git diff --stat -- \
+          git diff --ignore-cr-at-eol -- \
             data/processed \
             looker_studio \
-            powerbi/Hossain_Group_Turnover.SemanticModel/model.bim
+            > generated-output.diff
 
-      - name: Audit Python dependencies
-        run: pip-audit -r requirements.txt
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          before_path = Path("/tmp/model.before.bim")
+          after_path = Path("powerbi/Hossain_Group_Turnover.SemanticModel/model.bim")
+
+          before = json.loads(before_path.read_text(encoding="utf-8-sig"))
+          after = json.loads(after_path.read_text(encoding="utf-8-sig"))
+
+          if before != after:
+              diff_path = Path("generated-output.diff")
+              existing = diff_path.read_text(encoding="utf-8") if diff_path.exists() else ""
+              diff_path.write_text(
+                  existing + "\nPower BI semantic model changed after regeneration.\n",
+                  encoding="utf-8",
+              )
+          PY
+
+      - name: Upload generated output diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: generated-output-diff
+          path: generated-output.diff
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Require deterministic generated content
+        run: test ! -s generated-output.diff
+
+  dependency-audit:
+    name: Audit Python dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependency auditor
+        run: python -m pip install --disable-pip-version-check pip-audit==2.10.1
+
+      - name: Audit pinned dependencies
+        run: pip-audit --strict -r requirements.txt
+
+  notebook-smoke-test:
+    name: Execute analytics notebook (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install pinned analytics dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
+
+      - name: Execute notebook code cells headlessly
+        env:
+          MPLBACKEND: Agg
+        run: |
+          set -o pipefail
+          python scripts/execute_notebook_smoke.py 2>&1 | tee notebook-smoke.log
+
+      - name: Upload notebook smoke diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: notebook-smoke-${{ matrix.python-version }}
+          path: notebook-smoke.log
+          if-no-files-found: error
+          retention-days: 3

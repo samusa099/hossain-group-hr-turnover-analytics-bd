@@ -44,6 +44,15 @@
             "context": "Validate data, code and Power BI sources"
           },
           {
+            "context": "Audit Python dependencies"
+          },
+          {
+            "context": "Execute analytics notebook (3.11)"
+          },
+          {
+            "context": "Execute analytics notebook (3.12)"
+          },
+          {
             "context": "Analyze Python"
           },
           {
