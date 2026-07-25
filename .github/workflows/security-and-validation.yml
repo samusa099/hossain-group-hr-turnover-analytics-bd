@@ -36,19 +36,40 @@ jobs:
       - name: Compile Python scripts
         run: python -m compileall -q scripts
 
+      - name: Preserve committed semantic model
+        run: cp powerbi/Hossain_Group_Turnover.SemanticModel/model.bim /tmp/model.before.bim
+
       - name: Rebuild deterministic project outputs
         run: python scripts/generate_powerbi_project.py
 
       - name: Run repository safety validation
         run: python scripts/validate_project.py
 
-      - name: Capture generated content differences
+      - name: Compare generated outputs
         run: |
           git diff --ignore-cr-at-eol -- \
             data/processed \
             looker_studio \
-            powerbi/Hossain_Group_Turnover.SemanticModel/model.bim \
             > generated-output.diff
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          before_path = Path("/tmp/model.before.bim")
+          after_path = Path("powerbi/Hossain_Group_Turnover.SemanticModel/model.bim")
+
+          before = json.loads(before_path.read_text(encoding="utf-8-sig"))
+          after = json.loads(after_path.read_text(encoding="utf-8-sig"))
+
+          if before != after:
+              diff_path = Path("generated-output.diff")
+              existing = diff_path.read_text(encoding="utf-8") if diff_path.exists() else ""
+              diff_path.write_text(
+                  existing + "\nPower BI semantic model changed after regeneration.\n",
+                  encoding="utf-8",
+              )
+          PY
 
       - name: Upload generated output diagnostics
         if: always()
