@@ -42,12 +42,25 @@ jobs:
       - name: Run repository safety validation
         run: python scripts/validate_project.py
 
-      - name: Require deterministic generated outputs
+      - name: Capture generated output differences
         run: |
-          git diff --exit-code -- \
+          git diff -- \
             data/processed \
             looker_studio \
-            powerbi/Hossain_Group_Turnover.SemanticModel/model.bim
+            powerbi/Hossain_Group_Turnover.SemanticModel/model.bim \
+            > generated-output.diff
+
+      - name: Upload generated output diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: generated-output-diff
+          path: generated-output.diff
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Require deterministic generated outputs
+        run: test ! -s generated-output.diff
 
   dependency-audit:
     name: Audit Python dependencies
@@ -104,4 +117,15 @@ jobs:
       - name: Execute notebook code cells headlessly
         env:
           MPLBACKEND: Agg
-        run: python scripts/execute_notebook_smoke.py
+        run: |
+          set -o pipefail
+          python scripts/execute_notebook_smoke.py 2>&1 | tee notebook-smoke.log
+
+      - name: Upload notebook smoke diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: notebook-smoke-${{ matrix.python-version }}
+          path: notebook-smoke.log
+          if-no-files-found: error
+          retention-days: 3
