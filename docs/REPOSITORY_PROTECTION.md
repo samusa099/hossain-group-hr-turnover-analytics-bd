@@ -1,6 +1,6 @@
 # Repository Protection Baseline
 
-This document records the recommended protection settings for the `main` branch and the automated safeguards committed to the repository.
+This document records the recommended protection settings for the `main` branch, release tags and the automated safeguards committed to the repository.
 
 ## Automated controls included
 
@@ -39,7 +39,7 @@ The imported ruleset requires these successful pull-request checks:
 - `Analyze Python`
 - `Review dependency changes`
 
-## Protection enforced by the ruleset
+## Protection enforced by the main ruleset
 
 - require a pull request before merging;
 - require all review conversations to be resolved;
@@ -51,9 +51,31 @@ The imported ruleset requires these successful pull-request checks:
 
 For this solo-maintainer repository, required approvals remain `0`. Increase the value to `1` after adding a trusted reviewer.
 
+## Importable release-tag ruleset
+
+Use [`Protect_Release_Tags_Ruleset.json`](Protect_Release_Tags_Ruleset.json) to protect version tags that match `v*`, including tags such as `v1.2.0`.
+
+### Tag import steps
+
+1. Open **Settings → Rules → Rulesets**.
+2. Select **New ruleset → Import a ruleset**.
+3. Download and select `docs/Protect_Release_Tags_Ruleset.json`.
+4. Confirm the ruleset name is **Protect release tags**.
+5. Confirm the target is **Tags**, the pattern is `v*`, and enforcement is **Active**.
+6. Click **Create**.
+
+## Protection enforced by the tag ruleset
+
+- allows new version tags to be created;
+- prevents an existing `v*` tag from being moved to another commit;
+- prevents an existing `v*` tag from being deleted;
+- keeps published release references immutable and auditable.
+
+The ruleset intentionally does not restrict tag creation. Create a release tag only after the target commit has passed the required pull-request checks. If a release tag is created incorrectly, temporarily disable the tag ruleset, correct the tag, and reactivate the ruleset.
+
 ## Important limitation
 
-Repository rulesets are GitHub administrative settings. Committing the JSON file does not activate protection by itself; an administrator must import the file and click **Create** once in the repository settings.
+Repository rulesets are GitHub administrative settings. Committing either JSON file does not activate protection by itself; an administrator must import each file and click **Create** once in the repository settings.
 
 ## Power BI protection
 
