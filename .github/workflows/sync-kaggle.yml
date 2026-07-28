@@ -51,6 +51,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Validate canonical project files
+        run: python scripts/validate_project.py
+
       - name: Build and validate clean Kaggle package
         env:
           KAGGLE_USERNAME: ${{ vars.KAGGLE_USERNAME || 'dry-run-user' }}
@@ -93,7 +96,10 @@ jobs:
           cache: pip
 
       - name: Verify Kaggle configuration
+        shell: bash
         run: |
+          set -euo pipefail
+
           if [ -z "$KAGGLE_USERNAME" ]; then
             echo "::error::Repository variable KAGGLE_USERNAME is missing."
             exit 1
@@ -104,14 +110,20 @@ jobs:
             exit 1
           fi
 
+          if [[ ! "$KAGGLE_USERNAME" =~ ^[A-Za-z0-9_-]+$ ]]; then
+            echo "::error::KAGGLE_USERNAME contains unsupported characters."
+            exit 1
+          fi
+
           echo "Kaggle username is configured."
           echo "Kaggle API token is configured."
 
       - name: Install official Kaggle CLI
         run: python -m pip install --disable-pip-version-check kaggle==2.2.3
 
-      - name: Build upload package
+      - name: Validate project and build upload package
         run: |
+          python scripts/validate_project.py
           python scripts/prepare_kaggle_dataset.py \
             --output .kaggle-build/dataset \
             --username "$KAGGLE_USERNAME"
@@ -132,8 +144,11 @@ jobs:
 
           if [ "$status" -eq 0 ]; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
-          else
+          elif grep -Eiq "404|not found|does not exist" /tmp/kaggle-dataset-check.log; then
             echo "exists=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Unable to determine whether the Kaggle dataset exists."
+            exit "$status"
           fi
 
       - name: Create public Kaggle dataset
