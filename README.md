@@ -1,7 +1,5 @@
 <p align="center">
-  <img src="assets/hossain-group-hr-turnover-analytics-bd-cover.svg" alt="Hossain Group HR Turnover Analytics BD" width="52%">
-  <img style="max-width:100%;height:auto" alt="Dashboard preview" src="https://github.com/user-attachments/assets/d5450acd-afb7-4e09-837b-60e7b4e616b9" />
-
+  <img src="https://github.com/user-attachments/assets/d5450acd-afb7-4e09-837b-60e7b4e616b9" alt="Hossain Group HR Turnover Analytics Dashboard" width="75%" style="border-radius:18px;max-width:100%;height:auto;">
 </p>
 
 <h1 align="center">Hossain Group HR Turnover Analytics BD</h1>
@@ -179,9 +177,6 @@ flowchart LR
 flowchart TB
     ROOT[Hossain Group HR Turnover Analytics BD]
 
-    ROOT --> ASSETS[assets]
-    ASSETS --> COVER[Project cover SVG]
-
     ROOT --> DATA[data]
     DATA --> RAW[raw / employee master]
     DATA --> PROCESSED[processed / turnover summaries]
@@ -209,7 +204,6 @@ flowchart TB
 
 ```text
 hossain-group-hr-turnover-analytics-bd/
-├── assets/
 ├── data/
 │   ├── raw/employee_master.csv
 │   ├── processed/
