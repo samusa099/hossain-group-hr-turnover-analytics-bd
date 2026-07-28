@@ -100,7 +100,11 @@ def validate_package(output: Path, username: str) -> None:
         output / "project" / "Hossain_Group_Turnover_Analysis.ipynb",
     ]
 
-    missing = [str(path.relative_to(output)) for path in expected_files if not path.is_file()]
+    missing = [
+        str(path.relative_to(output))
+        for path in expected_files
+        if not path.is_file()
+    ]
     if missing:
         raise FileNotFoundError("Kaggle package is missing: " + ", ".join(missing))
 
@@ -114,7 +118,9 @@ def validate_package(output: Path, username: str) -> None:
         )
 
     json.loads(
-        (output / "metadata" / "data_dictionary.json").read_text(encoding="utf-8-sig")
+        (output / "metadata" / "data_dictionary.json").read_text(
+            encoding="utf-8-sig"
+        )
     )
     json.loads(
         (output / "project" / "Hossain_Group_Turnover_Analysis.ipynb").read_text(
@@ -150,7 +156,10 @@ def build_package(output: Path, username: str) -> None:
 
     write_metadata(output, username)
 
-    copy_file(REPOSITORY_ROOT / "README.md", output / "README.md")
+    copy_file(
+        REPOSITORY_ROOT / "kaggle" / "dataset" / "README.md",
+        output / "README.md",
+    )
     copy_file(
         REPOSITORY_ROOT / "DATA_PROVENANCE.md",
         output / "DATA_PROVENANCE.md",
