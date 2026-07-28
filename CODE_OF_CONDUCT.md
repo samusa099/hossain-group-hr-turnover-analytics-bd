@@ -52,19 +52,15 @@ All public examples and contributions must use synthetic, anonymised, or properl
 ## Reporting and Enforcement Workflow
 
 ```mermaid
-flowchart TB
-    A[Potential Conduct or Data-Privacy Issue] --> B[Document the Relevant Context]
-    B --> C[Use the Private Security or Support Channel]
-    C --> D[Maintainer Reviews the Report]
-    D --> E{Policy Violation Confirmed?}
-    E -->|No| F[Close with Explanation or Guidance]
-    E -->|Yes| G[Protect Affected People and Data]
-    G --> H[Remove or Restrict Harmful Content]
-    H --> I[Request Correction or Apply Repository Action]
-    I --> J[Record the Resolution Privately]
+flowchart LR
+    A[Report Privately] --> B[Maintainer Review]
+    B --> C{Violation Confirmed?}
+    C -->|No| D[Close with Guidance]
+    C -->|Yes| E[Protect People and Data]
+    E --> F[Remove Content or Apply Action]
 ```
 
-Repository maintainers may edit, remove, or reject comments, commits, issues, pull requests, or other contributions that violate this Code of Conduct.
+Use the private security or support channel and include only the context needed for review. Maintainers may edit, remove, or reject comments, commits, issues, pull requests, or other contributions that violate this Code of Conduct.
 
 ## Fair Review Principles
 
