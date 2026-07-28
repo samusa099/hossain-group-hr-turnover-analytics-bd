@@ -1,0 +1,161 @@
+name: Portfolio Security
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-files:
+    name: Validate portfolio files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@bfe8cc55a7890e3d6672eda6460ef37bfcc70755
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Path, XLSX, notebook and CSV validation
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, json, os, re, subprocess, sys, zipfile
+          from pathlib import Path, PurePosixPath
+
+          root = Path.cwd().resolve()
+          event = os.environ.get('GITHUB_EVENT_NAME', '')
+          base = os.environ.get('GITHUB_BASE_REF', '')
+          if event == 'pull_request' and base:
+              subprocess.run(['git', 'fetch', 'origin', base, '--depth=1'], check=True)
+              raw = subprocess.check_output(['git', 'diff', '--name-only', '-z', f'origin/{base}...HEAD'])
+          else:
+              raw = subprocess.check_output(['git', 'ls-files', '-z'])
+          files = [p.decode() for p in raw.split(b'\0') if p]
+          errors = []
+
+          def fail(path, msg): errors.append(f'{path}: {msg}')
+
+          for rel in files:
+              posix = PurePosixPath(rel)
+              if posix.is_absolute() or '..' in posix.parts or '\\' in rel:
+                  fail(rel, 'unsafe or non-portable path')
+                  continue
+              path = root / rel
+              try:
+                  resolved = path.resolve(strict=False)
+                  resolved.relative_to(root)
+              except Exception:
+                  fail(rel, 'path escapes repository root')
+                  continue
+              if path.is_symlink():
+                  try: path.resolve(strict=True).relative_to(root)
+                  except Exception: fail(rel, 'symlink escapes repository root')
+              if not path.is_file():
+                  continue
+
+              suffix = path.suffix.lower()
+              if suffix in {'.xlsx', '.xlsm', '.xltx', '.xltm'}:
+                  try:
+                      with zipfile.ZipFile(path) as zf:
+                          total_u = total_c = 0
+                          for info in zf.infolist():
+                              member = PurePosixPath(info.filename)
+                              if member.is_absolute() or '..' in member.parts or '\\' in info.filename:
+                                  fail(rel, f'unsafe archive member: {info.filename}')
+                              total_u += info.file_size
+                              total_c += max(info.compress_size, 1)
+                          if total_u > 1_000_000_000 or total_u / max(total_c, 1) > 200:
+                              fail(rel, 'suspicious XLSX expansion ratio or size')
+                  except zipfile.BadZipFile:
+                      fail(rel, 'invalid XLSX/ZIP container')
+
+              elif suffix == '.ipynb':
+                  try:
+                      nb = json.loads(path.read_text(encoding='utf-8'))
+                      if nb.get('nbformat', 0) < 4: fail(rel, 'notebook format must be v4+')
+                      for i, cell in enumerate(nb.get('cells', []), 1):
+                          if cell.get('cell_type') == 'code':
+                              if cell.get('outputs'): fail(rel, f'cell {i} contains committed outputs')
+                              if cell.get('execution_count') is not None: fail(rel, f'cell {i} has execution_count')
+                              src = ''.join(cell.get('source', []))
+                              if re.search(r'(^|\n)\s*[!%](curl|wget|pip\s+install\s+https?://)', src, re.I):
+                                  fail(rel, f'cell {i} contains remote download/install command')
+                  except Exception as exc:
+                      fail(rel, f'invalid notebook JSON: {exc}')
+
+              elif suffix == '.csv':
+                  try:
+                      with path.open('r', encoding='utf-8-sig', newline='', errors='strict') as fh:
+                          for rno, row in enumerate(csv.reader(fh), 1):
+                              for cno, value in enumerate(row, 1):
+                                  v = value.lstrip()
+                                  dangerous = v.startswith(('=', '+', '@')) or (v.startswith('-') and not re.fullmatch(r'-?\d+(\.\d+)?', v))
+                                  if dangerous:
+                                      fail(rel, f'possible formula injection at row {rno}, column {cno}')
+                  except Exception as exc:
+                      fail(rel, f'CSV parse error: {exc}')
+
+          if errors:
+              print('\n'.join(f'::error::{e}' for e in errors))
+              sys.exit(1)
+          print(f'Validated {len(files)} tracked/changed files.')
+          PY
+
+  gitleaks:
+    name: Gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@bfe8cc55a7890e3d6672eda6460ef37bfcc70755
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Scan secrets
+        uses: gitleaks/gitleaks-action@bcfb9cce635345aac9996cedc19b2de8e01b894f
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  dependency-audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@bfe8cc55a7890e3d6672eda6460ef37bfcc70755
+        with:
+          persist-credentials: false
+      - name: Audit Python and Node dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          if find . -name 'requirements*.txt' -o -name 'pyproject.toml' -o -name 'Pipfile.lock' | grep -q .; then
+            python -m pip install --disable-pip-version-check 'pip-audit==2.9.0'
+            python -m pip_audit
+          fi
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            npm audit --audit-level=high
+          fi
+
+  codeql:
+    name: CodeQL (Python)
+    permissions:
+      contents: read
+      security-events: write
+      packages: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@bfe8cc55a7890e3d6672eda6460ef37bfcc70755
+        with:
+          persist-credentials: false
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@18420e3271f74589575af831a523c833acda327f
+        with:
+          languages: python
+          build-mode: none
+      - name: Analyze
+        uses: github/codeql-action/analyze@18420e3271f74589575af831a523c833acda327f
