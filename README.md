@@ -14,7 +14,21 @@
   <img alt="Country" src="https://img.shields.io/badge/Context-Bangladesh-1E8E5A">
   <img alt="Records" src="https://img.shields.io/badge/Records-762-0A66C2">
   <img alt="Risk" src="https://img.shields.io/badge/Risk-Critical-D64545">
+  <img alt="Project Status" src="https://img.shields.io/badge/Status-Portfolio%20Ready-2EA44F">
+  <img alt="Release" src="https://img.shields.io/badge/Release-v1.2.0-7B61FF">
+  <img alt="Analysis Period" src="https://img.shields.io/badge/Period-Jan%202025%20%E2%80%93%20Jun%202026-4C6EF5">
   <img alt="License" src="https://img.shields.io/badge/Code-MIT-lightgrey">
+</p>
+
+<p align="center">
+  <a href="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/security-and-validation.yml"><img alt="Security and Project Validation" src="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/security-and-validation.yml/badge.svg"></a>
+  <a href="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/codeql.yml"><img alt="CodeQL" src="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/codeql.yml/badge.svg"></a>
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.11%20%7C%203.12-3776AB?logo=python&logoColor=white">
+  <img alt="Power BI" src="https://img.shields.io/badge/Power%20BI-PBIP-F2C811?logo=powerbi&logoColor=black">
+  <img alt="Excel" src="https://img.shields.io/badge/Excel-Ready-217346?logo=microsoft-excel&logoColor=white">
+  <img alt="Kaggle" src="https://img.shields.io/badge/Kaggle-Ready-20BEFF?logo=kaggle&logoColor=white">
+  <img alt="Looker Studio" src="https://img.shields.io/badge/Looker%20Studio-Ready-4285F4?logo=looker&logoColor=white">
+  <img alt="Dataset License" src="https://img.shields.io/badge/Dataset-CC0--1.0-5C6BC0">
 </p>
 
 <p align="center">
