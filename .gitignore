@@ -23,6 +23,8 @@ venv/
 *.key
 *.p12
 *.pfx
+kaggle.json
+access_token
 
 # IDE and operating-system files
 .vscode/
@@ -37,3 +39,4 @@ Thumbs.db
 ~$*.xlsx
 build/
 dist/
+.kaggle-build/
