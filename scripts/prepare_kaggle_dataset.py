@@ -13,15 +13,49 @@ import argparse
 import csv
 import json
 import os
+import re
 import shutil
 from pathlib import Path
 
 DATASET_SLUG = "hossain-group-hr-turnover-analytics-bd"
 DATASET_TITLE = "Hossain Group HR Turnover Analytics BD"
 EXPECTED_EMPLOYEE_ROWS = 762
+USERNAME_PATTERN = re.compile(r"^[A-Za-z0-9_-]+$")
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = REPOSITORY_ROOT / ".kaggle-build" / "dataset"
+BUILD_ROOT = (REPOSITORY_ROOT / ".kaggle-build").resolve()
+DEFAULT_OUTPUT = BUILD_ROOT / "dataset"
+
+
+def validate_output_path(output: Path) -> Path:
+    """Restrict destructive cleanup to the repository's build directory."""
+    resolved = output.expanduser().resolve()
+
+    try:
+        resolved.relative_to(BUILD_ROOT)
+    except ValueError as exc:
+        raise ValueError(
+            f"Output must remain inside the safe build directory: {BUILD_ROOT}"
+        ) from exc
+
+    if resolved == BUILD_ROOT:
+        raise ValueError(
+            "Output must be a child directory of .kaggle-build, not the build root."
+        )
+
+    return resolved
+
+
+def validate_username(username: str) -> str:
+    normalized = username.strip()
+    if not normalized:
+        raise ValueError("Kaggle username cannot be empty")
+    if not USERNAME_PATTERN.fullmatch(normalized):
+        raise ValueError(
+            "Kaggle username may contain only letters, numbers, underscores, "
+            "and hyphens."
+        )
+    return normalized
 
 
 def copy_file(source: Path, destination: Path) -> None:
@@ -32,6 +66,9 @@ def copy_file(source: Path, destination: Path) -> None:
 
 
 def copy_csv_directory(source: Path, destination: Path) -> list[Path]:
+    if not source.is_dir():
+        raise FileNotFoundError(f"Required CSV directory is missing: {source}")
+
     csv_files = sorted(source.glob("*.csv"))
     if not csv_files:
         raise FileNotFoundError(f"No CSV files found in: {source}")
@@ -62,6 +99,7 @@ def validate_employee_csv(path: Path) -> None:
     with path.open("r", encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle)
         rows = list(reader)
+        fieldnames = reader.fieldnames or []
 
     if len(rows) != EXPECTED_EMPLOYEE_ROWS:
         raise ValueError(
@@ -80,12 +118,18 @@ def validate_employee_csv(path: Path) -> None:
         "Exit_Reason",
         "Status",
     }
-    missing_columns = required_columns.difference(reader.fieldnames or [])
+    missing_columns = required_columns.difference(fieldnames)
     if missing_columns:
         raise ValueError(
             "Employee CSV is missing required columns: "
             + ", ".join(sorted(missing_columns))
         )
+
+    employee_ids = [row["Employee_ID"].strip() for row in rows]
+    if any(not employee_id for employee_id in employee_ids):
+        raise ValueError("Employee CSV contains an empty Employee_ID")
+    if len(employee_ids) != len(set(employee_ids)):
+        raise ValueError("Employee CSV contains duplicate Employee_ID values")
 
 
 def validate_package(output: Path, username: str) -> None:
@@ -200,7 +244,7 @@ def parse_args() -> argparse.Namespace:
         "--output",
         type=Path,
         default=DEFAULT_OUTPUT,
-        help="Staging directory to recreate.",
+        help="Staging directory inside .kaggle-build to recreate.",
     )
     parser.add_argument(
         "--username",
@@ -212,11 +256,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    username = args.username.strip()
-    if not username:
-        raise ValueError("Kaggle username cannot be empty")
-
-    output = args.output.resolve()
+    username = validate_username(args.username)
+    output = validate_output_path(args.output)
     build_package(output, username)
 
     files = sorted(
