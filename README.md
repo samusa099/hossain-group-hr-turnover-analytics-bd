@@ -51,7 +51,8 @@ The project transforms synthetic employee joining, headcount and separation reco
 
 > **Workflow:** employee records → validation → turnover calculation → risk classification → dashboard reporting → HR action.
 
-<table>
+<div align="center">
+<table width="72%">
 <tr>
 <td width="25%" align="center"><strong>762</strong><br>Employee records</td>
 <td width="25%" align="center"><strong>242</strong><br>Hires in period</td>
@@ -59,6 +60,7 @@ The project transforms synthetic employee joining, headcount and separation reco
 <td width="25%" align="center"><strong>20.74%</strong><br>Annualized turnover</td>
 </tr>
 </table>
+</div>
 
 ### What makes this project useful
 
@@ -77,39 +79,53 @@ The project transforms synthetic employee joining, headcount and separation reco
 
 ## 📊 Project snapshot
 
-<table width="100%">
+<div align="center">
+<table width="70%">
   <thead>
     <tr>
-      <th align="left" width="65%">Metric</th>
-      <th align="right" width="35%">Result</th>
+      <th align="center" width="62%">Metric</th>
+      <th align="center" width="38%">Result</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td align="left">Analysis period</td><td align="right"><strong>01 Jan 2025 – 30 Jun 2026</strong></td></tr>
-    <tr><td align="left">Synthetic employee records</td><td align="right"><strong>762</strong></td></tr>
-    <tr><td align="left">Opening headcount</td><td align="right"><strong>520</strong></td></tr>
-    <tr><td align="left">Closing headcount</td><td align="right"><strong>592</strong></td></tr>
-    <tr><td align="left">Average headcount</td><td align="right"><strong>546.44</strong></td></tr>
-    <tr><td align="left">Total hires</td><td align="right"><strong>242</strong></td></tr>
-    <tr><td align="left">Total exits</td><td align="right"><strong>170</strong></td></tr>
-    <tr><td align="left">Period turnover rate</td><td align="right"><strong>31.11%</strong></td></tr>
-    <tr><td align="left">Annualized turnover rate</td><td align="right"><strong>20.74%</strong></td></tr>
-    <tr><td align="left">Current risk level</td><td align="right"><strong>Critical Risk</strong></td></tr>
+    <tr><td align="center">Analysis period</td><td align="center"><strong>01 Jan 2025 – 30 Jun 2026</strong></td></tr>
+    <tr><td align="center">Synthetic employee records</td><td align="center"><strong>762</strong></td></tr>
+    <tr><td align="center">Opening headcount</td><td align="center"><strong>520</strong></td></tr>
+    <tr><td align="center">Closing headcount</td><td align="center"><strong>592</strong></td></tr>
+    <tr><td align="center">Average headcount</td><td align="center"><strong>546.44</strong></td></tr>
+    <tr><td align="center">Total hires</td><td align="center"><strong>242</strong></td></tr>
+    <tr><td align="center">Total exits</td><td align="center"><strong>170</strong></td></tr>
+    <tr><td align="center">Period turnover rate</td><td align="center"><strong>31.11%</strong></td></tr>
+    <tr><td align="center">Annualized turnover rate</td><td align="center"><strong>20.74%</strong></td></tr>
+    <tr><td align="center">Current risk level</td><td align="center"><strong>Critical Risk</strong></td></tr>
   </tbody>
 </table>
+</div>
 
-### Department turnover summary
+<h3 align="center">Department turnover summary</h3>
 
-| Department | Exits | Annualized Turnover | Risk |
-|---|---:|---:|---|
-| Information Technology | 12 | 23.88% | Critical |
-| Administration | 22 | 23.35% | Critical |
-| Finance & Accounts | 13 | 22.86% | Critical |
-| Quality Assurance | 19 | 22.23% | Critical |
-| Production | 62 | 20.81% | Critical |
-| Supply Chain | 17 | 19.25% | Very High |
-| Sales & Marketing | 18 | 18.76% | Very High |
-| Human Resources | 7 | 13.83% | High |
+<div align="center">
+<table width="78%">
+  <thead>
+    <tr>
+      <th align="center">Department</th>
+      <th align="center">Exits</th>
+      <th align="center">Annualized Turnover</th>
+      <th align="center">Risk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="center">Information Technology</td><td align="center">12</td><td align="center">23.88%</td><td align="center">Critical</td></tr>
+    <tr><td align="center">Administration</td><td align="center">22</td><td align="center">23.35%</td><td align="center">Critical</td></tr>
+    <tr><td align="center">Finance &amp; Accounts</td><td align="center">13</td><td align="center">22.86%</td><td align="center">Critical</td></tr>
+    <tr><td align="center">Quality Assurance</td><td align="center">19</td><td align="center">22.23%</td><td align="center">Critical</td></tr>
+    <tr><td align="center">Production</td><td align="center">62</td><td align="center">20.81%</td><td align="center">Critical</td></tr>
+    <tr><td align="center">Supply Chain</td><td align="center">17</td><td align="center">19.25%</td><td align="center">Very High</td></tr>
+    <tr><td align="center">Sales &amp; Marketing</td><td align="center">18</td><td align="center">18.76%</td><td align="center">Very High</td></tr>
+    <tr><td align="center">Human Resources</td><td align="center">7</td><td align="center">13.83%</td><td align="center">High</td></tr>
+  </tbody>
+</table>
+</div>
 
 ---
 
@@ -248,50 +264,48 @@ Annualized Turnover Rate = Period Turnover Rate × 12 / Number of Months
 
 ## 🧰 Platform readiness
 
-<table>
+<div align="center">
+<table width="88%">
 <tr>
-<td width="50%" valign="top">
-
-### 🟩 Excel
-
-- Formula-driven calculator
-- Workforce filters
-- KPI cards and charts
-- Department and exit-reason analysis
-
+<td width="50%" align="center" valign="top">
+<h3>🟩 Excel</h3>
+<p align="center">
+Formula-driven calculator<br>
+Workforce filters<br>
+KPI cards and charts<br>
+Department and exit-reason analysis
+</p>
 </td>
-<td width="50%" valign="top">
-
-### 🟨 Power BI
-
-- PBIP project structure
-- Power Query M partitions
-- Semantic model and DAX measures
-- Executive and monthly report pages
-
+<td width="50%" align="center" valign="top">
+<h3>🟨 Power BI</h3>
+<p align="center">
+PBIP project structure<br>
+Power Query M partitions<br>
+Semantic model and DAX measures<br>
+Executive and monthly report pages
+</p>
 </td>
 </tr>
 <tr>
-<td width="50%" valign="top">
-
-### 🐍 Python and Kaggle
-
-- Reproducible turnover calculations
-- Trend and department analysis
-- Kaggle-ready notebook and metadata
-
+<td width="50%" align="center" valign="top">
+<h3>🐍 Python and Kaggle</h3>
+<p align="center">
+Reproducible turnover calculations<br>
+Trend and department analysis<br>
+Kaggle-ready notebook and metadata
+</p>
 </td>
-<td width="50%" valign="top">
-
-### 🟦 Looker Studio
-
-- Upload-ready CSV
-- Percentage-ready fields
-- Browser-based dashboard support
-
+<td width="50%" align="center" valign="top">
+<h3>🟦 Looker Studio</h3>
+<p align="center">
+Upload-ready CSV<br>
+Percentage-ready fields<br>
+Browser-based dashboard support
+</p>
 </td>
 </tr>
 </table>
+</div>
 
 ---
 
@@ -337,15 +351,25 @@ PASS: required files, JSON syntax, and CSV structure validated.
 
 ## 📚 Project governance
 
-| Document | Purpose |
-|---|---|
-| [`DATASET_USAGE_GUIDE.md`](DATASET_USAGE_GUIDE.md) | Complete calculation, platform and HR use-case guide |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution workflow and pull-request checklist |
-| [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Professional participation expectations |
-| [`SECURITY.md`](SECURITY.md) | Vulnerability and HR data-privacy guidance |
-| [`CHANGELOG.md`](CHANGELOG.md) | Version history and improvements |
-| [`SUPPORT.md`](SUPPORT.md) | Troubleshooting and issue guidance |
-| [`LICENSE`](LICENSE) | Project code licensing terms |
+<div align="center">
+<table width="88%">
+  <thead>
+    <tr>
+      <th align="center" width="38%">Document</th>
+      <th align="center" width="62%">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="center"><a href="DATASET_USAGE_GUIDE.md"><code>DATASET_USAGE_GUIDE.md</code></a></td><td align="center">Complete calculation, platform and HR use-case guide</td></tr>
+    <tr><td align="center"><a href="CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a></td><td align="center">Contribution workflow and pull-request checklist</td></tr>
+    <tr><td align="center"><a href="CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT.md</code></a></td><td align="center">Professional participation expectations</td></tr>
+    <tr><td align="center"><a href="SECURITY.md"><code>SECURITY.md</code></a></td><td align="center">Vulnerability and HR data-privacy guidance</td></tr>
+    <tr><td align="center"><a href="CHANGELOG.md"><code>CHANGELOG.md</code></a></td><td align="center">Version history and improvements</td></tr>
+    <tr><td align="center"><a href="SUPPORT.md"><code>SUPPORT.md</code></a></td><td align="center">Troubleshooting and issue guidance</td></tr>
+    <tr><td align="center"><a href="LICENSE"><code>LICENSE</code></a></td><td align="center">Project code licensing terms</td></tr>
+  </tbody>
+</table>
+</div>
 
 ---
 
