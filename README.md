@@ -1,5 +1,7 @@
 <p align="center">
   <img src="assets/hossain-group-hr-turnover-analytics-bd-cover.svg" alt="Hossain Group HR Turnover Analytics BD" width="52%">
+  <img style="max-width:100%;height:auto" alt="Dashboard preview" src="https://github.com/user-attachments/assets/d5450acd-afb7-4e09-837b-60e7b4e616b9" />
+
 </p>
 
 <h1 align="center">Hossain Group HR Turnover Analytics BD</h1>
