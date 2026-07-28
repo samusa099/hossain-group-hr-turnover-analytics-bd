@@ -1,0 +1,132 @@
+name: Portfolio Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Secrets, dependencies and data safety
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Gitleaks
+        shell: bash
+        run: |
+          set -euo pipefail
+          go install github.com/gitleaks/gitleaks/v8@v8.28.0
+          "$(go env GOPATH)/bin/gitleaks" git --redact --verbose
+      - name: Dependency audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check pip-audit==2.9.0
+          [ ! -f requirements.txt ] || pip-audit -r requirements.txt
+          [ ! -f pyproject.toml ] || pip-audit .
+          [ ! -f package-lock.json ] || npm audit --audit-level=high
+          [ ! -f npm-shrinkwrap.json ] || npm audit --audit-level=high
+      - name: Path, archive, notebook and CSV validation
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, json, pathlib, sys, tarfile, zipfile
+          root = pathlib.Path('.').resolve()
+          errors = []
+          formula_prefixes = ('=', '+', '-', '@', '\t', '\r')
+          archives = {'.zip', '.xlsx', '.xlsm'}
+          for p in pathlib.Path('.').rglob('*'):
+              if '.git' in p.parts:
+                  continue
+              try:
+                  p.resolve().relative_to(root)
+              except Exception:
+                  errors.append(f'Path escapes repository: {p}')
+              if p.is_symlink():
+                  try: p.resolve().relative_to(root)
+                  except Exception: errors.append(f'Unsafe symlink: {p}')
+              if not p.is_file():
+                  continue
+              suffix = p.suffix.lower()
+              if suffix in archives:
+                  try:
+                      with zipfile.ZipFile(p) as z:
+                          names = z.namelist()
+                          if suffix in {'.xlsx', '.xlsm'} and not {'[Content_Types].xml','xl/workbook.xml'}.issubset(names):
+                              errors.append(f'Invalid XLSX archive: {p}')
+                          for n in names:
+                              q = pathlib.PurePosixPath(n)
+                              if q.is_absolute() or '..' in q.parts:
+                                  errors.append(f'Archive traversal risk: {p} -> {n}')
+                  except (zipfile.BadZipFile, OSError) as e:
+                      errors.append(f'Unreadable archive {p}: {e}')
+              if suffix in {'.tar', '.tgz', '.gz'}:
+                  try:
+                      with tarfile.open(p, 'r:*') as t:
+                          for m in t.getmembers():
+                              q = pathlib.PurePosixPath(m.name)
+                              if q.is_absolute() or '..' in q.parts or m.issym() or m.islnk():
+                                  errors.append(f'Unsafe tar member: {p} -> {m.name}')
+                  except tarfile.ReadError:
+                      pass
+              if suffix == '.ipynb':
+                  try:
+                      nb = json.loads(p.read_text(encoding='utf-8'))
+                      for i, cell in enumerate(nb.get('cells', []), 1):
+                          if cell.get('cell_type') == 'code' and (cell.get('execution_count') is not None or cell.get('outputs')):
+                              errors.append(f'Notebook outputs must be cleared: {p} cell {i}')
+                          source = ''.join(cell.get('source', [])).lower()
+                          if any(x in source for x in ('api_key=', 'password=', 'secret=', 'token=')):
+                              errors.append(f'Possible credential in notebook: {p} cell {i}')
+                  except Exception as e:
+                      errors.append(f'Invalid notebook {p}: {e}')
+              if suffix == '.csv':
+                  try:
+                      with p.open(encoding='utf-8-sig', newline='') as f:
+                          for r, row in enumerate(csv.reader(f), 1):
+                              for c, value in enumerate(row, 1):
+                                  if value and value[0] in formula_prefixes:
+                                      errors.append(f'CSV formula-injection risk: {p}:{r}:{c}')
+                  except Exception as e:
+                      errors.append(f'Unreadable CSV {p}: {e}')
+          if errors:
+              print('\n'.join(f'::error::{e}' for e in errors))
+              sys.exit(1)
+          print('All portfolio security validations passed.')
+          PY
+
+  codeql:
+    name: CodeQL (Python)
+    permissions:
+      contents: read
+      security-events: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a
+        with:
+          persist-credentials: false
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@18420e3271f74589575af831a523c833acda327f
+        with:
+          languages: python
+      - name: Analyze
+        uses: github/codeql-action/analyze@18420e3271f74589575af831a523c833acda327f
