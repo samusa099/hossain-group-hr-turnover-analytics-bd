@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: Please cite this project using the metadata below.
+title: Hossain Group HR Turnover Analytics BD
+type: dataset
+authors:
+  - family-names: Musa
+version: 1.2.0
+repository-code: https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd
+url: https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd
+license: CC0-1.0
