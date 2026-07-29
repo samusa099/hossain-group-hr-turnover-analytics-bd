@@ -174,8 +174,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          kaggle datasets list --page-size 1 >/dev/null
-          echo "Kaggle authentication succeeded."
+          kaggle datasets files "$KAGGLE_USERNAME/$DATASET_SLUG" --page-size 1 >/dev/null
+          echo "Kaggle authentication succeeded for the target dataset path."
 
       - name: Validate project and build upload package
         run: |
