@@ -2,9 +2,10 @@
 """Build and validate the Kaggle dataset upload package.
 
 The GitHub repository remains the source of truth. This script copies only the
-approved dataset, metadata, documentation and notebook files into a temporary
-Kaggle staging directory. It never copies GitHub administration files, secrets,
-Power BI binaries or unrelated development files.
+approved dataset, metadata, documentation, notebook and official case-study
+files into a temporary Kaggle staging directory. It never copies participant
+submissions, GitHub administration files, secrets, Power BI binaries or
+unrelated development files.
 """
 
 from __future__ import annotations
@@ -21,6 +22,22 @@ DATASET_SLUG = "hossain-group-hr-turnover-analytics-bd"
 DATASET_TITLE = "Hossain Group HR Turnover Analytics BD"
 EXPECTED_EMPLOYEE_ROWS = 762
 USERNAME_PATTERN = re.compile(r"^[A-Za-z0-9_-]+$")
+
+CASE_FILES = (
+    Path("README.md"),
+    Path("CASE_NARRATIVE.md"),
+    Path("MANAGEMENT_CONTEXT.md"),
+    Path("EXECUTIVE_MANDATE.md"),
+    Path("ROLE_TRACKS.md"),
+    Path("SUBMISSION_REQUIREMENTS.md"),
+    Path("POLICY_AND_LEGAL_RESEARCH.md"),
+    Path("RUBRIC.md"),
+    Path("variants/managing-director.md"),
+    Path("variants/hr-business-partner.md"),
+    Path("variants/people-analytics.md"),
+    Path("variants/operations-finance.md"),
+    Path("variants/policy-governance.md"),
+)
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 BUILD_ROOT = (REPOSITORY_ROOT / ".kaggle-build").resolve()
@@ -81,6 +98,19 @@ def copy_csv_directory(source: Path, destination: Path) -> list[Path]:
     return copied
 
 
+def copy_case_study(destination: Path) -> list[Path]:
+    source_root = REPOSITORY_ROOT / "case-study"
+    copied: list[Path] = []
+
+    for relative_path in CASE_FILES:
+        source = source_root / relative_path
+        target = destination / relative_path
+        copy_file(source, target)
+        copied.append(target)
+
+    return copied
+
+
 def write_metadata(output: Path, username: str) -> Path:
     metadata = {
         "title": DATASET_TITLE,
@@ -132,6 +162,34 @@ def validate_employee_csv(path: Path) -> None:
         raise ValueError("Employee CSV contains duplicate Employee_ID values")
 
 
+def validate_case_package(output: Path) -> None:
+    case_root = output / "case-study"
+
+    for relative_path in CASE_FILES:
+        path = case_root / relative_path
+        if not path.is_file():
+            raise FileNotFoundError(
+                f"Kaggle package is missing official case file: {path.relative_to(output)}"
+            )
+        if path.suffix.lower() != ".md":
+            raise ValueError(f"Unexpected case-study file type: {path}")
+        if not path.read_text(encoding="utf-8").strip():
+            raise ValueError(f"Official case file is empty: {path}")
+
+    published_files = {
+        path.relative_to(case_root)
+        for path in case_root.rglob("*")
+        if path.is_file()
+    }
+    expected_files = set(CASE_FILES)
+    unexpected = sorted(published_files.difference(expected_files))
+    if unexpected:
+        raise ValueError(
+            "Unexpected file found in the Kaggle case-study archive: "
+            + ", ".join(str(path) for path in unexpected)
+        )
+
+
 def validate_package(output: Path, username: str) -> None:
     expected_files = [
         output / "dataset-metadata.json",
@@ -143,6 +201,7 @@ def validate_package(output: Path, username: str) -> None:
         output / "metadata" / "data_dictionary.json",
         output / "project" / "Hossain_Group_Turnover_Analysis.ipynb",
     ]
+    expected_files.extend(output / "case-study" / path for path in CASE_FILES)
 
     missing = [
         str(path.relative_to(output))
@@ -172,6 +231,7 @@ def validate_package(output: Path, username: str) -> None:
         )
     )
     validate_employee_csv(output / "raw" / "employee_master.csv")
+    validate_case_package(output)
 
     prohibited_names = {
         ".env",
@@ -181,12 +241,16 @@ def validate_package(output: Path, username: str) -> None:
         "id_ed25519",
     }
     prohibited_suffixes = {".pbix", ".pem", ".pfx", ".key"}
+    prohibited_top_level = {".github", "submissions", "release"}
 
     for path in output.rglob("*"):
         if not path.is_file():
             continue
         if path.name in prohibited_names or path.suffix.lower() in prohibited_suffixes:
             raise ValueError(f"Prohibited file found in Kaggle package: {path}")
+        relative = path.relative_to(output)
+        if relative.parts and relative.parts[0] in prohibited_top_level:
+            raise ValueError(f"Prohibited directory copied to Kaggle package: {path}")
 
     processed_files = sorted((output / "processed").glob("*.csv"))
     if not processed_files:
@@ -232,13 +296,14 @@ def build_package(output: Path, username: str) -> None:
         / "Hossain_Group_Turnover_Analysis.ipynb",
         output / "project" / "Hossain_Group_Turnover_Analysis.ipynb",
     )
+    copy_case_study(output / "case-study")
 
     validate_package(output, username)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Prepare the clean GitHub-to-Kaggle dataset package."
+        description="Prepare the clean GitHub-to-Kaggle dataset and case package."
     )
     parser.add_argument(
         "--output",
