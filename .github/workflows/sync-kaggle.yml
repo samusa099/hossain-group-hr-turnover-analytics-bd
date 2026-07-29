@@ -1,4 +1,4 @@
-name: Sync dataset to Kaggle
+name: Sync dataset and case study to Kaggle
 
 on:
   pull_request:
@@ -6,6 +6,7 @@ on:
     paths:
       - "data/**"
       - "notebooks/Hossain_Group_Turnover_Analysis.ipynb"
+      - "case-study/**"
       - "DATA_PROVENANCE.md"
       - "DATASET_USAGE_GUIDE.md"
       - "CITATION.cff"
@@ -17,6 +18,7 @@ on:
     paths:
       - "data/**"
       - "notebooks/Hossain_Group_Turnover_Analysis.ipynb"
+      - "case-study/**"
       - "DATA_PROVENANCE.md"
       - "DATASET_USAGE_GUIDE.md"
       - "CITATION.cff"
@@ -64,7 +66,7 @@ jobs:
       - name: Upload package preview
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: kaggle-dataset-package-preview
+          name: kaggle-dataset-and-case-package-preview
           path: .kaggle-build/dataset
           if-no-files-found: error
           retention-days: 3
@@ -165,7 +167,7 @@ jobs:
           kaggle datasets version \
             --path .kaggle-build/dataset \
             --dir-mode zip \
-            --message "Automatic GitHub sync from ${GITHUB_SHA::7}"
+            --message "Automatic GitHub case-study sync from ${GITHUB_SHA::7}"
 
       - name: Print Kaggle dataset URL
         run: |
