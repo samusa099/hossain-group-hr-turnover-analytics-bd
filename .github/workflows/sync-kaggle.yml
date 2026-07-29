@@ -170,13 +170,6 @@ jobs:
               print("Configured modern Kaggle API token.")
           PY
 
-      - name: Validate Kaggle authentication
-        shell: bash
-        run: |
-          set -euo pipefail
-          kaggle datasets files "$KAGGLE_USERNAME/$DATASET_SLUG" --page-size 1 >/dev/null
-          echo "Kaggle authentication succeeded for the target dataset path."
-
       - name: Validate project and build upload package
         run: |
           python scripts/validate_project.py
@@ -200,8 +193,14 @@ jobs:
 
           if [ "$status" -eq 0 ]; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
-          elif grep -Eiq "404|not found|does not exist" /tmp/kaggle-dataset-check.log; then
+          elif grep -Eiq "404|not found|does not exist|could not be found" /tmp/kaggle-dataset-check.log; then
             echo "exists=false" >> "$GITHUB_OUTPUT"
+          elif grep -Eiq "401|unauthorized" /tmp/kaggle-dataset-check.log; then
+            echo "::error::Kaggle token is invalid or expired."
+            exit 1
+          elif grep -Eiq "403|forbidden" /tmp/kaggle-dataset-check.log; then
+            echo "::error::Kaggle denied access. Verify the token, username, and dataset ownership."
+            exit 1
           else
             echo "::error::Unable to determine whether the Kaggle dataset exists."
             exit "$status"
