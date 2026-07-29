@@ -39,4 +39,4 @@ jobs:
           clean: true
 
       - name: Validate external submission policy
-        run: python .github/scripts/validate_case_submission.py
+        run: python .github/scripts/case_submission_policy.py
