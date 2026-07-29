@@ -1,0 +1,102 @@
+name: Publish GitHub Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "VERSION"
+      - "CITATION.cff"
+      - "CHANGELOG.md"
+      - "RELEASE_NOTES_v*.md"
+      - "release/**"
+      - ".github/workflows/publish-release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Validate and publish declared release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out exact release commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+          clean: true
+
+      - name: Validate release declaration
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          VERSION="$(tr -d '[:space:]' < release/RELEASE_VERSION)"
+          if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::release/RELEASE_VERSION must match vX.Y.Z"
+            exit 1
+          fi
+
+          NUMERIC_VERSION="${VERSION#v}"
+          PROJECT_VERSION="$(tr -d '[:space:]' < VERSION)"
+          NOTES="RELEASE_NOTES_${VERSION}.md"
+          MANIFEST="release/${VERSION^^}_RELEASE_MANIFEST.md"
+          TITLE="${VERSION} — Role-Based Workforce Stability Case"
+
+          if [ "$PROJECT_VERSION" != "$NUMERIC_VERSION" ]; then
+            echo "::error::VERSION ($PROJECT_VERSION) does not match $VERSION"
+            exit 1
+          fi
+
+          if ! grep -Eq "^version:[[:space:]]+${NUMERIC_VERSION}$" CITATION.cff; then
+            echo "::error::CITATION.cff version does not match $NUMERIC_VERSION"
+            exit 1
+          fi
+
+          if [ ! -s "$NOTES" ]; then
+            echo "::error::Missing or empty release notes: $NOTES"
+            exit 1
+          fi
+
+          if [ ! -s "$MANIFEST" ]; then
+            echo "::error::Missing or empty release manifest: $MANIFEST"
+            exit 1
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "notes=$NOTES" >> "$GITHUB_OUTPUT"
+          echo "manifest=$MANIFEST" >> "$GITHUB_OUTPUT"
+          echo "title=$TITLE" >> "$GITHUB_OUTPUT"
+
+      - name: Publish release idempotently
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.release.outputs.version }}
+          NOTES: ${{ steps.release.outputs.notes }}
+          TITLE: ${{ steps.release.outputs.title }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if gh release view "$VERSION" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $VERSION already exists; no duplicate release was created."
+            exit 0
+          fi
+
+          gh release create "$VERSION" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "$TITLE" \
+            --notes-file "$NOTES" \
+            --latest
+
+          echo "Published $VERSION from $GITHUB_SHA"
