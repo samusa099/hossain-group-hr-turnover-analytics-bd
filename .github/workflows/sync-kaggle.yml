@@ -121,7 +121,7 @@ jobs:
           echo "Kaggle credential is configured."
 
       - name: Install official Kaggle CLI
-        run: python -m pip install --disable-pip-version-check kaggle==2.2.3
+        run: python -m pip install --disable-pip-version-check kaggle==2.2.4
 
       - name: Configure Kaggle credentials
         shell: bash
@@ -181,30 +181,40 @@ jobs:
         id: dataset
         shell: bash
         run: |
-          set +e
-          kaggle datasets files \
-            "$KAGGLE_USERNAME/$DATASET_SLUG" \
-            --page-size 1 \
-            > /tmp/kaggle-dataset-check.log 2>&1
-          status=$?
-          set -e
+          set -euo pipefail
 
-          cat /tmp/kaggle-dataset-check.log
+          target="$KAGGLE_USERNAME/$DATASET_SLUG"
 
-          if [ "$status" -eq 0 ]; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-          elif grep -Eiq "404|not found|does not exist|could not be found" /tmp/kaggle-dataset-check.log; then
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          elif grep -Eiq "401|unauthorized" /tmp/kaggle-dataset-check.log; then
-            echo "::error::Kaggle token is invalid or expired."
-            exit 1
-          elif grep -Eiq "403|forbidden" /tmp/kaggle-dataset-check.log; then
-            echo "::error::Kaggle denied access. Verify the token, username, and dataset ownership."
-            exit 1
-          else
-            echo "::error::Unable to determine whether the Kaggle dataset exists."
-            exit "$status"
-          fi
+          kaggle datasets list \
+            --mine \
+            --search "$DATASET_SLUG" \
+            --csv \
+            > /tmp/kaggle-owned-datasets.csv
+
+          TARGET_DATASET="$target" python - <<'PY'
+          import csv
+          import os
+          from pathlib import Path
+
+          target = os.environ["TARGET_DATASET"]
+          csv_path = Path("/tmp/kaggle-owned-datasets.csv")
+
+          with csv_path.open("r", encoding="utf-8-sig", newline="") as handle:
+              reader = csv.DictReader(handle)
+              references = {
+                  str(row.get("ref", "")).strip()
+                  for row in reader
+                  if str(row.get("ref", "")).strip()
+              }
+
+          exists = target in references
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"exists={'true' if exists else 'false'}\n")
+
+          print(
+              f"Kaggle dataset {'exists' if exists else 'does not exist'}: {target}"
+          )
+          PY
 
       - name: Create public Kaggle dataset
         if: steps.dataset.outputs.exists == 'false'
