@@ -5,37 +5,37 @@
 <h1 align="center">Hossain Group HR Turnover Analytics BD</h1>
 
 <p align="center">
-  <strong>A portfolio-ready employee turnover analytics solution built for the Bangladesh HR context.</strong><br>
-  From employee records to management-ready insights across Excel, Power BI, Python, Kaggle and Looker Studio.
+  <strong>A Bangladesh-focused HR analytics portfolio and controlled workforce-management simulation.</strong><br>
+  From synthetic employee records to validated metrics, dashboards, role-based decisions and protected participant submissions.
 </p>
 
 <p align="center">
   <img alt="Data Type" src="https://img.shields.io/badge/Data-Synthetic%20HR-625BEB">
   <img alt="Country" src="https://img.shields.io/badge/Context-Bangladesh-1E8E5A">
   <img alt="Records" src="https://img.shields.io/badge/Records-762-0A66C2">
-  <img alt="Risk" src="https://img.shields.io/badge/Risk-Critical-D64545">
-  <img alt="Project Status" src="https://img.shields.io/badge/Status-Portfolio%20Ready-2EA44F">
-  <img alt="Release" src="https://img.shields.io/badge/Release-v1.2.0-7B61FF">
+  <img alt="Case" src="https://img.shields.io/badge/Case-Role--Based%20Simulation-625BEB">
+  <img alt="Project Status" src="https://img.shields.io/badge/Status-Publication%20Ready-2EA44F">
+  <img alt="Release" src="https://img.shields.io/badge/Release-v1.3.0-7B61FF">
   <img alt="Analysis Period" src="https://img.shields.io/badge/Period-Jan%202025%20%E2%80%93%20Jun%202026-4C6EF5">
-  <img alt="License" src="https://img.shields.io/badge/Code-MIT-lightgrey">
+  <img alt="Dataset License" src="https://img.shields.io/badge/Dataset-CC0--1.0-5C6BC0">
 </p>
 
 <p align="center">
   <a href="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/security-and-validation.yml"><img alt="Security and Project Validation" src="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/security-and-validation.yml/badge.svg"></a>
+  <a href="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/validate-case-submission.yml"><img alt="Case Submission Policy" src="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/validate-case-submission.yml/badge.svg"></a>
   <a href="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/codeql.yml"><img alt="CodeQL" src="https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd/actions/workflows/codeql.yml/badge.svg"></a>
   <img alt="Python" src="https://img.shields.io/badge/Python-3.11%20%7C%203.12-3776AB?logo=python&logoColor=white">
   <img alt="Power BI" src="https://img.shields.io/badge/Power%20BI-PBIP-F2C811?logo=powerbi&logoColor=black">
   <img alt="Excel" src="https://img.shields.io/badge/Excel-Ready-217346?logo=microsoft-excel&logoColor=white">
-  <img alt="Kaggle" src="https://img.shields.io/badge/Kaggle-Ready-20BEFF?logo=kaggle&logoColor=white">
-  <img alt="Looker Studio" src="https://img.shields.io/badge/Looker%20Studio-Ready-4285F4?logo=looker&logoColor=white">
-  <img alt="Dataset License" src="https://img.shields.io/badge/Dataset-CC0--1.0-5C6BC0">
+  <img alt="Kaggle" src="https://img.shields.io/badge/Kaggle-Case%20Package-20BEFF?logo=kaggle&logoColor=white">
 </p>
 
 <p align="center">
   <a href="#-executive-overview">Overview</a> ·
   <a href="#-project-snapshot">Snapshot</a> ·
-  <a href="#-dataset-usage">Dataset Usage</a> ·
-  <a href="#-analytics-workflow">Workflow</a> ·
+  <a href="#-role-based-case-study">Case Study</a> ·
+  <a href="#-dataset-and-project-evidence">Evidence</a> ·
+  <a href="#-controlled-participant-submissions">Submissions</a> ·
   <a href="#-repository-structure">Structure</a> ·
   <a href="#-quick-start">Quick Start</a> ·
   <a href="SECURITY.md">Security</a>
@@ -45,16 +45,22 @@
 
 ## ✨ Executive overview
 
-**Hossain Group HR Turnover Analytics BD** is an end-to-end HR analytics portfolio project designed for an **HR Business Executive** working in a Bangladesh-based organisation.
+**Hossain Group HR Turnover Analytics BD** is an end-to-end HR analytics portfolio project designed for the Bangladesh business context. Version `1.3.0` extends the original calculation and dashboard project into a controlled, role-based management simulation.
 
-The project transforms synthetic employee joining, headcount and separation records into actionable turnover insights through an Excel calculator, management dashboard, Power BI project, Python automation, Kaggle notebook and Looker Studio-ready dataset.
+The project now has three publication layers:
 
-> **Workflow:** employee records → validation → turnover calculation → risk classification → dashboard reporting → HR action.
+| Layer | Purpose |
+|---|---|
+| **Official case** | Narrative, ambiguity, executive mandate, role briefs, legal-research requirement and rubric |
+| **Existing project evidence** | One validated employee dataset, processed metrics, Excel, Power BI, Python, Kaggle and Looker Studio assets |
+| **Participant submissions** | Restricted pull-request area containing a professional PDF and optional cleared notebook |
+
+> **Decision objective:** establish what the evidence supports, what remains uncertain, what management can do now and what requires additional investigation.
 
 <div align="center">
-<table width="72%">
+<table width="78%">
 <tr>
-<td width="25%" align="center"><strong>762</strong><br>Employee records</td>
+<td width="25%" align="center"><strong>762</strong><br>Synthetic employee records</td>
 <td width="25%" align="center"><strong>242</strong><br>Hires in period</td>
 <td width="25%" align="center"><strong>170</strong><br>Employee exits</td>
 <td width="25%" align="center"><strong>20.74%</strong><br>Annualized turnover</td>
@@ -62,17 +68,17 @@ The project transforms synthetic employee joining, headcount and separation reco
 </table>
 </div>
 
-### What makes this project useful
+### What makes this release different
 
 | Capability | Included |
 |---|---|
-| **Bangladesh context** | Synthetic Bangladeshi employee names, locations, departments and HR terminology |
-| **Excel usability** | Date, department, location and employment-type filters |
-| **HR metrics** | Opening, closing and average headcount, hires, exits and turnover |
-| **Risk monitoring** | Low, Moderate, High, Very High and Critical classification |
-| **BI readiness** | Power BI Project and Looker Studio-ready data |
-| **Automation** | Python recalculation, model rebuilding and validation |
-| **Portfolio readiness** | GitHub documentation, Kaggle metadata and notebook |
+| **Bangladesh context** | Synthetic local employee, location, department and HR terminology |
+| **Validated analytics** | Opening, closing and average headcount, hires, exits and turnover |
+| **Role-based simulation** | Executive, HRBP, analytics, operations-finance and governance perspectives |
+| **Evidence discipline** | Fact, opinion, allegation, uncertainty and research need must be separated |
+| **Legal-research boundary** | Current official Bangladesh sources must be independently verified |
+| **Protected contributions** | Fork, pull request, path validation, CODEOWNERS and protected main branch |
+| **Clean publication** | GitHub source of truth with approved Kaggle archives only |
 | **Ethical design** | No real employee or confidential organisational data |
 
 ---
@@ -82,10 +88,7 @@ The project transforms synthetic employee joining, headcount and separation reco
 <div align="center">
 <table width="70%">
   <thead>
-    <tr>
-      <th align="center" width="62%">Metric</th>
-      <th align="center" width="38%">Result</th>
-    </tr>
+    <tr><th align="center" width="62%">Metric</th><th align="center" width="38%">Result</th></tr>
   </thead>
   <tbody>
     <tr><td align="center">Analysis period</td><td align="center"><strong>01 Jan 2025 – 30 Jun 2026</strong></td></tr>
@@ -97,215 +100,188 @@ The project transforms synthetic employee joining, headcount and separation reco
     <tr><td align="center">Total exits</td><td align="center"><strong>170</strong></td></tr>
     <tr><td align="center">Period turnover rate</td><td align="center"><strong>31.11%</strong></td></tr>
     <tr><td align="center">Annualized turnover rate</td><td align="center"><strong>20.74%</strong></td></tr>
-    <tr><td align="center">Current risk level</td><td align="center"><strong>Critical Risk</strong></td></tr>
+    <tr><td align="center">Published risk classification</td><td align="center"><strong>Critical</strong></td></tr>
   </tbody>
 </table>
 </div>
 
-<h3 align="center">Department turnover summary</h3>
-
-<div align="center">
-<table width="78%">
-  <thead>
-    <tr>
-      <th align="center">Department</th>
-      <th align="center">Exits</th>
-      <th align="center">Annualized Turnover</th>
-      <th align="center">Risk</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td align="center">Information Technology</td><td align="center">12</td><td align="center">23.88%</td><td align="center">Critical</td></tr>
-    <tr><td align="center">Administration</td><td align="center">22</td><td align="center">23.35%</td><td align="center">Critical</td></tr>
-    <tr><td align="center">Finance &amp; Accounts</td><td align="center">13</td><td align="center">22.86%</td><td align="center">Critical</td></tr>
-    <tr><td align="center">Quality Assurance</td><td align="center">19</td><td align="center">22.23%</td><td align="center">Critical</td></tr>
-    <tr><td align="center">Production</td><td align="center">62</td><td align="center">20.81%</td><td align="center">Critical</td></tr>
-    <tr><td align="center">Supply Chain</td><td align="center">17</td><td align="center">19.25%</td><td align="center">Very High</td></tr>
-    <tr><td align="center">Sales &amp; Marketing</td><td align="center">18</td><td align="center">18.76%</td><td align="center">Very High</td></tr>
-    <tr><td align="center">Human Resources</td><td align="center">7</td><td align="center">13.83%</td><td align="center">High</td></tr>
-  </tbody>
-</table>
-</div>
+These published indicators are evidence inputs, not a complete root-cause conclusion. The case requires participants to determine what the data can and cannot establish.
 
 ---
 
-## 🧭 Dataset usage
+## 🎭 Role-based case study
 
-Use this dataset to calculate turnover, compare departments, analyse exit reasons, build dashboards and practise HR reporting with Excel, Power BI, Python, SQL, Kaggle or Looker Studio.
+The official simulation begins with conflicting management accounts involving manpower pressure, replacement hiring, attendance concerns, workforce continuity, employee comments and fragmented HR records.
+
+The public case does **not** disclose:
+
+- the correct diagnosis;
+- the most problematic department as a solved answer;
+- a required dashboard layout;
+- a completed root-cause tree;
+- a model recommendation;
+- a difficulty percentage;
+- pre-calculated financial benefit.
+
+### Start the case
+
+1. Read [`case-study/CASE_NARRATIVE.md`](case-study/CASE_NARRATIVE.md).
+2. Review [`case-study/MANAGEMENT_CONTEXT.md`](case-study/MANAGEMENT_CONTEXT.md).
+3. Read [`case-study/EXECUTIVE_MANDATE.md`](case-study/EXECUTIVE_MANDATE.md).
+4. Select a role from [`case-study/ROLE_TRACKS.md`](case-study/ROLE_TRACKS.md).
+5. Follow [`case-study/SUBMISSION_REQUIREMENTS.md`](case-study/SUBMISSION_REQUIREMENTS.md).
+6. Review [`case-study/RUBRIC.md`](case-study/RUBRIC.md).
+
+<p align="center">
+  <a href="case-study/README.md"><strong>🧭 Open the Official Case Study</strong></a>
+</p>
+
+### Available tracks
+
+| Track | Primary emphasis |
+|---|---|
+| Managing Director | Enterprise risk, accountability and intervention approval |
+| HR Business Partner | Department diagnosis, employee relations and action design |
+| People Analytics | Data quality, metric validation, segmentation and analytical limits |
+| Operations and Finance | Workforce continuity, replacement pressure and prioritisation |
+| Policy and Governance | Policy consistency, auditability, legal alignment and control design |
+| Hybrid | Two connected perspectives with one declared primary decision-maker |
+
+---
+
+## 🧭 Dataset and project evidence
+
+The existing files remain the only quantitative source of truth.
 
 | Start with | Best use |
 |---|---|
-| `data/raw/employee_master.csv` | Employee-level calculations |
+| `data/raw/employee_master.csv` | Employee-level calculations and segmentation |
+| `data/processed/` | Validated company, department, monthly and exit-reason summaries |
+| `data/metadata/data_dictionary.json` | Field definitions and data interpretation |
 | `excel/Hossain_Group_Employee_Turnover_Calculator.xlsx` | Formula-driven analysis and dashboard |
-| `powerbi/Hossain_Group_Turnover.pbip` | Interactive BI reporting |
-| `notebooks/Hossain_Group_Turnover_Analysis.ipynb` | Python and Kaggle analysis |
+| `powerbi/Hossain_Group_Turnover.pbip` | Interactive BI reporting source |
+| `notebooks/Hossain_Group_Turnover_Analysis.ipynb` | Reproducible Python and Kaggle analysis |
 | `looker_studio/hossain_group_looker_studio.csv` | Browser-based dashboarding |
+
+No alternative salary, attendance, performance, promotion, grievance, manager, recruitment-cost, productivity or legal dataset is supplied.
+
+Where the evidence cannot support a conclusion, use:
+
+> **Insufficient evidence to conclude.**
 
 <p align="center">
   <a href="DATASET_USAGE_GUIDE.md"><strong>📘 Open the Complete Dataset Usage Guide</strong></a>
 </p>
 
-The detailed guide covers **why, how and where** the dataset can be used, turnover formulas, calculation examples, platform workflows, HR use cases, SQL practice, project ideas, limitations and responsible data handling.
+---
+
+## 🔐 Controlled participant submissions
+
+External contributors do not receive direct write access. The contribution flow is:
+
+```text
+Fork
+→ submission branch
+→ files under the participant path
+→ pull request
+→ automated scope validation
+→ maintainer review
+→ protected main branch
+```
+
+### Branch and path
+
+```text
+Branch: submission/<github-username>/<selected-role>
+Path:   submissions/<github-username>/<submission-id>/
+```
+
+### Required files
+
+```text
+README.md
+report.pdf
+```
+
+Optional:
+
+```text
+analysis.ipynb
+supporting-dashboard.png
+```
+
+The required policy check is:
+
+```text
+Validate participant submission scope
+```
+
+It validates author path, one submission per pull request, required files, extension policy, size limits, PDF signature, notebook JSON and outputs, secret patterns and the synthetic-data declaration.
+
+Administrative details are documented in [`docs/CASE_SUBMISSION_PROTECTION.md`](docs/CASE_SUBMISSION_PROTECTION.md).
 
 ---
 
-## 🎯 Business questions
+## 🇧🇩 Policy, governance and legal research
 
-1. What is the employee turnover rate for a selected period?
-2. Which departments have the highest turnover exposure?
-3. What are the leading employee exit reasons?
-4. How does turnover change month by month?
-5. Are hires keeping pace with exits?
-6. Which workforce segments require retention action?
-7. What should HR communicate to management?
+Participants must independently verify any current Bangladesh legal or regulatory issue from official sources applicable on the submission date. A strong submission explains:
+
+- the official issue identified;
+- why it is relevant to the case;
+- whether the current data can assess it;
+- which additional evidence is required;
+- which policy, approval, documentation or reporting control should change.
+
+The case does not embed an unverified claim about a “new labour law.” See [`case-study/POLICY_AND_LEGAL_RESEARCH.md`](case-study/POLICY_AND_LEGAL_RESEARCH.md).
 
 ---
 
-## 🧱 Analytics workflow
+## 🧱 Analytics and decision workflow
 
 ```mermaid
 flowchart LR
-    A[Employee Master Data] --> B[Python Validation]
-    B --> C[Turnover Calculation Engine]
-    C --> D[Processed HR Metrics]
-
-    D --> E[Excel Calculator and Dashboard]
-    D --> F[Power BI Semantic Model]
-    D --> G[Kaggle Analysis Notebook]
-    D --> H[Looker Studio Dataset]
-
-    E --> I[HR Business Executive]
-    F --> I
-    G --> I
-    H --> I
-
-    I --> J{Turnover Risk Level}
-    J -->|Low or Moderate| K[Monitor Retention Trends]
-    J -->|High| L[Investigate Root Causes]
-    J -->|Very High or Critical| M[Immediate HR and Leadership Action]
+    A[Employee and processed evidence] --> B[Validation]
+    B --> C[Metrics and segmentation]
+    C --> D[Competing explanations]
+    D --> E{Evidence status}
+    E -->|Supported| F[Management finding]
+    E -->|Plausible but unverified| G[Investigation requirement]
+    E -->|Not assessable| H[Evidence limitation]
+    F --> I[Immediate action]
+    G --> J[90-day evidence plan]
+    H --> J
+    I --> K[180-day control and measurement]
+    J --> K
 ```
 
 ---
 
 ## 🗂️ Repository structure
 
-```mermaid
-flowchart TB
-    ROOT[Hossain Group HR Turnover Analytics BD]
-
-    ROOT --> DATA[data]
-    DATA --> RAW[raw / employee master]
-    DATA --> PROCESSED[processed / turnover summaries]
-    DATA --> META[metadata / data dictionary]
-
-    ROOT --> EXCEL[excel / calculator]
-    ROOT --> NOTEBOOKS[notebooks / Kaggle analysis]
-    ROOT --> POWERBI[powerbi / report and semantic model]
-    ROOT --> LOOKER[looker_studio / reporting CSV]
-    ROOT --> SCRIPTS[scripts / generation and validation]
-    ROOT --> DOCS[docs / project guides]
-
-    ROOT --> README[README.md]
-    ROOT --> USAGE[DATASET_USAGE_GUIDE.md]
-    ROOT --> CONTRIB[CONTRIBUTING.md]
-    ROOT --> CONDUCT[CODE_OF_CONDUCT.md]
-    ROOT --> SECURITY[SECURITY.md]
-    ROOT --> CHANGELOG[CHANGELOG.md]
-    ROOT --> SUPPORT[SUPPORT.md]
-    ROOT --> LICENSE[LICENSE]
-```
-
-<details>
-<summary><strong>View core file tree</strong></summary>
-
 ```text
 hossain-group-hr-turnover-analytics-bd/
+├── case-study/                 # official role-based case materials
+│   └── variants/               # role-specific management briefs
+├── submissions/                # controlled participant contribution area
 ├── data/
 │   ├── raw/employee_master.csv
 │   ├── processed/
 │   └── metadata/data_dictionary.json
-├── docs/
-├── excel/Hossain_Group_Employee_Turnover_Calculator.xlsx
-├── looker_studio/
-├── notebooks/Hossain_Group_Turnover_Analysis.ipynb
+├── excel/
+├── notebooks/
 ├── powerbi/
+├── looker_studio/
+├── kaggle/dataset/
 ├── scripts/
-├── DATASET_USAGE_GUIDE.md
-├── CHANGELOG.md
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── SECURITY.md
-├── SUPPORT.md
-├── LICENSE
+├── docs/
+├── release/
+├── RELEASE_NOTES_v1.3.0.md
+├── VERSION
+├── CITATION.cff
 └── README.md
 ```
 
-</details>
-
----
-
-## 🧮 Metric definitions
-
-```text
-Average Headcount = (Opening Headcount + Closing Headcount) / 2
-Period Turnover Rate = Employees Exited / Average Headcount
-Annualized Turnover Rate = Period Turnover Rate × 12 / Number of Months
-```
-
-| Annualized Turnover | Risk Level | Recommended HR response |
-|---:|---|---|
-| Below 5% | Low | Maintain current retention practices |
-| 5% to below 10% | Moderate | Monitor trends and conduct stay interviews |
-| 10% to below 15% | High | Investigate manager, pay and career factors |
-| 15% to below 20% | Very High | Begin an immediate retention action plan |
-| 20% or above | Critical | Escalate for executive review and intervention |
-
----
-
-## 🧰 Platform readiness
-
-<div align="center">
-<table width="88%">
-<tr>
-<td width="50%" align="center" valign="top">
-<h3>🟩 Excel</h3>
-<p align="center">
-Formula-driven calculator<br>
-Workforce filters<br>
-KPI cards and charts<br>
-Department and exit-reason analysis
-</p>
-</td>
-<td width="50%" align="center" valign="top">
-<h3>🟨 Power BI</h3>
-<p align="center">
-PBIP project structure<br>
-Power Query M partitions<br>
-Semantic model and DAX measures<br>
-Executive and monthly report pages
-</p>
-</td>
-</tr>
-<tr>
-<td width="50%" align="center" valign="top">
-<h3>🐍 Python and Kaggle</h3>
-<p align="center">
-Reproducible turnover calculations<br>
-Trend and department analysis<br>
-Kaggle-ready notebook and metadata
-</p>
-</td>
-<td width="50%" align="center" valign="top">
-<h3>🟦 Looker Studio</h3>
-<p align="center">
-Upload-ready CSV<br>
-Percentage-ready fields<br>
-Browser-based dashboard support
-</p>
-</td>
-</tr>
-</table>
-</div>
+The Kaggle publication builder copies only approved evidence, documentation, the notebook and official case Markdown files. It excludes participant submissions, `.github/`, rulesets, `.pbix`, secrets and unrelated development files.
 
 ---
 
@@ -316,7 +292,7 @@ git clone https://github.com/samusa099/hossain-group-hr-turnover-analytics-bd.gi
 cd hossain-group-hr-turnover-analytics-bd
 python -m pip install -r requirements.txt
 python scripts/validate_project.py
-python scripts/generate_powerbi_project.py
+python scripts/prepare_kaggle_dataset.py --output .kaggle-build/dataset
 ```
 
 ### Excel
@@ -331,57 +307,38 @@ excel/Hossain_Group_Employee_Turnover_Calculator.xlsx
 scripts\run_project.bat
 ```
 
-After Power BI Desktop opens, select **Refresh** and use **File → Save As** to create a `.pbix` file.
+After Power BI Desktop opens, select **Refresh** and use **File → Save As** to create a local `.pbix` file. Generated `.pbix` files remain outside normal Git source control.
 
 ---
 
-## 🧪 Validation
+## 📦 Publication
 
-```bash
-python scripts/validate_project.py
-```
+| Channel | Publication behaviour |
+|---|---|
+| GitHub | Protected source repository and participant review workflow |
+| GitHub Release | Guarded publication from `release/RELEASE_VERSION` and versioned release notes |
+| Kaggle Dataset | Clean archives for raw, processed, metadata, project and official case materials |
 
-Expected result:
+Publication instructions: [`docs/CASE_STUDY_PUBLISHING_GUIDE.md`](docs/CASE_STUDY_PUBLISHING_GUIDE.md)
 
-```text
-PASS: required files, JSON syntax, and CSV structure validated.
-```
+Release notes: [`RELEASE_NOTES_v1.3.0.md`](RELEASE_NOTES_v1.3.0.md)
 
 ---
 
 ## 📚 Project governance
 
-<div align="center">
-<table width="88%">
-  <thead>
-    <tr>
-      <th align="center" width="38%">Document</th>
-      <th align="center" width="62%">Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td align="center"><a href="DATASET_USAGE_GUIDE.md"><code>DATASET_USAGE_GUIDE.md</code></a></td><td align="center">Complete calculation, platform and HR use-case guide</td></tr>
-    <tr><td align="center"><a href="CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a></td><td align="center">Contribution workflow and pull-request checklist</td></tr>
-    <tr><td align="center"><a href="CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT.md</code></a></td><td align="center">Professional participation expectations</td></tr>
-    <tr><td align="center"><a href="SECURITY.md"><code>SECURITY.md</code></a></td><td align="center">Vulnerability and HR data-privacy guidance</td></tr>
-    <tr><td align="center"><a href="CHANGELOG.md"><code>CHANGELOG.md</code></a></td><td align="center">Version history and improvements</td></tr>
-    <tr><td align="center"><a href="SUPPORT.md"><code>SUPPORT.md</code></a></td><td align="center">Troubleshooting and issue guidance</td></tr>
-    <tr><td align="center"><a href="LICENSE"><code>LICENSE</code></a></td><td align="center">Project code licensing terms</td></tr>
-  </tbody>
-</table>
-</div>
-
----
-
-## 🔬 Portfolio extension ideas
-
-- Voluntary versus involuntary turnover
-- Regrettable and new-hire turnover
-- Tenure-band and manager-level analysis
-- Recruitment replacement cost
-- Employee-retention cost modelling
-- Attrition prediction
-- Automated monthly HR reporting
+| Document | Purpose |
+|---|---|
+| [`case-study/README.md`](case-study/README.md) | Official case landing page |
+| [`submissions/README.md`](submissions/README.md) | Participant contribution workflow |
+| [`DATASET_USAGE_GUIDE.md`](DATASET_USAGE_GUIDE.md) | Calculation, platform and HR use-case guide |
+| [`docs/CASE_SUBMISSION_PROTECTION.md`](docs/CASE_SUBMISSION_PROTECTION.md) | Technical contribution protection |
+| [`docs/CASE_STUDY_PUBLISHING_GUIDE.md`](docs/CASE_STUDY_PUBLISHING_GUIDE.md) | GitHub Release and Kaggle publication runbook |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | General contribution guidance |
+| [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Professional participation expectations |
+| [`SECURITY.md`](SECURITY.md) | Vulnerability and HR data-privacy guidance |
+| [`CHANGELOG.md`](CHANGELOG.md) | Version history |
+| [`LICENSE`](LICENSE) | Project licensing terms |
 
 ---
 
@@ -392,15 +349,9 @@ Human Resources Professional and HR Analytics Practitioner from Bangladesh
 
 ---
 
-## ⚖️ License
+## ⚖️ Licence and responsible use
 
 - **Project code:** MIT License
 - **Synthetic dataset:** CC0-1.0 for learning and portfolio use
 
----
-
-## 🛡️ Data ethics
-
-Hossain Group is used as a fictional project company.
-
-All employee names, joining records, exit records, departments, locations and workforce metrics are synthetic. The project does not contain real organisational or confidential employee information and must not be presented as authentic company HR data.
+Hossain Group is used as a fictional project company. All employee names, joining records, exit records, departments, locations and workforce metrics are synthetic. The project does not contain real organisational or confidential employee information and must not be presented as authentic company HR data.
