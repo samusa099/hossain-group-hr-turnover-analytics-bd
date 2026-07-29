@@ -3,13 +3,13 @@
 
 from __future__ import annotations
 
+import base64
+import http.client
 import json
 import os
 import re
 import sys
-import urllib.error
 import urllib.parse
-import urllib.request
 from collections import Counter
 from pathlib import PurePosixPath
 
@@ -23,6 +23,8 @@ HEAD_SHA = os.environ["HEAD_SHA"]
 HEAD_REF = os.environ["HEAD_REF"]
 
 TRUSTED_ASSOCIATIONS = {"OWNER", "MEMBER", "COLLABORATOR"}
+REPOSITORY_NAME = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
+COMMIT_SHA = re.compile(r"^[0-9a-fA-F]{40}$")
 SUBMISSION_BRANCH = re.compile(
     rf"^submission/{re.escape(AUTHOR)}/[a-z0-9][a-z0-9-]{{1,63}}$"
 )
@@ -83,33 +85,65 @@ ERROR_MESSAGES = {
 violations: list[str] = []
 
 
-def api_json(path: str) -> object:
-    request = urllib.request.Request(
-        f"https://api.github.com{path}",
-        headers={
-            "Authorization": f"Bearer {TOKEN}",
-            "Accept": "application/vnd.github+json",
-            "X-GitHub-Api-Version": "2022-11-28",
-            "User-Agent": "hossain-group-case-submission-validator",
-        },
-    )
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return json.load(response)
+def validate_github_identifier(value: str, label: str) -> str:
+    """Accept only canonical owner/repository names supplied by GitHub events."""
+    if not REPOSITORY_NAME.fullmatch(value):
+        raise RuntimeError(f"Invalid {label} repository identifier")
+    return value
 
 
-def fetch_raw(repository: str, sha: str, path: str) -> bytes:
+def validate_commit_sha(value: str) -> str:
+    """Accept only a full hexadecimal commit SHA."""
+    if not COMMIT_SHA.fullmatch(value):
+        raise RuntimeError("Invalid pull-request head commit SHA")
+    return value.lower()
+
+
+def github_api_json(path: str) -> object:
+    """Call only the fixed GitHub API host and reject redirects."""
+    if not path.startswith("/") or "\r" in path or "\n" in path:
+        raise RuntimeError("Invalid GitHub API path")
+
+    connection = http.client.HTTPSConnection("api.github.com", timeout=30)
+    headers = {
+        "Authorization": f"Bearer {TOKEN}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "hossain-group-case-submission-validator",
+    }
+    try:
+        connection.request("GET", path, headers=headers)
+        response = connection.getresponse()
+        payload = response.read()
+    finally:
+        connection.close()
+
+    if response.status < 200 or response.status >= 300:
+        raise RuntimeError(f"GitHub API request failed with status {response.status}")
+    return json.loads(payload.decode("utf-8"))
+
+
+def fetch_repository_file(repository: str, sha: str, path: str) -> bytes:
+    """Read one file through GitHub's fixed API host without following redirects."""
+    safe_repository = validate_github_identifier(repository, "head")
+    safe_sha = validate_commit_sha(sha)
+    pure_path = PurePosixPath(path)
+    if pure_path.is_absolute() or ".." in pure_path.parts or not pure_path.parts:
+        raise RuntimeError("Invalid repository file path")
+
     encoded_path = "/".join(
-        urllib.parse.quote(part, safe="") for part in path.split("/")
+        urllib.parse.quote(part, safe="") for part in pure_path.parts
     )
-    request = urllib.request.Request(
-        f"https://raw.githubusercontent.com/{repository}/{sha}/{encoded_path}",
-        headers={
-            "Authorization": f"Bearer {TOKEN}",
-            "User-Agent": "hossain-group-case-submission-validator",
-        },
-    )
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return response.read()
+    query = urllib.parse.urlencode({"ref": safe_sha})
+    endpoint = f"/repos/{safe_repository}/contents/{encoded_path}?{query}"
+    payload = github_api_json(endpoint)
+
+    if not isinstance(payload, dict) or payload.get("type") != "file":
+        raise RuntimeError("Unexpected GitHub file response")
+    encoded = payload.get("content")
+    if not isinstance(encoded, str) or payload.get("encoding") != "base64":
+        raise RuntimeError("Unsupported GitHub file encoding")
+    return base64.b64decode(encoded, validate=True)
 
 
 def add_violation(code: str, path: str | None = None) -> None:
@@ -122,11 +156,12 @@ def add_violation(code: str, path: str | None = None) -> None:
 
 
 def list_changed_files() -> list[dict[str, object]]:
+    repository = validate_github_identifier(REPOSITORY, "base")
     changed_files: list[dict[str, object]] = []
     page = 1
     while True:
-        batch = api_json(
-            f"/repos/{REPOSITORY}/pulls/{PR_NUMBER}/files"
+        batch = github_api_json(
+            f"/repos/{repository}/pulls/{PR_NUMBER}/files"
             f"?per_page=100&page={page}"
         )
         if not isinstance(batch, list):
@@ -138,13 +173,17 @@ def list_changed_files() -> list[dict[str, object]]:
 
 
 def submission_tree(root: str) -> dict[str, dict[str, object]]:
-    commit = api_json(f"/repos/{HEAD_REPOSITORY}/git/commits/{HEAD_SHA}")
+    repository = validate_github_identifier(HEAD_REPOSITORY, "head")
+    sha = validate_commit_sha(HEAD_SHA)
+    commit = github_api_json(f"/repos/{repository}/git/commits/{sha}")
     if not isinstance(commit, dict):
         raise RuntimeError("Unable to read submission commit")
 
     tree_sha = str(commit["tree"]["sha"])
-    tree = api_json(
-        f"/repos/{HEAD_REPOSITORY}/git/trees/{tree_sha}?recursive=1"
+    if not COMMIT_SHA.fullmatch(tree_sha):
+        raise RuntimeError("Invalid submission tree SHA")
+    tree = github_api_json(
+        f"/repos/{repository}/git/trees/{tree_sha}?recursive=1"
     )
     if not isinstance(tree, dict) or tree.get("truncated"):
         raise RuntimeError("Unable to inspect the complete submission tree")
@@ -202,6 +241,10 @@ def finish() -> int:
 
 
 def main() -> int:
+    validate_github_identifier(REPOSITORY, "base")
+    validate_github_identifier(HEAD_REPOSITORY, "head")
+    validate_commit_sha(HEAD_SHA)
+
     is_submission = (
         ASSOCIATION not in TRUSTED_ASSOCIATIONS
         or HEAD_REF.startswith("submission/")
@@ -285,8 +328,8 @@ def main() -> int:
             continue
 
         try:
-            raw = fetch_raw(HEAD_REPOSITORY, HEAD_SHA, path)
-        except (urllib.error.HTTPError, urllib.error.URLError):
+            raw = fetch_repository_file(HEAD_REPOSITORY, HEAD_SHA, path)
+        except (RuntimeError, ValueError, json.JSONDecodeError):
             add_violation("content-read", path)
             continue
 
