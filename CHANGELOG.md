@@ -6,28 +6,6 @@ The project follows a simple portfolio-release convention based on meaningful im
 
 ## [Unreleased]
 
-### Security
-
-- Pinned GitHub Actions to immutable commit SHAs
-- Disabled persisted checkout credentials in every workflow
-- Upgraded checkout, setup-python, CodeQL and dependency-review actions
-- Added strict Python dependency auditing
-- Expanded the importable `main` ruleset with dependency and notebook checks
-
-### Changed
-
-- Consolidated Dependabot updates into grouped GitHub Actions and analytics-stack pull requests
-- Replaced loose Python lower bounds with tested direct-version pins
-- Removed unused `openpyxl` from the runtime dependency set
-- Split repository validation, dependency audit and notebook execution into independent CI jobs
-- Required deterministic generated Power BI and processed-data outputs
-
-### Added
-
-- Bounded source requirements in `requirements.in`
-- Headless notebook execution on Python 3.11 and 3.12
-- `scripts/execute_notebook_smoke.py`
-
 ### Planned
 
 - Voluntary versus involuntary turnover analysis
@@ -36,6 +14,39 @@ The project follows a simple portfolio-release convention based on meaningful im
 - Replacement-cost estimation
 - Department retention action tracker
 - Extended Power BI dashboard pages
+
+## [1.3.0] - 2026-07-29
+
+### Added
+
+- Role-based workforce stability and governance case study
+- Managing Director, HR Business Partner, People Analytics, Operations and Finance, Policy and Governance, and hybrid role tracks
+- Executive mandate, management context, submission requirements, legal-research guidance and assessment rubric
+- Controlled participant submission area under `submissions/<github-username>/<submission-id>/`
+- Dedicated pull-request template and CODEOWNERS coverage for official case and submission paths
+- Automated `Validate participant submission scope` policy gate
+- Import-ready `docs/Protect_Case_Submission_Ruleset.json`
+- Case-study files in the clean Kaggle publication package
+- Release manifest and automated GitHub Release publisher
+
+### Security
+
+- Participant pull requests are validated without checking out or executing untrusted contribution code
+- External submissions are restricted by branch, path, extension, file-size, notebook, PDF and secret-scanning controls
+- Existing portfolio security hardening remains active, including CodeQL, Gitleaks, dependency audit, path containment, XLSX validation and CSV formula-injection checks
+
+### Changed
+
+- Project scope expanded from a turnover-calculation portfolio into a controlled management simulation
+- GitHub remains the source of truth while Kaggle receives only approved case, evidence, metadata, documentation and notebook files
+- Release and citation metadata updated to version 1.3.0
+
+### Compatibility
+
+- No employee-data schema change
+- No turnover-formula change
+- No dashboard-KPI change
+- Existing Excel, Power BI, Python, Kaggle and Looker Studio workflows remain supported
 
 ## [1.2.0] - 2026-07-24
 

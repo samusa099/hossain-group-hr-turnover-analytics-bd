@@ -70,19 +70,25 @@ Protected paths:
 The `main` branch ruleset should require:
 
 - pull requests before merging;
+- stale approval dismissal after new pushes;
+- last-push approval;
 - review conversation resolution;
 - linear history;
 - branch deletion protection;
 - force-push protection;
-- CODEOWNERS review when a reviewer is available;
+- CODEOWNERS review;
 - required check: `Validate participant submission scope`;
 - existing security, validation, CodeQL and dependency-review checks.
 
-## Import package
+## Importable ruleset
 
-The importable ruleset JSON is distributed outside the repository tree in a ZIP package. It is not committed to the project source.
+The import-ready file is committed at:
 
-Repository administrators must import it manually under:
+```text
+docs/Protect_Case_Submission_Ruleset.json
+```
+
+Repository administrators can import it under:
 
 ```text
 Settings
@@ -100,6 +106,10 @@ Target: Default branch
 Enforcement: Active
 ```
 
+### Solo-maintainer warning
+
+The supplied ruleset requires one approving review, CODEOWNERS approval and approval of the last push. A pull-request author cannot normally approve their own change. Before activating the strict ruleset, add an eligible trusted reviewer or deliberately adjust the approval requirement while retaining the automated checks and protected-branch controls.
+
 ## Maintainer review
 
 Automated validation establishes eligibility; it does not establish analytical quality.
@@ -111,3 +121,13 @@ The maintainer may:
 - assess the submission against `case-study/RUBRIC.md`;
 - accept the submission;
 - close a submission that remains outside policy.
+
+## Publishing boundary
+
+The official case materials may be published to GitHub and the clean Kaggle package. Participant submissions are not copied into Kaggle automatically. A submission becomes part of repository history only after review and merge.
+
+Publication instructions are documented in:
+
+```text
+docs/CASE_STUDY_PUBLISHING_GUIDE.md
+```
