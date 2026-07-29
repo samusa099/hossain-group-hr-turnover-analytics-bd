@@ -244,6 +244,14 @@ jobs:
             --dir-mode zip \
             --message "Automatic GitHub case-study sync from ${GITHUB_SHA::7}"
 
+      - name: Verify Kaggle dataset processing status
+        shell: bash
+        run: |
+          set -euo pipefail
+          kaggle datasets status \
+            "$KAGGLE_USERNAME/$DATASET_SLUG" \
+            --format json
+
       - name: Print Kaggle dataset URL
         run: |
           echo "Dataset: https://www.kaggle.com/datasets/$KAGGLE_USERNAME/$DATASET_SLUG"
