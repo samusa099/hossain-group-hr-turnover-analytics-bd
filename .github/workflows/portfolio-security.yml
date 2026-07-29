@@ -1,0 +1,110 @@
+name: Portfolio Security
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * 1'
+permissions:
+  contents: read
+concurrency:
+  group: security-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    name: Secrets, dependencies and data safety
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Repository and data-file policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import csv,json,re,sys,zipfile
+          root=Path('.').resolve(); errors=[]
+          blocked={'.env','id_rsa','id_dsa','credentials.json','service-account.json'}
+          binary={'.exe','.dll','.scr','.com','.msi','.jar','.apk','.dmg','.iso'}
+          for p in Path('.').rglob('*'):
+            if '.git' in p.parts or not p.is_file(): continue
+            try: p.resolve().relative_to(root)
+            except ValueError: errors.append(f'Path escapes repository: {p}')
+            if p.name.lower() in blocked or p.suffix.lower() in binary: errors.append(f'Blocked file: {p}')
+            if p.is_symlink():
+              try: p.resolve(strict=True).relative_to(root)
+              except Exception: errors.append(f'Unsafe symlink: {p}')
+          for p in Path('.').rglob('*.xlsx'):
+            try:
+              with zipfile.ZipFile(p) as z:
+                names=z.namelist()
+                if '[Content_Types].xml' not in names or 'xl/workbook.xml' not in names: errors.append(f'Invalid XLSX: {p}')
+                for n in names:
+                  if n.startswith(('/','\\')) or '..' in Path(n).parts: errors.append(f'XLSX path traversal: {p}:{n}')
+                  if z.getinfo(n).file_size > 200_000_000: errors.append(f'Oversized XLSX member: {p}:{n}')
+            except Exception as e: errors.append(f'Unreadable XLSX {p}: {e}')
+          for p in Path('.').rglob('*.ipynb'):
+            try: nb=json.loads(p.read_text(encoding='utf-8'))
+            except Exception as e: errors.append(f'Invalid notebook {p}: {e}'); continue
+            for i,c in enumerate(nb.get('cells',[])):
+              if c.get('cell_type')!='code': continue
+              src=''.join(c.get('source',[])).lower()
+              if any(x in src for x in ('curl | sh','wget | sh','rm -rf /','subprocess.popen','os.system(')): errors.append(f'Unsafe notebook command: {p} cell {i}')
+          for p in Path('.').rglob('*.csv'):
+            try:
+              with p.open(encoding='utf-8-sig',newline='',errors='replace') as f:
+                for r,row in enumerate(csv.reader(f),1):
+                  for c,v in enumerate(row,1):
+                    if v.lstrip().startswith(('=','+','@','\t','\r')): errors.append(f'CSV formula injection risk: {p}:{r}:{c}')
+            except OSError as e: errors.append(f'Unreadable CSV {p}: {e}')
+          action=re.compile(r'^\s*uses:\s*[^\s@]+@([^\s#]+)',re.M)
+          for p in Path('.github/workflows').glob('*.y*ml'):
+            for ref in action.findall(p.read_text(encoding='utf-8')):
+              if not re.fullmatch(r'[0-9a-fA-F]{40}',ref): errors.append(f'Non-immutable action reference in {p}: @{ref}')
+          if errors: print('\n'.join(errors)); sys.exit(1)
+          PY
+      - name: Gitleaks
+        env:
+          VERSION: 8.30.1
+          SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSLo /tmp/gitleaks.tgz "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz"
+          echo "${SHA256}  /tmp/gitleaks.tgz" | sha256sum -c -
+          tar -xzf /tmp/gitleaks.tgz -C /tmp gitleaks
+          /tmp/gitleaks git --redact --no-banner .
+      - name: Dependency audit
+        run: |
+          set -euo pipefail
+          if find . -name 'requirements*.txt' -not -path './.git/*' | grep -q .; then
+            python3 -m pip install --disable-pip-version-check pip-audit==2.9.0
+            while IFS= read -r f; do python3 -m pip_audit -r "$f"; done < <(find . -name 'requirements*.txt' -not -path './.git/*')
+          fi
+          [ ! -f package-lock.json ] || npm audit --audit-level=high
+  dependency-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/dependency-review-action@05fe4576374b728f0c523d6a13d64c25081e0803
+        with:
+          fail-on-severity: high
+  codeql:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: github/codeql-action/init@4187e74d05793876e9989daffde9c3e66b4acd07
+        with:
+          languages: python
+          queries: security-extended
+      - uses: github/codeql-action/analyze@4187e74d05793876e9989daffde9c3e66b4acd07
