@@ -82,7 +82,7 @@ jobs:
 
     env:
       KAGGLE_USERNAME: ${{ vars.KAGGLE_USERNAME }}
-      DATASET_SLUG: hossain-group-hr-turnover-analytics-bd
+      DATASET_SLUG: hossain-group-hr-turnover-recovery-analytics
 
     steps:
       - name: Check out repository

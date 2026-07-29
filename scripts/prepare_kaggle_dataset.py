@@ -18,7 +18,7 @@ import re
 import shutil
 from pathlib import Path
 
-DATASET_SLUG = "hossain-group-hr-turnover-analytics-bd"
+DATASET_SLUG = "hossain-group-hr-turnover-recovery-analytics"
 DATASET_TITLE = "Hossain Group HR Turnover Analytics BD"
 EXPECTED_EMPLOYEE_ROWS = 762
 USERNAME_PATTERN = re.compile(r"^[A-Za-z0-9_-]+$")
