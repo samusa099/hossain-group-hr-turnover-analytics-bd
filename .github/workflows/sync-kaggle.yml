@@ -136,32 +136,46 @@ jobs:
 
           username = os.environ["KAGGLE_USERNAME"]
           credential = os.environ["KAGGLE_CREDENTIAL"].strip()
+          config_dir = Path.home() / ".kaggle"
 
           try:
               parsed = json.loads(credential)
           except json.JSONDecodeError:
-              parsed = {"username": username, "key": credential}
+              parsed = None
 
-          if not isinstance(parsed, dict):
-              raise SystemExit("Kaggle credential must be a JSON object or a raw API key.")
-
-          file_username = str(parsed.get("username", "")).strip()
-          key = str(parsed.get("key", "")).strip()
-          if not file_username or not key:
-              raise SystemExit("Kaggle credential must contain non-empty username and key values.")
-          if file_username != username:
-              raise SystemExit(
-                  "KAGGLE_USERNAME does not match the username in the Kaggle credential."
+          if isinstance(parsed, dict):
+              file_username = str(parsed.get("username", "")).strip()
+              key = str(parsed.get("key", "")).strip()
+              if not file_username or not key:
+                  raise SystemExit(
+                      "Legacy Kaggle credential JSON must contain non-empty username and key values."
+                  )
+              if file_username != username:
+                  raise SystemExit(
+                      "KAGGLE_USERNAME does not match the username in the legacy Kaggle credential."
+                  )
+              path = config_dir / "kaggle.json"
+              path.write_text(
+                  json.dumps({"username": file_username, "key": key}),
+                  encoding="utf-8",
               )
-
-          path = Path.home() / ".kaggle" / "kaggle.json"
-          path.write_text(
-              json.dumps({"username": file_username, "key": key}),
-              encoding="utf-8",
-          )
-          path.chmod(0o600)
-          print("Kaggle credentials file configured.")
+              path.chmod(0o600)
+              print("Configured legacy Kaggle API credentials.")
+          else:
+              if not credential:
+                  raise SystemExit("Kaggle API token is empty.")
+              path = config_dir / "access_token"
+              path.write_text(credential, encoding="utf-8")
+              path.chmod(0o600)
+              print("Configured modern Kaggle API token.")
           PY
+
+      - name: Validate Kaggle authentication
+        shell: bash
+        run: |
+          set -euo pipefail
+          kaggle datasets list --page-size 1 >/dev/null
+          echo "Kaggle authentication succeeded."
 
       - name: Validate project and build upload package
         run: |
