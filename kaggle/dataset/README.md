@@ -1,6 +1,6 @@
 # Hossain Group HR Turnover Analytics BD
 
-A fully synthetic, Bangladesh-focused HR analytics dataset for employee turnover calculation, department benchmarking, exit-reason analysis, dashboard practice and portfolio development.
+A fully synthetic, Bangladesh-focused HR analytics dataset and controlled management case for turnover calculation, department benchmarking, exit-reason analysis, workforce-governance review, dashboard practice and portfolio development.
 
 ## Dataset summary
 
@@ -16,6 +16,7 @@ A fully synthetic, Bangladesh-focused HR analytics dataset for employee turnover
 | Annualized turnover | 20.74% |
 | Risk classification | Critical |
 | Dataset licence | CC0-1.0 |
+| Case format | Role-based business simulation |
 
 ## Package structure
 
@@ -32,10 +33,41 @@ metadata.zip
 project.zip
 └── Hossain_Group_Turnover_Analysis.ipynb
 
+case-study.zip
+├── README.md
+├── CASE_NARRATIVE.md
+├── MANAGEMENT_CONTEXT.md
+├── EXECUTIVE_MANDATE.md
+├── ROLE_TRACKS.md
+├── SUBMISSION_REQUIREMENTS.md
+├── POLICY_AND_LEGAL_RESEARCH.md
+├── RUBRIC.md
+└── variants/
+    ├── managing-director.md
+    ├── hr-business-partner.md
+    ├── people-analytics.md
+    ├── operations-finance.md
+    └── policy-governance.md
+
 DATA_PROVENANCE.md
 DATASET_USAGE_GUIDE.md
 CITATION.cff
 ```
+
+## Role-based case
+
+The official case asks participants to determine whether the workforce situation represents an isolated turnover issue or a wider failure involving workforce planning, management control, policy governance, employee experience and organisational oversight.
+
+Participants select a primary role:
+
+- Managing Director;
+- HR Business Partner;
+- People Analytics;
+- Operations and Finance;
+- Policy and Governance;
+- or a declared hybrid track.
+
+The public case does not provide a model answer. Participants must distinguish verified evidence, plausible but unverified explanations, allegations, evidence limitations and actions that require further investigation.
 
 ## Recommended uses
 
@@ -43,13 +75,25 @@ CITATION.cff
 - monthly hires and exits analysis;
 - department turnover comparison;
 - exit-reason analysis;
+- role-based management decision simulation;
+- evidence-versus-allegation classification;
+- policy and governance control design;
+- current official Bangladesh legal and regulatory research practice;
 - Excel and Power BI dashboard practice;
 - Python, SQL, Kaggle and Looker Studio learning;
 - HR analytics portfolio development.
 
+## Evidence boundary
+
+Use the supplied data and project files for quantitative findings. Do not invent salary, attendance, performance, promotion, grievance, manager, recruitment-cost, productivity or financial records. Where the supplied evidence cannot support a conclusion, state:
+
+> **Insufficient evidence to conclude.**
+
 ## Responsible use
 
 Hossain Group is a fictional project company. No real employee, confidential organisation or personally identifiable information is included. Do not represent this dataset as authentic company HR data.
+
+Do not add real employee information, credentials, private organisational files or unverified legal conclusions to public analyses or submissions.
 
 ## Project source
 

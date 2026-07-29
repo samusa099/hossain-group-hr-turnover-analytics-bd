@@ -11,19 +11,51 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+CASE_FILES = [
+    "case-study/README.md",
+    "case-study/CASE_NARRATIVE.md",
+    "case-study/MANAGEMENT_CONTEXT.md",
+    "case-study/EXECUTIVE_MANDATE.md",
+    "case-study/ROLE_TRACKS.md",
+    "case-study/SUBMISSION_REQUIREMENTS.md",
+    "case-study/POLICY_AND_LEGAL_RESEARCH.md",
+    "case-study/RUBRIC.md",
+    "case-study/variants/managing-director.md",
+    "case-study/variants/hr-business-partner.md",
+    "case-study/variants/people-analytics.md",
+    "case-study/variants/operations-finance.md",
+    "case-study/variants/policy-governance.md",
+]
+
 REQUIRED = [
     ".github/CODEOWNERS",
     ".github/dependabot.yml",
     ".github/pull_request_template.md",
+    ".github/PULL_REQUEST_TEMPLATE/case-submission.md",
+    ".github/scripts/case_submission_policy.py",
     ".github/workflows/codeql.yml",
     ".github/workflows/dependency-review.yml",
     ".github/workflows/security-and-validation.yml",
+    ".github/workflows/portfolio-security.yml",
+    ".github/workflows/validate-case-submission.yml",
+    ".github/workflows/sync-kaggle.yml",
+    ".github/workflows/publish-release.yml",
     ".gitignore",
     "README.md",
     "SECURITY.md",
     "CHANGELOG.md",
-    "RELEASE_NOTES_v1.2.0.md",
+    "RELEASE_NOTES_v1.3.0.md",
     "VERSION",
+    "CITATION.cff",
+    "release/RELEASE_VERSION",
+    "release/V1.3.0_RELEASE_MANIFEST.md",
+    "docs/CASE_SUBMISSION_PROTECTION.md",
+    "docs/CASE_STUDY_PUBLISHING_GUIDE.md",
+    "docs/Protect_Case_Submission_Ruleset.json",
+    "submissions/README.md",
+    "submissions/SUBMISSION_TEMPLATE.md",
+    "scripts/prepare_kaggle_dataset.py",
+    "kaggle/dataset/README.md",
     "data/raw/employee_master.csv",
     "data/metadata/data_dictionary.json",
     "data/processed/company_monthly_turnover.csv",
@@ -39,6 +71,7 @@ REQUIRED = [
     "powerbi/Hossain_Group_Turnover.Report/definition/report.json",
     "powerbi/Hossain_Group_Turnover.SemanticModel/definition.pbism",
     "powerbi/Hossain_Group_Turnover.SemanticModel/model.bim",
+    *CASE_FILES,
 ]
 
 EXPECTED_HEADERS = {
@@ -90,7 +123,7 @@ SECRET_PATTERNS = {
 
 TEXT_SUFFIXES = {
     ".py", ".ps1", ".bat", ".json", ".yml", ".yaml", ".toml", ".ini",
-    ".cfg", ".txt", ".csv", ".bim", ".pbir", ".pbism", ".md",
+    ".cfg", ".txt", ".csv", ".bim", ".pbir", ".pbism", ".md", ".cff",
 }
 
 FORMULA_PREFIXES = ("=", "+", "-", "@", "\t", "\r")
@@ -115,7 +148,9 @@ def parse_iso_date(value: str, field: str, employee_id: str):
 
 
 def iter_text_files():
-    ignored_parts = {".git", ".venv", "venv", "__pycache__", ".ipynb_checkpoints"}
+    ignored_parts = {
+        ".git", ".venv", "venv", "__pycache__", ".ipynb_checkpoints", ".kaggle-build"
+    }
     for path in ROOT.rglob("*"):
         if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
             continue
@@ -135,6 +170,8 @@ def validate_required() -> bool:
 def validate_json() -> bool:
     ok = True
     for path in ROOT.rglob("*.json"):
+        if ".kaggle-build" in path.parts:
+            continue
         try:
             json.loads(path.read_text(encoding="utf-8-sig"))
         except Exception as exc:
@@ -151,8 +188,7 @@ def validate_csv_files() -> bool:
             continue
         try:
             with path.open(encoding="utf-8-sig", newline="") as handle:
-                reader = csv.reader(handle)
-                rows = list(reader)
+                rows = list(csv.reader(handle))
             if len(rows) < 2:
                 ok = fail(f"CSV has no data rows: {rel}") and ok
                 continue
@@ -173,7 +209,9 @@ def validate_employee_data() -> bool:
     with path.open(encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle)
         headers = set(reader.fieldnames or [])
-        prohibited = sorted(PROHIBITED_HR_HEADERS.intersection({h.lower() for h in headers}))
+        prohibited = sorted(
+            PROHIBITED_HR_HEADERS.intersection({header.lower() for header in headers})
+        )
         if prohibited:
             ok = fail(f"Prohibited public HR fields detected: {', '.join(prohibited)}") and ok
 
@@ -184,8 +222,12 @@ def validate_employee_data() -> bool:
             seen_ids.add(employee_id)
 
             try:
-                join_date = parse_iso_date((row.get("Join_Date") or "").strip(), "Join_Date", employee_id)
-                exit_date = parse_iso_date((row.get("Exit_Date") or "").strip(), "Exit_Date", employee_id)
+                join_date = parse_iso_date(
+                    (row.get("Join_Date") or "").strip(), "Join_Date", employee_id
+                )
+                exit_date = parse_iso_date(
+                    (row.get("Exit_Date") or "").strip(), "Exit_Date", employee_id
+                )
             except ValueError as exc:
                 ok = fail(str(exc)) and ok
                 continue
@@ -230,6 +272,31 @@ def validate_notebook() -> bool:
     return ok
 
 
+def validate_case_materials() -> bool:
+    ok = True
+    for rel in CASE_FILES:
+        path = ROOT / rel
+        if not path.is_file():
+            ok = fail(f"Missing official case file: {rel}") and ok
+            continue
+        text = path.read_text(encoding="utf-8").strip()
+        if not text:
+            ok = fail(f"Official case file is empty: {rel}") and ok
+
+    case_root = ROOT / "case-study"
+    unexpected = [
+        path.relative_to(case_root)
+        for path in case_root.rglob("*")
+        if path.is_file() and path.suffix.lower() != ".md"
+    ]
+    if unexpected:
+        ok = fail(
+            "Unexpected non-Markdown file in official case materials: "
+            + ", ".join(str(path) for path in unexpected)
+        ) and ok
+    return ok
+
+
 def validate_powerbi_paths() -> bool:
     path = ROOT / "powerbi/Hossain_Group_Turnover.SemanticModel/model.bim"
     if not path.exists():
@@ -264,13 +331,33 @@ def validate_secrets() -> bool:
     return ok
 
 
-def validate_version() -> bool:
-    path = ROOT / "VERSION"
-    if not path.exists():
-        return False
-    version = path.read_text(encoding="utf-8").strip()
-    if version != "1.2.0":
-        return fail(f"VERSION must be 1.2.0 for this release, found '{version}'")
+def validate_release_metadata() -> bool:
+    version_path = ROOT / "VERSION"
+    cff_path = ROOT / "CITATION.cff"
+    release_version_path = ROOT / "release/RELEASE_VERSION"
+
+    if not all(path.is_file() for path in (version_path, cff_path, release_version_path)):
+        return fail("Release metadata files are incomplete")
+
+    version = version_path.read_text(encoding="utf-8").strip()
+    declared_tag = release_version_path.read_text(encoding="utf-8").strip()
+    if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", version):
+        return fail(f"VERSION must use X.Y.Z format, found '{version}'")
+    if declared_tag != f"v{version}":
+        return fail(
+            f"release/RELEASE_VERSION must equal v{version}, found '{declared_tag}'"
+        )
+
+    cff_text = cff_path.read_text(encoding="utf-8")
+    if not re.search(rf"^version:\s*{re.escape(version)}\s*$", cff_text, re.MULTILINE):
+        return fail(f"CITATION.cff does not declare version {version}")
+
+    notes = ROOT / f"RELEASE_NOTES_v{version}.md"
+    manifest = ROOT / "release" / f"V{version}_RELEASE_MANIFEST.md"
+    if not notes.is_file() or not notes.read_text(encoding="utf-8").strip():
+        return fail(f"Missing or empty release notes: {notes.relative_to(ROOT)}")
+    if not manifest.is_file() or not manifest.read_text(encoding="utf-8").strip():
+        return fail(f"Missing or empty release manifest: {manifest.relative_to(ROOT)}")
     return True
 
 
@@ -281,9 +368,10 @@ def main() -> int:
         validate_csv_files,
         validate_employee_data,
         validate_notebook,
+        validate_case_materials,
         validate_powerbi_paths,
         validate_secrets,
-        validate_version,
+        validate_release_metadata,
     ]
     ok = True
     for check in checks:
@@ -291,8 +379,8 @@ def main() -> int:
 
     if ok:
         print(
-            "PASS: repository structure, JSON, CSV schemas, employee dates, notebook hygiene, "
-            "Power BI paths, secret patterns and release version validated."
+            "PASS: repository structure, case materials, JSON, CSV schemas, employee dates, "
+            "notebook hygiene, Power BI paths, secret patterns and release metadata validated."
         )
         return 0
     return 1
