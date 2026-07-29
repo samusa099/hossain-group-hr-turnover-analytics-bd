@@ -12,6 +12,7 @@ on:
       - "CITATION.cff"
       - "kaggle/**"
       - "scripts/prepare_kaggle_dataset.py"
+      - "scripts/validate_project.py"
       - ".github/workflows/sync-kaggle.yml"
   push:
     branches: [main]
@@ -24,6 +25,7 @@ on:
       - "CITATION.cff"
       - "kaggle/**"
       - "scripts/prepare_kaggle_dataset.py"
+      - "scripts/validate_project.py"
       - ".github/workflows/sync-kaggle.yml"
   workflow_dispatch:
 
@@ -32,7 +34,7 @@ permissions:
 
 concurrency:
   group: kaggle-sync-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   validate-package:
@@ -72,15 +74,14 @@ jobs:
           retention-days: 3
 
   publish-dataset:
-    name: Publish Kaggle dataset version
+    name: Publish Kaggle dataset
     needs: validate-package
-    if: github.event_name != 'pull_request' && vars.KAGGLE_USERNAME != ''
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
     env:
       KAGGLE_USERNAME: ${{ vars.KAGGLE_USERNAME }}
-      KAGGLE_CREDENTIAL: ${{ secrets.KAGGLE_API_TOKEN }}
       DATASET_SLUG: hossain-group-hr-turnover-analytics-bd
 
     steps:
@@ -107,27 +108,31 @@ jobs:
             exit 1
           fi
 
-          if [ -z "$KAGGLE_CREDENTIAL" ]; then
-            echo "::error::Repository secret KAGGLE_API_TOKEN is missing."
-            exit 1
-          fi
-
-          if [[ ! "$KAGGLE_USERNAME" =~ ^[A-Za-z0-9_-]+$ ]]; then
-            echo "::error::KAGGLE_USERNAME contains unsupported characters."
+          if [[ ! "$KAGGLE_USERNAME" =~ ^[a-z0-9_-]+$ ]]; then
+            echo "::error::KAGGLE_USERNAME must be the exact lowercase Kaggle username."
             exit 1
           fi
 
           echo "Kaggle username is configured."
-          echo "Kaggle credential is configured."
 
       - name: Install official Kaggle CLI
-        run: python -m pip install --disable-pip-version-check kaggle==2.2.4
+        run: |
+          python -m pip install --disable-pip-version-check --no-input kaggle==2.2.4
+          kaggle --version
 
       - name: Configure Kaggle credentials
         shell: bash
+        env:
+          KAGGLE_CREDENTIAL: ${{ secrets.KAGGLE_API_TOKEN }}
         run: |
           set -euo pipefail
+          umask 077
           mkdir -p "$HOME/.kaggle"
+
+          if [ -z "$KAGGLE_CREDENTIAL" ]; then
+            echo "::error::Repository secret KAGGLE_API_TOKEN is missing."
+            exit 1
+          fi
 
           python - <<'PY'
           import json
@@ -162,8 +167,6 @@ jobs:
               path.chmod(0o600)
               print("Configured legacy Kaggle API credentials.")
           else:
-              if not credential:
-                  raise SystemExit("Kaggle API token is empty.")
               path = config_dir / "access_token"
               path.write_text(credential, encoding="utf-8")
               path.chmod(0o600)
@@ -201,6 +204,11 @@ jobs:
 
           with csv_path.open("r", encoding="utf-8-sig", newline="") as handle:
               reader = csv.DictReader(handle)
+              fieldnames = reader.fieldnames or []
+              if "ref" not in fieldnames:
+                  raise SystemExit(
+                      "Kaggle dataset listing did not contain the expected 'ref' column."
+                  )
               references = {
                   str(row.get("ref", "")).strip()
                   for row in reader
@@ -218,7 +226,9 @@ jobs:
 
       - name: Create public Kaggle dataset
         if: steps.dataset.outputs.exists == 'false'
+        shell: bash
         run: |
+          set -euo pipefail
           kaggle datasets create \
             --path .kaggle-build/dataset \
             --dir-mode zip \
@@ -226,7 +236,9 @@ jobs:
 
       - name: Publish new Kaggle dataset version
         if: steps.dataset.outputs.exists == 'true'
+        shell: bash
         run: |
+          set -euo pipefail
           kaggle datasets version \
             --path .kaggle-build/dataset \
             --dir-mode zip \
@@ -235,3 +247,9 @@ jobs:
       - name: Print Kaggle dataset URL
         run: |
           echo "Dataset: https://www.kaggle.com/datasets/$KAGGLE_USERNAME/$DATASET_SLUG"
+
+      - name: Remove Kaggle credentials
+        if: always()
+        shell: bash
+        run: |
+          rm -f "$HOME/.kaggle/access_token" "$HOME/.kaggle/kaggle.json"
