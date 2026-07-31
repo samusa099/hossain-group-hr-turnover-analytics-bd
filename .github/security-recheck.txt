@@ -1,0 +1,1 @@
+Temporary marker used to retrigger protected-branch checks after automated remediation.
