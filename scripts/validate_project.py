@@ -159,7 +159,8 @@ def sanitize_for_log(message: str) -> str:
 
 
 def fail(message: str) -> bool:
-    print(f"FAIL: {sanitize_for_log(message)}")
+    # Caller-provided validation details may contain HR identifiers or secrets.
+    print("FAIL: project validation failed; review the validation category in code.")
     return False
 
 
