@@ -36,6 +36,9 @@ jobs:
       - name: Compile Python scripts and tests
         run: python -m compileall -q scripts tests
 
+      - name: Test safe validation diagnostics
+        run: python -m unittest discover -s tests -p "test_*.py"
+
       - name: Preserve committed semantic model
         run: cp powerbi/Hossain_Group_Turnover.SemanticModel/model.bim /tmp/model.before.bim
 
