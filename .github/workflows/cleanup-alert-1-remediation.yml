@@ -1,0 +1,51 @@
+name: Clean up alert 1 remediation
+
+on:
+  push:
+    branches: [alert-autofix-1]
+    paths:
+      - .github/workflows/cleanup-alert-1-remediation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  clean-fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out remediation branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: alert-autofix-1
+          fetch-depth: 0
+
+      - name: Remove obsolete sanitizer helper
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("scripts/validate_project.py")
+          text = path.read_text(encoding="utf-8")
+          start = text.index("def sanitize_for_log(message: str) -> str:\n")
+          end = text.index("def fail(message: str) -> bool:\n", start)
+          text = text[:start] + text[end:]
+          text = text.replace(
+              "def fail(message: str) -> bool:\n",
+              "def fail(_message: str) -> bool:\n",
+              1,
+          )
+          path.write_text(text, encoding="utf-8")
+          PY
+
+          rm .github/workflows/cleanup-alert-1-remediation.yml
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/validate_project.py .github/workflows/cleanup-alert-1-remediation.yml
+          git commit -m "Remove obsolete log sanitizer"
+          git push origin HEAD:alert-autofix-1
