@@ -7,6 +7,7 @@ import json
 import re
 import sys
 from datetime import datetime
+from enum import Enum
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -132,52 +133,31 @@ FORMULA_CHECK_COLUMNS = {
     "Location", "Employment_Type", "Exit_Reason", "Status",
 }
 
-FAILURE_CATEGORY_RULES = (
-    ("missing required file", "required-file"),
-    ("invalid json", "json"),
-    ("missing csv", "csv"),
-    ("csv has no data rows", "csv"),
-    ("unexpected csv headers", "csv-schema"),
-    ("invalid csv", "csv"),
-    ("prohibited public hr fields", "hr-data-policy"),
-    ("duplicate employee_id", "employee-id"),
-    ("invalid join_date", "employee-date"),
-    ("invalid exit_date", "employee-date"),
-    ("join_date is required", "employee-date"),
-    ("exit_date is before join_date", "employee-date"),
-    ("active employee has an exit_date", "employee-status"),
-    ("exited employee has no exit_date", "employee-status"),
-    ("spreadsheet formula injection", "csv-formula"),
-    ("invalid notebook json", "notebook"),
-    ("notebook code cell", "notebook-hygiene"),
-    ("missing official case file", "case-materials"),
-    ("official case file is empty", "case-materials"),
-    ("unexpected non-markdown file", "case-materials"),
-    ("power bi model", "powerbi"),
-    ("unsafe power bi source path", "powerbi-path"),
-    ("potential aws access key", "secret-pattern"),
-    ("potential github classic token", "secret-pattern"),
-    ("potential github fine-grained token", "secret-pattern"),
-    ("potential google api key", "secret-pattern"),
-    ("potential private key", "secret-pattern"),
-    ("release metadata", "release-metadata"),
-    ("version must use", "release-metadata"),
-    ("release/release_version", "release-metadata"),
-    ("citation.cff", "release-metadata"),
-    ("release notes", "release-metadata"),
-    ("release manifest", "release-metadata"),
-)
+
+class FailureCategory(str, Enum):
+    """Allow-listed diagnostic categories safe for CI logs."""
+
+    REQUIRED_FILE = "required-file"
+    JSON = "json"
+    CSV = "csv"
+    CSV_SCHEMA = "csv-schema"
+    HR_DATA_POLICY = "hr-data-policy"
+    EMPLOYEE_ID = "employee-id"
+    EMPLOYEE_DATE = "employee-date"
+    EMPLOYEE_STATUS = "employee-status"
+    CSV_FORMULA = "csv-formula"
+    NOTEBOOK = "notebook"
+    NOTEBOOK_HYGIENE = "notebook-hygiene"
+    CASE_MATERIALS = "case-materials"
+    POWERBI = "powerbi"
+    POWERBI_PATH = "powerbi-path"
+    SECRET_PATTERN = "secret-pattern"
+    RELEASE_METADATA = "release-metadata"
 
 
-def fail(message: str) -> bool:
-    """Report a useful failure category without logging caller-provided details."""
-    normalized = message.casefold()
-    category = "validation"
-    for marker, safe_category in FAILURE_CATEGORY_RULES:
-        if marker in normalized:
-            category = safe_category
-            break
-    print(f"FAIL [{category}]: project validation failed.")
+def fail(category: FailureCategory) -> bool:
+    """Emit only an allow-listed failure category, never caller-controlled details."""
+    print(f"FAIL [{category.value}]: project validation failed.")
     return False
 
 
@@ -206,7 +186,7 @@ def validate_required() -> bool:
     ok = True
     for rel in REQUIRED:
         if not (ROOT / rel).exists():
-            ok = fail(f"Missing required file: {rel}") and ok
+            ok = fail(FailureCategory.REQUIRED_FILE) and ok
     return ok
 
 
@@ -217,8 +197,8 @@ def validate_json() -> bool:
             continue
         try:
             json.loads(path.read_text(encoding="utf-8-sig"))
-        except Exception as exc:
-            ok = fail(f"Invalid JSON {path.relative_to(ROOT)}: {exc}") and ok
+        except Exception:
+            ok = fail(FailureCategory.JSON) and ok
     return ok
 
 
@@ -227,18 +207,18 @@ def validate_csv_files() -> bool:
     for rel, expected in EXPECTED_HEADERS.items():
         path = ROOT / rel
         if not path.exists():
-            ok = fail(f"Missing CSV: {rel}") and ok
+            ok = fail(FailureCategory.CSV) and ok
             continue
         try:
             with path.open(encoding="utf-8-sig", newline="") as handle:
                 rows = list(csv.reader(handle))
             if len(rows) < 2:
-                ok = fail(f"CSV has no data rows: {rel}") and ok
+                ok = fail(FailureCategory.CSV) and ok
                 continue
             if rows[0] != expected:
-                ok = fail(f"Unexpected CSV headers in {rel}: {rows[0]}") and ok
-        except Exception as exc:
-            ok = fail(f"Invalid CSV {rel}: {exc}") and ok
+                ok = fail(FailureCategory.CSV_SCHEMA) and ok
+        except Exception:
+            ok = fail(FailureCategory.CSV) and ok
     return ok
 
 
@@ -256,12 +236,12 @@ def validate_employee_data() -> bool:
             PROHIBITED_HR_HEADERS.intersection({header.lower() for header in headers})
         )
         if prohibited:
-            ok = fail(f"Prohibited public HR fields detected: {', '.join(prohibited)}") and ok
+            ok = fail(FailureCategory.HR_DATA_POLICY) and ok
 
         for row_number, row in enumerate(reader, start=2):
             employee_id = (row.get("Employee_ID") or "").strip() or f"row {row_number}"
             if employee_id in seen_ids:
-                ok = fail(f"Duplicate Employee_ID: {employee_id}") and ok
+                ok = fail(FailureCategory.EMPLOYEE_ID) and ok
             seen_ids.add(employee_id)
 
             try:
@@ -271,27 +251,25 @@ def validate_employee_data() -> bool:
                 exit_date = parse_iso_date(
                     (row.get("Exit_Date") or "").strip(), "Exit_Date", employee_id
                 )
-            except ValueError as exc:
-                ok = fail(str(exc)) and ok
+            except ValueError:
+                ok = fail(FailureCategory.EMPLOYEE_DATE) and ok
                 continue
 
             if not join_date:
-                ok = fail(f"{employee_id}: Join_Date is required") and ok
+                ok = fail(FailureCategory.EMPLOYEE_DATE) and ok
             if join_date and exit_date and exit_date < join_date:
-                ok = fail(f"{employee_id}: Exit_Date is before Join_Date") and ok
+                ok = fail(FailureCategory.EMPLOYEE_DATE) and ok
 
             status = (row.get("Status") or "").strip().lower()
             if status == "active" and exit_date:
-                ok = fail(f"{employee_id}: Active employee has an Exit_Date") and ok
+                ok = fail(FailureCategory.EMPLOYEE_STATUS) and ok
             if status == "exited" and not exit_date:
-                ok = fail(f"{employee_id}: Exited employee has no Exit_Date") and ok
+                ok = fail(FailureCategory.EMPLOYEE_STATUS) and ok
 
             for column in FORMULA_CHECK_COLUMNS:
                 value = (row.get(column) or "").strip()
                 if value.startswith(FORMULA_PREFIXES):
-                    ok = fail(
-                        f"Potential spreadsheet formula injection in {employee_id} column {column}"
-                    ) and ok
+                    ok = fail(FailureCategory.CSV_FORMULA) and ok
     return ok
 
 
@@ -301,17 +279,17 @@ def validate_notebook() -> bool:
         return False
     try:
         notebook = json.loads(path.read_text(encoding="utf-8-sig"))
-    except Exception as exc:
-        return fail(f"Invalid notebook JSON: {exc}")
+    except Exception:
+        return fail(FailureCategory.NOTEBOOK)
 
     ok = True
-    for index, cell in enumerate(notebook.get("cells", []), start=1):
+    for cell in notebook.get("cells", []):
         if cell.get("cell_type") != "code":
             continue
         if cell.get("outputs"):
-            ok = fail(f"Notebook code cell {index} contains committed output") and ok
+            ok = fail(FailureCategory.NOTEBOOK_HYGIENE) and ok
         if cell.get("execution_count") is not None:
-            ok = fail(f"Notebook code cell {index} contains an execution count") and ok
+            ok = fail(FailureCategory.NOTEBOOK_HYGIENE) and ok
     return ok
 
 
@@ -320,11 +298,11 @@ def validate_case_materials() -> bool:
     for rel in CASE_FILES:
         path = ROOT / rel
         if not path.is_file():
-            ok = fail(f"Missing official case file: {rel}") and ok
+            ok = fail(FailureCategory.CASE_MATERIALS) and ok
             continue
         text = path.read_text(encoding="utf-8").strip()
         if not text:
-            ok = fail(f"Official case file is empty: {rel}") and ok
+            ok = fail(FailureCategory.CASE_MATERIALS) and ok
 
     case_root = ROOT / "case-study"
     unexpected = [
@@ -333,10 +311,7 @@ def validate_case_materials() -> bool:
         if path.is_file() and path.suffix.lower() != ".md"
     ]
     if unexpected:
-        ok = fail(
-            "Unexpected non-Markdown file in official case materials: "
-            + ", ".join(str(path) for path in unexpected)
-        ) and ok
+        ok = fail(FailureCategory.CASE_MATERIALS) and ok
     return ok
 
 
@@ -347,7 +322,7 @@ def validate_powerbi_paths() -> bool:
     text = path.read_text(encoding="utf-8-sig")
     ok = True
     if "__PROJECT_ROOT__/data/processed/" not in text:
-        ok = fail("Power BI model does not use the portable __PROJECT_ROOT__ token") and ok
+        ok = fail(FailureCategory.POWERBI) and ok
 
     unsafe_patterns = {
         "Linux or macOS user home": re.compile(r"(?:/home/|/Users/)[^/\s\"']+"),
@@ -355,9 +330,9 @@ def validate_powerbi_paths() -> bool:
         "Windows user profile": re.compile(r"[A-Za-z]:\\\\Users\\\\|[A-Za-z]:/Users/"),
         "UNC network path": re.compile(r"\\\\\\\\[^\\\s]+\\\\[^\\\s]+"),
     }
-    for label, pattern in unsafe_patterns.items():
+    for pattern in unsafe_patterns.values():
         if pattern.search(text):
-            ok = fail(f"Unsafe Power BI source path detected: {label}") and ok
+            ok = fail(FailureCategory.POWERBI_PATH) and ok
     return ok
 
 
@@ -368,9 +343,9 @@ def validate_secrets() -> bool:
             text = path.read_text(encoding="utf-8-sig")
         except UnicodeDecodeError:
             continue
-        for label, pattern in SECRET_PATTERNS.items():
+        for pattern in SECRET_PATTERNS.values():
             if pattern.search(text):
-                ok = fail(f"Potential {label} in {path.relative_to(ROOT)}") and ok
+                ok = fail(FailureCategory.SECRET_PATTERN) and ok
     return ok
 
 
@@ -380,27 +355,25 @@ def validate_release_metadata() -> bool:
     release_version_path = ROOT / "release/RELEASE_VERSION"
 
     if not all(path.is_file() for path in (version_path, cff_path, release_version_path)):
-        return fail("Release metadata files are incomplete")
+        return fail(FailureCategory.RELEASE_METADATA)
 
     version = version_path.read_text(encoding="utf-8").strip()
     declared_tag = release_version_path.read_text(encoding="utf-8").strip()
     if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", version):
-        return fail(f"VERSION must use X.Y.Z format, found '{version}'")
+        return fail(FailureCategory.RELEASE_METADATA)
     if declared_tag != f"v{version}":
-        return fail(
-            f"release/RELEASE_VERSION must equal v{version}, found '{declared_tag}'"
-        )
+        return fail(FailureCategory.RELEASE_METADATA)
 
     cff_text = cff_path.read_text(encoding="utf-8")
     if not re.search(rf"^version:\s*{re.escape(version)}\s*$", cff_text, re.MULTILINE):
-        return fail(f"CITATION.cff does not declare version {version}")
+        return fail(FailureCategory.RELEASE_METADATA)
 
     notes = ROOT / f"RELEASE_NOTES_v{version}.md"
     manifest = ROOT / "release" / f"V{version}_RELEASE_MANIFEST.md"
     if not notes.is_file() or not notes.read_text(encoding="utf-8").strip():
-        return fail(f"Missing or empty release notes: {notes.relative_to(ROOT)}")
+        return fail(FailureCategory.RELEASE_METADATA)
     if not manifest.is_file() or not manifest.read_text(encoding="utf-8").strip():
-        return fail(f"Missing or empty release manifest: {manifest.relative_to(ROOT)}")
+        return fail(FailureCategory.RELEASE_METADATA)
     return True
 
 
