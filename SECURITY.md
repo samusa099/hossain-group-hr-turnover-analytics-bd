@@ -40,6 +40,8 @@
 
 The recommended GitHub ruleset is documented in [`docs/REPOSITORY_PROTECTION.md`](docs/REPOSITORY_PROTECTION.md).
 
+The approved privacy-safe validation design and emergency fallback procedure are documented in [`docs/SAFE_VALIDATION_LOGGING_FALLBACK.md`](docs/SAFE_VALIDATION_LOGGING_FALLBACK.md).
+
 ---
 
 ## 🚨 Reporting an issue
@@ -154,6 +156,7 @@ Do not commit:
 - [`README.md`](README.md)
 - [`RELEASE_NOTES_v1.2.0.md`](RELEASE_NOTES_v1.2.0.md)
 - [`docs/REPOSITORY_PROTECTION.md`](docs/REPOSITORY_PROTECTION.md)
+- [`docs/SAFE_VALIDATION_LOGGING_FALLBACK.md`](docs/SAFE_VALIDATION_LOGGING_FALLBACK.md)
 - [`DATASET_USAGE_GUIDE.md`](DATASET_USAGE_GUIDE.md)
 - [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
