@@ -56,7 +56,10 @@ jobs:
           python-version: "3.11"
 
       - name: Validate canonical project files
-        run: python scripts/validate_project.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_project.py 2>&1 | tee kaggle-validation.log
 
       - name: Build and validate clean Kaggle package
         env:
@@ -71,6 +74,15 @@ jobs:
           name: kaggle-dataset-and-case-package-preview
           path: .kaggle-build/dataset
           if-no-files-found: error
+          retention-days: 3
+
+      - name: Upload Kaggle validation diagnostics
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: kaggle-validation-diagnostics
+          path: kaggle-validation.log
+          if-no-files-found: warn
           retention-days: 3
 
   publish-dataset:
@@ -174,8 +186,10 @@ jobs:
           PY
 
       - name: Validate project and build upload package
+        shell: bash
         run: |
-          python scripts/validate_project.py
+          set -o pipefail
+          python scripts/validate_project.py 2>&1 | tee kaggle-publish-validation.log
           python scripts/prepare_kaggle_dataset.py \
             --output .kaggle-build/dataset \
             --username "$KAGGLE_USERNAME"
@@ -255,6 +269,15 @@ jobs:
       - name: Print Kaggle dataset URL
         run: |
           echo "Dataset: https://www.kaggle.com/datasets/$KAGGLE_USERNAME/$DATASET_SLUG"
+
+      - name: Upload Kaggle publish diagnostics
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: kaggle-publish-diagnostics
+          path: kaggle-publish-validation.log
+          if-no-files-found: warn
+          retention-days: 3
 
       - name: Remove Kaggle credentials
         if: always()
