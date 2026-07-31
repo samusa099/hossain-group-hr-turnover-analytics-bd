@@ -132,10 +132,52 @@ FORMULA_CHECK_COLUMNS = {
     "Location", "Employment_Type", "Exit_Reason", "Status",
 }
 
+FAILURE_CATEGORY_RULES = (
+    ("missing required file", "required-file"),
+    ("invalid json", "json"),
+    ("missing csv", "csv"),
+    ("csv has no data rows", "csv"),
+    ("unexpected csv headers", "csv-schema"),
+    ("invalid csv", "csv"),
+    ("prohibited public hr fields", "hr-data-policy"),
+    ("duplicate employee_id", "employee-id"),
+    ("invalid join_date", "employee-date"),
+    ("invalid exit_date", "employee-date"),
+    ("join_date is required", "employee-date"),
+    ("exit_date is before join_date", "employee-date"),
+    ("active employee has an exit_date", "employee-status"),
+    ("exited employee has no exit_date", "employee-status"),
+    ("spreadsheet formula injection", "csv-formula"),
+    ("invalid notebook json", "notebook"),
+    ("notebook code cell", "notebook-hygiene"),
+    ("missing official case file", "case-materials"),
+    ("official case file is empty", "case-materials"),
+    ("unexpected non-markdown file", "case-materials"),
+    ("power bi model", "powerbi"),
+    ("unsafe power bi source path", "powerbi-path"),
+    ("potential aws access key", "secret-pattern"),
+    ("potential github classic token", "secret-pattern"),
+    ("potential github fine-grained token", "secret-pattern"),
+    ("potential google api key", "secret-pattern"),
+    ("potential private key", "secret-pattern"),
+    ("release metadata", "release-metadata"),
+    ("version must use", "release-metadata"),
+    ("release/release_version", "release-metadata"),
+    ("citation.cff", "release-metadata"),
+    ("release notes", "release-metadata"),
+    ("release manifest", "release-metadata"),
+)
 
-def fail(_message: str) -> bool:
-    # Caller-provided validation details may contain HR identifiers or secrets.
-    print("FAIL: project validation failed; review the validation category in code.")
+
+def fail(message: str) -> bool:
+    """Report a useful failure category without logging caller-provided details."""
+    normalized = message.casefold()
+    category = "validation"
+    for marker, safe_category in FAILURE_CATEGORY_RULES:
+        if marker in normalized:
+            category = safe_category
+            break
+    print(f"FAIL [{category}]: project validation failed.")
     return False
 
 
