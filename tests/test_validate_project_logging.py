@@ -6,44 +6,50 @@ import io
 import unittest
 from contextlib import redirect_stdout
 
-from scripts.validate_project import fail
+from scripts.validate_project import FailureCategory, fail
 
 
 class FailLoggingTests(unittest.TestCase):
-    """Ensure validation remains actionable without exposing caller data."""
+    """Ensure validation remains actionable without accepting caller data."""
 
     @staticmethod
-    def capture_failure(message: str) -> tuple[bool, str]:
+    def capture_failure(category: FailureCategory) -> tuple[bool, str]:
         stream = io.StringIO()
         with redirect_stdout(stream):
-            result = fail(message)
+            result = fail(category)
         return result, stream.getvalue()
 
-    def test_employee_identifier_is_not_logged(self) -> None:
-        result, output = self.capture_failure("Duplicate Employee_ID: EMP-12712922")
+    def test_employee_identifier_category_is_safe(self) -> None:
+        result, output = self.capture_failure(FailureCategory.EMPLOYEE_ID)
 
         self.assertFalse(result)
         self.assertEqual(output, "FAIL [employee-id]: project validation failed.\n")
         self.assertNotIn("EMP-12712922", output)
 
-    def test_secret_like_value_and_path_are_not_logged(self) -> None:
-        # Build a token-shaped fixture at runtime so the repository secret scanner
-        # does not mistake the test source itself for a committed credential.
-        secret = "gh" + "p_" + "abcdefghijklmnopqrstuvwxyz" + "1234567890"
-        message = f"Potential GitHub classic token in /home/musa/secrets.txt: {secret}"
-        result, output = self.capture_failure(message)
+    def test_secret_category_contains_no_value_or_path(self) -> None:
+        result, output = self.capture_failure(FailureCategory.SECRET_PATTERN)
 
         self.assertFalse(result)
         self.assertEqual(output, "FAIL [secret-pattern]: project validation failed.\n")
-        self.assertNotIn(secret, output)
         self.assertNotIn("/home/musa", output)
+        self.assertNotIn("github_pat_", output)
 
-    def test_unknown_message_uses_safe_fallback(self) -> None:
-        result, output = self.capture_failure("Unexpected private diagnostic payload")
+    def test_every_category_has_deterministic_output(self) -> None:
+        for category in FailureCategory:
+            with self.subTest(category=category):
+                result, output = self.capture_failure(category)
+                self.assertFalse(result)
+                self.assertEqual(
+                    output,
+                    f"FAIL [{category.value}]: project validation failed.\n",
+                )
 
-        self.assertFalse(result)
-        self.assertEqual(output, "FAIL [validation]: project validation failed.\n")
-        self.assertNotIn("private diagnostic payload", output)
+    def test_raw_message_is_rejected_before_logging(self) -> None:
+        stream = io.StringIO()
+        with self.assertRaises(AttributeError), redirect_stdout(stream):
+            fail("Unexpected private diagnostic payload")  # type: ignore[arg-type]
+
+        self.assertEqual(stream.getvalue(), "")
 
 
 if __name__ == "__main__":
