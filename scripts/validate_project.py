@@ -133,32 +133,7 @@ FORMULA_CHECK_COLUMNS = {
 }
 
 
-def sanitize_for_log(message: str) -> str:
-    """Redact sensitive/secret-like values before logging."""
-    sanitized = str(message)
-
-    # Redact known secret patterns.
-    for label, pattern in SECRET_PATTERNS.items():
-        sanitized = pattern.sub(f"[REDACTED {label}]", sanitized)
-
-    # Redact common Employee_ID payloads in validation messages.
-    sanitized = re.sub(
-        r"(Employee_ID:\s*)(.+)",
-        r"\1[REDACTED]",
-        sanitized,
-        flags=re.IGNORECASE,
-    )
-    sanitized = re.sub(
-        r"(Duplicate Employee_ID:\s*)(.+)",
-        r"\1[REDACTED]",
-        sanitized,
-        flags=re.IGNORECASE,
-    )
-
-    return sanitized
-
-
-def fail(message: str) -> bool:
+def fail(_message: str) -> bool:
     # Caller-provided validation details may contain HR identifiers or secrets.
     print("FAIL: project validation failed; review the validation category in code.")
     return False
