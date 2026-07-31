@@ -133,8 +133,9 @@ FORMULA_CHECK_COLUMNS = {
 }
 
 
-def fail(message: str) -> bool:
-    print(f"FAIL: {message}")
+def fail(_message: str) -> bool:
+    # Caller-provided validation details may contain HR identifiers or secrets.
+    print("FAIL: project validation failed; review the validation category in code.")
     return False
 
 
