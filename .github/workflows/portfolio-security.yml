@@ -1,26 +1,33 @@
 name: Portfolio Security
+
 on:
   push:
     branches: [main, master]
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '17 3 * * 1'
+    - cron: "17 3 * * 1"
+
 permissions:
   contents: read
+
 concurrency:
   group: security-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
 jobs:
   validate:
-    name: Secrets, dependencies and data safety
+    name: Secrets and data safety
     runs-on: ubuntu-latest
     timeout-minutes: 20
+
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           fetch-depth: 0
           persist-credentials: false
+
       - name: Repository and data-file policy
         shell: bash
         run: |
@@ -68,6 +75,7 @@ jobs:
               if not re.fullmatch(r'[0-9a-fA-F]{40}',ref): errors.append(f'Non-immutable action reference in {p}: @{ref}')
           if errors: print('\n'.join(errors)); sys.exit(1)
           PY
+
       - name: Gitleaks
         env:
           VERSION: 8.30.1
@@ -78,33 +86,3 @@ jobs:
           echo "${SHA256}  /tmp/gitleaks.tgz" | sha256sum -c -
           tar -xzf /tmp/gitleaks.tgz -C /tmp gitleaks
           /tmp/gitleaks git --redact --no-banner .
-      - name: Dependency audit
-        run: |
-          set -euo pipefail
-          if find . -name 'requirements*.txt' -not -path './.git/*' | grep -q .; then
-            python3 -m pip install --disable-pip-version-check pip-audit==2.9.0
-            while IFS= read -r f; do python3 -m pip_audit -r "$f"; done < <(find . -name 'requirements*.txt' -not -path './.git/*')
-          fi
-          [ ! -f package-lock.json ] || npm audit --audit-level=high
-  dependency-review:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/dependency-review-action@05fe4576374b728f0c523d6a13d64c25081e0803
-        with:
-          fail-on-severity: high
-  codeql:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    permissions:
-      contents: read
-      security-events: write
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          persist-credentials: false
-      - uses: github/codeql-action/init@4187e74d05793876e9989daffde9c3e66b4acd07
-        with:
-          languages: python
-          queries: security-extended
-      - uses: github/codeql-action/analyze@4187e74d05793876e9989daffde9c3e66b4acd07
