@@ -1,20 +1,19 @@
-name: "Mokhles HR Analytics CodeQL Configuration"
+name: "Hossain Group HR Turnover Analytics BD CodeQL Configuration"
 
 queries:
   - uses: security-extended
 
 paths:
-  - src
   - scripts
-  - tests
-  - packages/kaggle/structured_workspace/12_SCRIPTS
 
 paths-ignore:
   - "**/*.ipynb"
+  - "**/.ipynb_checkpoints/**"
   - "**/*.csv"
   - "**/*.xlsx"
   - "**/*.xls"
   - "**/*.pbix"
   - "data/**"
   - "docs/**"
-  - "reports/**"
+  - "release/**"
+  - "submissions/**"
