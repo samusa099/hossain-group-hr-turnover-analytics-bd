@@ -1,0 +1,19 @@
+name: "Hossain Group HR Turnover Analytics BD CodeQL Configuration"
+
+queries:
+  - uses: security-extended
+
+paths:
+  - scripts
+
+paths-ignore:
+  - "**/*.ipynb"
+  - "**/.ipynb_checkpoints/**"
+  - "**/*.csv"
+  - "**/*.xlsx"
+  - "**/*.xls"
+  - "**/*.pbix"
+  - "data/**"
+  - "docs/**"
+  - "release/**"
+  - "submissions/**"
