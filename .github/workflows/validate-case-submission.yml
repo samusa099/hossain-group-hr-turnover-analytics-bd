@@ -38,5 +38,18 @@ jobs:
           fetch-depth: 1
           clean: true
 
+      - name: Recognize trusted Dependabot maintenance
+        if: >-
+          github.event.pull_request.user.login == 'dependabot[bot]' &&
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          startsWith(github.event.pull_request.head.ref, 'dependabot/')
+        run: |
+          echo "PASS: trusted same-repository Dependabot maintenance pull request."
+          echo "Participant submission scope policy is not applicable."
+
       - name: Validate external submission policy
+        if: >-
+          github.event.pull_request.user.login != 'dependabot[bot]' ||
+          github.event.pull_request.head.repo.full_name != github.repository ||
+          !startsWith(github.event.pull_request.head.ref, 'dependabot/')
         run: python .github/scripts/case_submission_policy.py
