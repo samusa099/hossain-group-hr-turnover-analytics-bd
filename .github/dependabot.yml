@@ -21,8 +21,31 @@ updates:
       day: monday
       time: "03:45"
       timezone: Asia/Dhaka
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 5
     groups:
-      github-actions-runtime:
+      codeql-version-suite:
+        applies-to: version-updates
+        patterns:
+          - "github/codeql-action/*"
+        update-types:
+          - major
+          - minor
+          - patch
+
+      codeql-security-suite:
+        applies-to: security-updates
+        patterns:
+          - "github/codeql-action/*"
+
+      other-actions-patch-minor:
+        applies-to: version-updates
         patterns:
           - "*"
+        exclude-patterns:
+          - "github/codeql-action/*"
+        update-types:
+          - minor
+          - patch
+
+    commit-message:
+      prefix: actions
