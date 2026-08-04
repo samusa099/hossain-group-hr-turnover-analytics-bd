@@ -1,0 +1,51 @@
+name: Repository Maintenance
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+concurrency:
+  group: repository-maintenance-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  package-labeler:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions: {contents: read, pull-requests: write, issues: write}
+    steps:
+      - uses: actions/checkout@v4
+      - id: workspace
+        shell: bash
+        run: 'if [[ -f package.json || -f pnpm-workspace.yaml || -f lerna.json || -f yarn.lock ]]; then echo "available=true" >> "$GITHUB_OUTPUT"; else echo "available=false" >> "$GITHUB_OUTPUT"; fi'
+      - name: Pull Request Package Labeler
+        if: steps.workspace.outputs.available == 'true'
+        uses: csi-lk/package-labeler@v1.0.1
+  todo-tracker:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions: {contents: read, issues: write}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Track TODO Action
+        uses: ribtoks/tdg-github-action@v0.4.17-beta
+        with:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+          REF: ${{ github.ref }}
+          LABEL: todo-comment
+          EXTENDED_LABELS: true
+          CLOSE_ON_SAME_BRANCH: true
+          ADD_LIMIT: 10
+          CLOSE_LIMIT: 10
+          EXCLUDE_PATTERN: '(node_modules|vendor|dist|build|\.git)/'
+      - name: Verify Changed files
+        id: verify
+        uses: tj-actions/verify-changed-files@v20.0.4
+        with: {files: '**/*'}
+      - if: steps.verify.outputs.files_changed == 'true'
+        env: {CHANGED_FILES: '${{ steps.verify.outputs.changed_files }}'}
+        run: 'echo "Unexpected uncommitted changes: $CHANGED_FILES"; exit 1'
