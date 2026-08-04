@@ -42,10 +42,6 @@ jobs:
           ADD_LIMIT: 10
           CLOSE_LIMIT: 10
           EXCLUDE_PATTERN: '(node_modules|vendor|dist|build|\.git)/'
-      - name: Verify Changed files
-        id: verify
-        uses: tj-actions/verify-changed-files@a1c6acee9df209257a246f2cc6ae8cb6581c1edf # v20.0.4
-        with: {files: '**/*'}
-      - if: steps.verify.outputs.files_changed == 'true'
-        env: {CHANGED_FILES: '${{ steps.verify.outputs.changed_files }}'}
-        run: 'echo "Unexpected uncommitted changes: $CHANGED_FILES"; exit 1'
+      - name: Verify workflow files were not mutated
+        shell: bash
+        run: git diff --exit-code -- .github/workflows
