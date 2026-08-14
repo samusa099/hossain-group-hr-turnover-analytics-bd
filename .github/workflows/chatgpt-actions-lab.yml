@@ -1,0 +1,23 @@
+name: ChatGPT Marketplace Actions
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  chatgpt:
+    uses: samusa099/Bangladesh-MPO-School-College-Salary-Tax-Toolkit/.github/workflows/chatgpt-actions-lab.yml@a8b2c63c3c334333f9003f38f01565c7678edac9
+    with:
+      test_subject: Review this pull request for correctness, security, workflow safety, and maintainability.
+      run_file_generation: false
+    secrets:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_API_TOKEN: ${{ secrets.OPENAI_API_TOKEN }}
+      OPENAI_API_ORGANIZATION_ID: ${{ secrets.OPENAI_API_ORGANIZATION_ID }}
+      OPENAI_API_PROJECT_ID: ${{ secrets.OPENAI_API_PROJECT_ID }}
